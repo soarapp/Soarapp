@@ -6,6 +6,7 @@ import 'package:soar_initial_screens/spotify_login.dart';
 
 class RegisterOneScreen extends StatefulWidget {
   static const String id = 'registerOne';
+
   @override
   _RegisterOneScreenState createState() => _RegisterOneScreenState();
 }
@@ -22,21 +23,44 @@ class _RegisterOneScreenState extends State<RegisterOneScreen> {
             children: [
               Expanded(
                 flex: 1,
-                child: Row(children: [
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(),
-                  ),
-                  Expanded(flex: 1, child: InkWell(onTap: () { Navigator.pop(context);},child: Tab(icon: Image.asset('assets/images/backArrow.png', width: 25, height: 25,),))),
-                  Expanded(flex: 12, child: SizedBox()),
-                ],),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Tab(
+                              icon: Image.asset(
+                                'assets/images/backArrow.png',
+                                width: 25,
+                                height: 25,
+                              ),
+                            ))),
+                    Expanded(flex: 12, child: SizedBox()),
+                  ],
+                ),
               ),
               Expanded(
                 flex: 2,
-                child:Row(
+                child: Row(
                   children: [
                     Expanded(flex: 1, child: SizedBox()),
-                    Expanded(flex: 8, child: Text("Sign Up With The Following Services", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Comfortaa', fontSize: 35.0),),),
+                    Expanded(
+                      flex: 8,
+                      child: Text(
+                        "Sign Up With The Following Services",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Comfortaa',
+                            fontSize: 35.0),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -63,8 +87,13 @@ class _RegisterOneScreenState extends State<RegisterOneScreen> {
                               ),
                             );
                           },
-                          child: Text("SPOTIFY", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                          style: ElevatedButton.styleFrom(primary: Color(0xFF0ACF83),),
+                          child: Text("SPOTIFY",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF0ACF83),
+                          ),
                         ),
                       ),
                     ),
@@ -98,8 +127,13 @@ class _RegisterOneScreenState extends State<RegisterOneScreen> {
                               ),
                             );
                           },
-                          child: Text("APPLE MUSIC", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                          style: ElevatedButton.styleFrom(primary: Color(0xFFFF00D6),),
+                          child: Text("APPLE MUSIC",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFFF00D6),
+                          ),
                         ),
                       ),
                     ),
@@ -133,8 +167,14 @@ class _RegisterOneScreenState extends State<RegisterOneScreen> {
                               ),
                             );
                           },
-                          child: Text("OPT OUT OF MUSIC FUNCTIONALITIES OR ADD ACCOUNT LATER", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                          style: ElevatedButton.styleFrom(primary: Colors.black),
+                          child: Text(
+                              "OPT OUT OF MUSIC FUNCTIONALITIES OR ADD ACCOUNT LATER",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                          style:
+                              ElevatedButton.styleFrom(primary: Colors.black),
                         ),
                       ),
                     ),
