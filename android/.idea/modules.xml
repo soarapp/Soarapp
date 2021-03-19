@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spotify-app-remote/android.spotify-app-remote.iml" filepath="$PROJECT_DIR$/.idea/modules/spotify-app-remote/android.spotify-app-remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spotify-auth/android.spotify-auth.iml" filepath="$PROJECT_DIR$/.idea/modules/spotify-auth/android.spotify-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spotify-player-24-noconnect-2.20b/android.spotify-player-24-noconnect-2.20b.iml" filepath="$PROJECT_DIR$/.idea/modules/spotify-player-24-noconnect-2.20b/android.spotify-player-24-noconnect-2.20b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spotify-player-24-noconnect-2.20b-2/android.spotify-player-24-noconnect-2.20b-2.iml" filepath="$PROJECT_DIR$/.idea/modules/spotify-player-24-noconnect-2.20b-2/android.spotify-player-24-noconnect-2.20b-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1857234572/android.spotify_sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/1857234572/android.spotify_sdk.iml" />
+    </modules>
+  </component>
+</project>

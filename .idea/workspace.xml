@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5bbed35-fbc9-4e42-8930-5301c902e8ea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/soar/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/soar/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pjmB7T1piGPmNFV8GKscFwcHQK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5bbed35-fbc9-4e42-8930-5301c902e8ea" name="Default Changelist" comment="" />
+      <created>1615704734135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615704734135</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="35" key="#Project_Structure" timestamp="1615921207340">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state x="249" y="35" key="#Project_Structure/0.0.1536.920@0.0.1536.920" timestamp="1615921207340" />
+    <state x="549" y="215" key="FileChooserDialogImpl" timestamp="1615921251442">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state x="549" y="215" key="FileChooserDialogImpl/0.0.1536.920@0.0.1536.920" timestamp="1615921251442" />
+    <state width="1491" height="241" key="GridCell.Tab.0.bottom" timestamp="1615921251461">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state width="1491" height="241" key="GridCell.Tab.0.bottom/0.0.1536.920@0.0.1536.920" timestamp="1615921251461" />
+    <state width="1491" height="241" key="GridCell.Tab.0.center" timestamp="1615921251461">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state width="1491" height="241" key="GridCell.Tab.0.center/0.0.1536.920@0.0.1536.920" timestamp="1615921251461" />
+    <state width="1491" height="241" key="GridCell.Tab.0.left" timestamp="1615921251461">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state width="1491" height="241" key="GridCell.Tab.0.left/0.0.1536.920@0.0.1536.920" timestamp="1615921251461" />
+    <state width="1491" height="241" key="GridCell.Tab.0.right" timestamp="1615921251461">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state width="1491" height="241" key="GridCell.Tab.0.right/0.0.1536.920@0.0.1536.920" timestamp="1615921251461" />
+    <state x="349" y="203" key="IDE.errors.dialog" timestamp="1615921151444">
+      <screen x="0" y="0" width="1536" height="920" />
+    </state>
+    <state x="349" y="203" key="IDE.errors.dialog/0.0.1536.920@0.0.1536.920" timestamp="1615921151444" />
+  </component>
+</project>
