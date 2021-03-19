@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.soar"
+3    package="com.example.soarapp"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -22,11 +22,11 @@
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
 19-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:5:9-43
-20        android:label="soar" >
-20-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:4:9-29
+20        android:label="soarapp" >
+20-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:4:9-32
 21        <activity
 21-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:6:9-34:20
-22            android:name="com.example.soar.MainActivity"
+22            android:name="com.example.soarapp.MainActivity"
 22-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:7:13-41
 23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 23-->C:\Users\tarun\OneDrive - The University of Texas at Austin\Documents\Projects\soar\android\app\src\main\AndroidManifest.xml:10:13-163

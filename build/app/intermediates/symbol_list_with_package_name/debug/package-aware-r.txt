@@ -1,4 +1,4 @@
-com.example.soar
+com.example.soarapp
 attr alpha
 attr font
 attr fontProviderAuthority

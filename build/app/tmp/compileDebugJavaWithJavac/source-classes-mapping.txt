@@ -1,4 +1,4 @@
 io/flutter/plugins/GeneratedPluginRegistrant.java
  io.flutter.plugins.GeneratedPluginRegistrant
-com/example/soar/BuildConfig.java
- com.example.soar.BuildConfig
+com/example/soarapp/BuildConfig.java
+ com.example.soarapp.BuildConfig

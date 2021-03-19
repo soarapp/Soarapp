@@ -4,7 +4,6 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry;
 
 /**
  * Generated file. Do not edit.
@@ -14,7 +13,5 @@ import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry;
 @Keep
 public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
-    ShimPluginRegistry shimPluginRegistry = new ShimPluginRegistry(flutterEngine);
-      de.minimalme.spotify_sdk.SpotifySdkPlugin.registerWith(shimPluginRegistry.registrarFor("de.minimalme.spotify_sdk.SpotifySdkPlugin"));
   }
 }
