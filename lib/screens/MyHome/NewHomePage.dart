@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soarapp/models/Util/StringUtils.dart';
+import 'package:soarapp/models/Util/ColorUtils.dart';
 
 //this is the homepage for the app: it contains the playlists which
 // the user can play as well as profile settings
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 //TODO: clean up code and create widget methods to make code cleaner
 //TODO: add comments for clarity for others
 //TODO: make icons and music buttons actually do what they are intended to do :)
+//TODO: make song bar disappear if no song playing
 
 void main() => runApp(MyApp());
 
@@ -25,15 +28,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageSetup extends State<HomePage> {
-  String myMusic = 'My Music';
-  String currSong = 'Lies We Told';
-  String currSongArtist = 'Fallen Roses';
-  Color black = Color(0xFF2B2B2B);
-  Color opaqueBlack = Color(0xFF0E192E).withOpacity(.5);
-  String homeBackgroundImg = "assets/images/homeMusic.png";
-  String playIcon = 'assets/images/playIconWhite.png';
-  String pauseIcon = 'assets/images/pauseIconWhite.png';
-  String skipIcon = 'assets/images/skipIconWhite.png';
   bool songIsPlaying = true;
 
   @override
@@ -199,8 +193,7 @@ class HomePageSetup extends State<HomePage> {
 }
 
 Widget playlistBar(String imageName, String playlistName) {
-  String imagePath = 'assets/images/';
-  String jpg = '.jpg';
+
   return Container(
     padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
     decoration: BoxDecoration(
@@ -241,32 +234,35 @@ Widget playlistBar(String imageName, String playlistName) {
 }
 
 Widget bottomIconBar() {
-  String chatIcon = 'assets/images/chatIconGrey.png';
-  String calendarIcon = 'assets/images/calendarIconGrey.png';
-  String musicIcon = 'assets/images/musicIconBlack.png';
-  String questionIcon = 'assets/images/questionIconGrey.png';
-  String userIcon = 'assets/images/userIconGrey.png';
-
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: Image.asset(chatIcon)),
+      Expanded(flex: 2, child: FlatButton(child: Image.asset(chatIcon), onPressed:() {
+        //navigate to chat page
+      })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: Image.asset(calendarIcon)),
+      Expanded(flex: 2, child: FlatButton(child: Image.asset(calendarIcon), onPressed:(){
+        //navigate to calendar page
+      })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: Image.asset(musicIcon)),
+      Expanded(flex: 2, child: FlatButton(child: Image.asset(musicIcon), onPressed:(){
+        //navigate to music page
+      })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: Image.asset(questionIcon)),
+      Expanded(flex: 2, child: FlatButton(child: Image.asset(questionIcon), onPressed: () {
+        //navigate to question page
+      })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: Image.asset(userIcon)),
+      Expanded(flex: 2, child: FlatButton(child: Image.asset(userIcon), onPressed: () {
+        //navigate to profile page
+      })),
       Expanded(flex: 1, child: SizedBox()),
     ],
   );
 }
 
 Widget playlistBlock() {
-  String myPlaylists = 'My Playlists';
   return ClipRRect(
     borderRadius: new BorderRadius.all(Radius.circular(33)),
     child: Container(
@@ -338,14 +334,6 @@ Widget playlistBlock() {
 }
 
 Widget favSongBar() {
-  String favSongImg = 'assets/images/favSong.jpg';
-  String currFavSong = 'Current Favorite Song';
-  String favSongName = 'Take Care';
-  String favSongArtist = 'Beach House';
-  String playIcon = 'assets/images/playIconWhite.png';
-  String pauseIcon = 'assets/images/pauseIconWhite.png';
-  Color opaqueBlack = Color(0xFF0E192E).withOpacity(.5);
-  Color black = Color(0xFF2B2B2B);
   bool favSongIsPlaying = false;
 
   return Row(
@@ -360,7 +348,7 @@ Widget favSongBar() {
           child: ClipRRect(
             borderRadius:
             new BorderRadius.all(Radius.circular(22)),
-            child: Image.asset(favSongImg, scale: 1.3),
+            child: Image.asset(favSongImg, scale: 1),
           ),
         ),
         Expanded(
@@ -426,7 +414,9 @@ Widget favSongBar() {
                           Expanded(flex: 1, child: SizedBox()),
                           Expanded(
                               flex: 2,
-                              child: Image.asset(playIcon, scale: 1.4)),
+                              child: FlatButton(child: Image.asset(playIcon, scale: 1.4), onPressed: () {
+
+                              })),
                           Expanded(flex: 1, child: SizedBox()),
                         ]),
                       ),
