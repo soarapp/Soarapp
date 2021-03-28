@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:soarapp/playlist.dart';
 
-class PLaylistsScreen extends StatefulWidget {
+class PlaylistsScreen extends StatefulWidget {
   static const String id = 'playlists';
 
   @override
   _PlaylistsScreenState createState() => _PlaylistsScreenState();
 }
 
-class _PlaylistsScreenState extends State<PLaylistsScreen> {
+class _PlaylistsScreenState extends State<PlaylistsScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,8 +52,7 @@ class _PlaylistsScreenState extends State<PLaylistsScreen> {
                             child: Icon(
                               Icons.arrow_back_ios,
                               size: 30.0,
-                              semanticLabel:
-                                  'Text to announce in accessibility modes',
+                              semanticLabel: 'Back',
                             ),
                           ),
                           Expanded(
@@ -67,8 +67,7 @@ class _PlaylistsScreenState extends State<PLaylistsScreen> {
                             child: Icon(
                               Icons.add_circle_outline,
                               size: 30.0,
-                              semanticLabel:
-                                  'Text to announce in accessibility modes',
+                              semanticLabel: 'Add Playlist',
                             ),
                           ),
                         ]),
@@ -76,7 +75,7 @@ class _PlaylistsScreenState extends State<PLaylistsScreen> {
                       Expanded(
                         flex: 5,
                         child: ListView(
-                          padding: const EdgeInsets.only(left: 40, bottom: 20),
+                          padding: const EdgeInsets.only(bottom: 20),
                           children: [
                             Playlist(
                               assetImage: AssetImage(
@@ -123,24 +122,40 @@ class Playlist extends StatelessWidget {
   final String title;
 
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 15.0, bottom: 10.0),
-          child: Image(
-            image: assetImage,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 15),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 40.0),
-          child: Icon(Icons.more_horiz),
-        ),
+        Divider(),
+        InkWell(
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 30.0, right: 15.0, bottom: 10.0),
+                  child: Image(
+                    image: assetImage,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Icon(Icons.more_horiz),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PlaylistScreen(name: title);
+                  },
+                ),
+              );
+            }),
       ],
     );
   }
