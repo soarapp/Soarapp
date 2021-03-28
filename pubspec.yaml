@@ -51,7 +51,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -68,17 +68,17 @@ flutter:
   fonts:
     - family: Comfortaa
       fonts:
-        - asset: fonts/Comfortaa-Regular.ttf
+        - asset: assets/Fonts/Comfortaa-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
     - family: OpenSans
       fonts:
-        - asset: fonts/Open_Sans/OpenSans-Bold.ttf
-        - asset: fonts/Open_Sans/OpenSans-Regular.ttf
+        - asset: assets/Fonts/Open_Sans/OpenSans-Bold.ttf
+        - asset: assets/Fonts/Open_Sans/OpenSans-Regular.ttf
 
     - family: Roboto
       fonts:
-        - asset: fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/Fonts/Roboto/Roboto-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
