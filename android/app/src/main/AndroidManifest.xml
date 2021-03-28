@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.soarapp">
+    package="com.example.soar">
    <application
-        android:label="soarapp"
+        android:label="soar"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
