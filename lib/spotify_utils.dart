@@ -8,12 +8,16 @@ import 'package:logger/logger.dart';
 import 'package:spotify_sdk/models/crossfade_state.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 
-class MyApp extends StatefulWidget {
+class SpotifyLoginScreen extends StatefulWidget {
+  static const String id = 'spotifylogin';
+  final Widget redirectScreen;
+
+  SpotifyLoginScreen({this.redirectScreen});
   @override
   Spotify createState() => Spotify();
 }
 
-class Spotify extends State<MyApp> {
+class Spotify extends State<SpotifyLoginScreen> {
   bool _loading = false;
   bool _connected = false;
   final Logger _logger = Logger();
@@ -100,6 +104,13 @@ class Spotify extends State<MyApp> {
               'playlist-read-private, '
               'playlist-modify-public,user-read-currently-playing');
       setStatus('Got a token: $authenticationToken');
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return widget.redirectScreen;
+          },
+        ),
+      );
       return authenticationToken;
     } on PlatformException catch (e) {
       setStatus(e.code, message: e.message);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soarapp/models/Util/StringUtils.dart';
-import 'package:soarapp/models/Util/ColorUtils.dart';
+import 'package:soar/models/Util/StringUtils.dart';
+import 'package:soar/models/Util/ColorUtils.dart';
 
 //this is the homepage for the app: it contains the playlists which
 // the user can play as well as profile settings
@@ -11,9 +11,9 @@ import 'package:soarapp/models/Util/ColorUtils.dart';
 //TODO: make icons and music buttons actually do what they are intended to do :)
 //TODO: make song bar disappear if no song playing
 
-void main() => runApp(MyApp());
+class HomePageScreen extends StatelessWidget {
+  static const String id = 'homepage';
 
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -82,8 +82,8 @@ class HomePageSetup extends State<HomePage> {
               ),
               //favorite song image and title row
               Expanded(
-                  flex: 12,
-                  child: favSongBar(),
+                flex: 12,
+                child: favSongBar(),
               ),
               Expanded(
                 flex: 2,
@@ -125,7 +125,7 @@ class HomePageSetup extends State<HomePage> {
                                 //pause or play song accordingly
                                 setState(() {
                                   songIsPlaying =
-                                  (songIsPlaying == false) ? true : false;
+                                      (songIsPlaying == false) ? true : false;
                                 });
                               })),
                       Expanded(
@@ -193,7 +193,6 @@ class HomePageSetup extends State<HomePage> {
 }
 
 Widget playlistBar(String imageName, String playlistName) {
-
   return Container(
     padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
     decoration: BoxDecoration(
@@ -238,25 +237,45 @@ Widget bottomIconBar() {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: FlatButton(child: Image.asset(chatIcon), onPressed:() {
-        //navigate to chat page
-      })),
+      Expanded(
+          flex: 2,
+          child: FlatButton(
+              child: Image.asset(chatIcon),
+              onPressed: () {
+                //navigate to chat page
+              })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: FlatButton(child: Image.asset(calendarIcon), onPressed:(){
-        //navigate to calendar page
-      })),
+      Expanded(
+          flex: 2,
+          child: FlatButton(
+              child: Image.asset(calendarIcon),
+              onPressed: () {
+                //navigate to calendar page
+              })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: FlatButton(child: Image.asset(musicIcon), onPressed:(){
-        //navigate to music page
-      })),
+      Expanded(
+          flex: 2,
+          child: FlatButton(
+              child: Image.asset(musicIcon),
+              onPressed: () {
+                //navigate to music page
+              })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: FlatButton(child: Image.asset(questionIcon), onPressed: () {
-        //navigate to question page
-      })),
+      Expanded(
+          flex: 2,
+          child: FlatButton(
+              child: Image.asset(questionIcon),
+              onPressed: () {
+                //navigate to question page
+              })),
       Expanded(flex: 1, child: SizedBox()),
-      Expanded(flex: 2, child: FlatButton(child: Image.asset(userIcon), onPressed: () {
-        //navigate to profile page
-      })),
+      Expanded(
+          flex: 2,
+          child: FlatButton(
+              child: Image.asset(userIcon),
+              onPressed: () {
+                //navigate to profile page
+              })),
       Expanded(flex: 1, child: SizedBox()),
     ],
   );
@@ -336,108 +355,101 @@ Widget playlistBlock() {
 Widget favSongBar() {
   bool favSongIsPlaying = false;
 
-  return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          flex: 2,
-          child: SizedBox(),
-        ),
-        Expanded(
-          flex: 8,
-          child: ClipRRect(
-            borderRadius:
-            new BorderRadius.all(Radius.circular(22)),
-            child: Image.asset(favSongImg, scale: 1),
+  return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+    Expanded(
+      flex: 2,
+      child: SizedBox(),
+    ),
+    Expanded(
+      flex: 8,
+      child: ClipRRect(
+        borderRadius: new BorderRadius.all(Radius.circular(22)),
+        child: Image.asset(favSongImg, scale: 1),
+      ),
+    ),
+    Expanded(
+      flex: 1,
+      child: SizedBox(),
+    ),
+    Expanded(
+      flex: 8,
+      child: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
           ),
-        ),
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        ),
-        Expanded(
-          flex: 8,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
+          Expanded(
+            flex: 1,
+            child: Text(
+              currFavSong,
+              style: TextStyle(
+                color: black,
+                fontFamily: 'Roboto',
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
               ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  currFavSong,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  favSongName,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  favSongArtist,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Row(children: [
-                  Expanded(flex: 2, child: SizedBox()),
-                  Expanded(
-                    flex: 2,
-                    child: ClipRRect(
-                      borderRadius: new BorderRadius.all(
-                          Radius.circular(10)),
-                      child: Container(
-                        color: opaqueBlack,
-                        child: Row(children: [
-                          Expanded(flex: 1, child: SizedBox()),
-                          Expanded(
-                              flex: 2,
-                              child: FlatButton(child: Image.asset(playIcon, scale: 1.4), onPressed: () {
-
-                              })),
-                          Expanded(flex: 1, child: SizedBox()),
-                        ]),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                      flex: 2,
-                      child: SizedBox()
-                  )
-                ]),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-            ],
+            ),
           ),
-        ),
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        ),
-      ]);
+          Expanded(
+            flex: 1,
+            child: Text(
+              favSongName,
+              style: TextStyle(
+                color: black,
+                fontFamily: 'Roboto',
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(
+              favSongArtist,
+              style: TextStyle(
+                color: black,
+                fontFamily: 'Roboto',
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Row(children: [
+              Expanded(flex: 2, child: SizedBox()),
+              Expanded(
+                flex: 2,
+                child: ClipRRect(
+                  borderRadius: new BorderRadius.all(Radius.circular(10)),
+                  child: Container(
+                    color: opaqueBlack,
+                    child: Row(children: [
+                      Expanded(flex: 1, child: SizedBox()),
+                      Expanded(
+                          flex: 2,
+                          child: TextButton(
+                              child: Image.asset(playIcon, scale: 1.4),
+                              onPressed: () {})),
+                      Expanded(flex: 1, child: SizedBox()),
+                    ]),
+                  ),
+                ),
+              ),
+              Expanded(flex: 2, child: SizedBox())
+            ]),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          ),
+        ],
+      ),
+    ),
+    Expanded(
+      flex: 1,
+      child: SizedBox(),
+    ),
+  ]);
 }
