@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// this file will contain all of the common, reusable widgets for our application
+
 class ProgressBarButton extends StatelessWidget {
   const ProgressBarButton({
     Key key,

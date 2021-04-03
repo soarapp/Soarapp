@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/connect_hr_device.dart';
+import 'package:soar_initial_screens/ConnectHRDevice.dart';
 
-class OtherSignUpScreen extends StatefulWidget {
-  static const String id = 'otherSignUp';
+// Old Spotify login screen used in previous app verison
+
+class SpotifyLogInScreen extends StatefulWidget {
+  static const String id = 'spotifyLogIn';
 
   @override
-  _OtherSignUpScreenState createState() => _OtherSignUpScreenState();
+  _SpotifyLogInScreenState createState() => _SpotifyLogInScreenState();
 }
 
-class _OtherSignUpScreenState extends State<OtherSignUpScreen> {
+class _SpotifyLogInScreenState extends State<SpotifyLogInScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +22,7 @@ class _OtherSignUpScreenState extends State<OtherSignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Row(
                   children: [
                     Expanded(
@@ -28,21 +30,24 @@ class _OtherSignUpScreenState extends State<OtherSignUpScreen> {
                       child: SizedBox(),
                     ),
                     Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Tab(
-                          icon: Image.asset(
-                            'assets/images/backArrow.png',
-                            width: 25,
-                            height: 25,
-                          ),
-                        ),
-                      ),
+                        flex: 1,
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Tab(
+                              icon: Image.asset(
+                                'assets/images/backArrow.png',
+                                width: 25,
+                                height: 25,
+                              ),
+                            ))),
+                    Expanded(flex: 3, child: SizedBox()),
+                    Expanded(
+                      flex: 5,
+                      child: Image.asset('assets/images/spotifyLogo.png'),
                     ),
-                    Expanded(flex: 12, child: SizedBox()),
+                    Expanded(flex: 5, child: SizedBox()),
                   ],
                 ),
               ),
@@ -54,7 +59,7 @@ class _OtherSignUpScreenState extends State<OtherSignUpScreen> {
                     Expanded(
                       flex: 8,
                       child: Text(
-                        "Sign Up",
+                        "Spotify Login",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Comfortaa',

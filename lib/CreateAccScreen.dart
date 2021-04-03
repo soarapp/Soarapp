@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/forgot_pass_screen.dart';
-import 'package:soar_initial_screens/link_sp_screen.dart';
-import 'package:soar_initial_screens/sign_in_screen.dart';
-import 'package:soar_initial_screens/themeData.dart';
-
+import 'package:soar_initial_screens/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/LinkSpScreen.dart';
+import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/ColorUtils.dart';
 import 'CommonWidgets.dart';
+
+// This is the create accounts screen where users can enter their email,
+// password, and password verification
 
 class CreateAccScreen extends StatefulWidget {
   static const String id = 'createAccount';
@@ -21,22 +23,26 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        // the widget that will hold all of the widgets on the screen
         body: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
                 alignment: Alignment(-.2, 0),
+                // the background image for the screen
                 image: AssetImage('assets/images/createAccBackground.png'),
                 fit: BoxFit.fill),
           ),
           alignment: Alignment.bottomCenter,
           child: Column(
             children: [
+              // the part of the screen that allows the background image to show
               Expanded(
                 flex: 1,
                 child: SizedBox(),
               ),
+              // the bottom three fourths of the screen with the white card
               Expanded(
                 flex: 3,
                 child: Container(
@@ -50,12 +56,14 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // The Create New Account Text and the back button
                       Expanded(
                         flex: 3,
                         child: Row(
                           children: [
                             Expanded(
                               flex: 1,
+                              // InkWell allows the icon to be clickable thus making it a button
                               child: InkWell(
                                 onTap: () {
                                   Navigator.pop(context);
@@ -63,6 +71,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 0, 50),
+                                  // the back button
                                   child: Tab(
                                     icon: Icon(
                                       Icons.arrow_back_ios,
@@ -72,11 +81,13 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                 ),
                               ),
                             ),
+                            // The Create New Account text at the top of the screen
                             Expanded(
                               flex: 5,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  // separating the 'create' text and the 'new account'
                                   Row(
                                     children: [
                                       Text(
@@ -109,6 +120,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                           ],
                         ),
                       ),
+                      // This is the email text
                       Expanded(
                         flex: 2,
                         child: Column(
@@ -142,6 +154,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                   flex: 1,
                                   child: SizedBox(),
                                 ),
+                                // this is the text field for a user's email
                                 Expanded(
                                   flex: 5,
                                   child: Container(
@@ -182,6 +195,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                   flex: 2,
                                   child: SizedBox(),
                                 ),
+                                // this is the password text
                                 Expanded(
                                     flex: 5,
                                     child: Text(
@@ -207,6 +221,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                 ),
                                 Expanded(
                                   flex: 5,
+                                  // the text field for the password
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Color(0xFFe4f2fc),
@@ -250,6 +265,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                   flex: 2,
                                   child: SizedBox(),
                                 ),
+                                // the text for the confirm password
                                 Expanded(
                                     flex: 5,
                                     child: Text(
@@ -275,6 +291,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                 ),
                                 Expanded(
                                   flex: 5,
+                                  // the text field for the confirm password
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Color(0xFFe4f2fc),
@@ -305,6 +322,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                           ],
                         ),
                       ),
+                      // this is the expanded container that has the 'NEXT STEP' button
                       Expanded(
                         flex: 3,
                         child: Column(
@@ -329,6 +347,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                           ),
                                         );
                                       },
+                                      // this is the next step button
                                       child: Text("NEXT STEP",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
@@ -356,6 +375,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                   flex: 2,
                                   child: SizedBox(),
                                 ),
+                                // Already have an account text
                                 Expanded(
                                   flex: 4,
                                   child: RichText(
@@ -379,6 +399,9 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'OpenSans'),
+                                            // Sign In text that is clickable
+                                            // and will allow the user to go to the
+                                            // Sign in Page
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () {
                                                 Navigator.of(context).push(
@@ -402,6 +425,7 @@ class _CreateAccScreenState extends State<CreateAccScreen> {
                           ],
                         ),
                       ),
+                      // the three dot progress indicator at the bottom of the screen
                       Expanded(
                         flex: 1,
                         child: Row(

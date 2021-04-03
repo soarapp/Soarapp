@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// This is the old LOGIN Screen that was used in the first iteration
+// of the application
+
 class LogInScreen extends StatefulWidget {
   static const String id = 'logIn';
 

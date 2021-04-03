@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/forgot_pass_screen.dart';
-import 'package:soar_initial_screens/link_sp_screen.dart';
-import 'package:soar_initial_screens/sign_in_screen.dart';
-import 'package:soar_initial_screens/themeData.dart';
+import 'package:soar_initial_screens/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/LinkSpScreen.dart';
+import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/ColorUtils.dart';
 import 'CommonWidgets.dart';
+
+// This screen allows the user to customize their profile
 
 class MakeProfileScreen extends StatefulWidget {
   static const String id = 'makeProfile';
@@ -20,6 +22,8 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        // the overarching container that contains the entirety of the components
+        // on the screen
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -32,10 +36,12 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
           alignment: Alignment.bottomCenter,
           child: Column(
             children: [
+              // the top part of the screen where you can see the background
               Expanded(
                 flex: 1,
                 child: SizedBox(),
               ),
+              // the top part of the screen with the 'Create Your Profile' text
               Expanded(
                 flex: 2,
                 child: Row(
@@ -81,6 +87,8 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                   ],
                 ),
               ),
+              // the bottom portion of the screen with the white card and all 
+              // of the components within the white card
               Expanded(
                 flex: 13,
                 child: Container(
@@ -91,13 +99,17 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                         topLeft: Radius.circular(40.0)),
                     color: Colors.white,
                   ),
+                  // column within the white card
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // space right above the photo upload portion of the screen
                       Expanded(
                         flex: 1,
                         child: SizedBox(),
                       ),
+                      // circular widget with camera icon where users can see their 
+                      // current user profile picture and upload a new picture
                       Expanded(
                         flex: 3,
                         child: Column(
@@ -110,9 +122,11 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                 height: 160,
                               ),
                             ),
+                            // space between camera icon logo and the 'Add Photo' text
                             SizedBox(
                               height: 10,
                             ),
+                            // The 'Add Photo' text
                             Row(
                               children: [
                                 Expanded(
@@ -158,6 +172,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                           ],
                         ),
                       ),
+                      // the part of the screen where users can enter their name in a text input
                       Expanded(
                         flex: 3,
                         child: Column(
@@ -168,6 +183,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                   flex: 1,
                                   child: SizedBox(),
                                 ),
+                                // 'Name' text
                                 Expanded(
                                     flex: 10,
                                     child: Text(
@@ -175,7 +191,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold),
-                                    )),
+                                    ),),
                                 Expanded(
                                   flex: 1,
                                   child: SizedBox(),
@@ -193,6 +209,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                 ),
                                 Expanded(
                                   flex: 10,
+                                  // the text field where users can enter their name
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Color(0xFFF4F6F9),
@@ -229,15 +246,18 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                       ),
                       Expanded(
                         flex: 6,
+                        // the part of the screen where the large card will be placed
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            // using a row to horizontally space out the card
                             Row(
                               children: [
                                 Expanded(
                                   child: SizedBox(),
                                   flex: 1,
                                 ),
+                                // the large card
                                 Expanded(
                                   flex: 15,
                                   child: Container(
@@ -259,7 +279,9 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                         ),
                                       ],
                                     ),
-                                    child: Column(
+                                    child:
+                                    // will contain all of the widgets inside the large card    
+                                    Column(
                                       children: [
                                         Expanded(
                                           flex: 1,
@@ -296,6 +318,9 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                                     flex: 1,
                                                     child: SizedBox(),
                                                   ),
+                                                  // grey container which contains one of the songs,
+                                                  // a hypertext link to add their favorite song, 
+                                                  // and a heart button to like the current song they are listening to
                                                   Expanded(
                                                     flex: 15,
                                                     child: Container(
@@ -324,6 +349,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                                             flex: 1,
                                                             child: SizedBox(),
                                                           ),
+                                                          // grey box within the grey rectangle
                                                           Expanded(
                                                             flex: 2,
                                                             child: Container(
@@ -348,6 +374,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                                               ),
                                                             ),
                                                           ),
+                                                          // Hypertext that will allow the user to add their favorite song
                                                           Expanded(
                                                             flex: 6,
                                                             child: Row(
@@ -397,6 +424,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                                               ],
                                                             ),
                                                           ),
+                                                          // Heart icon that user can click to like a song
                                                           Expanded(
                                                             flex: 2,
                                                             child: new Tab(
@@ -418,6 +446,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                             ],
                                           ),
                                         ),
+                                        // the part of the screen where the user can enter their bio
                                         Expanded(
                                           flex: 1,
                                           child: Row(
@@ -518,6 +547,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                                   ],
                                                 ),
                                               ),
+                                              // the part of the screen where users can enter their social media information
                                               Expanded(
                                                 flex: 2,
                                                 child: Column(
@@ -634,6 +664,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                         flex: 1,
                         child: SizedBox(),
                       ),
+                      // the create account button and skip this step text
                       Expanded(
                         flex: 2,
                         child: Column(
@@ -650,6 +681,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                     children: [
                                       Container(
                                         height: 50,
+                                        // the actual button
                                         child: ElevatedButton(
                                           onPressed: () {
                                             Navigator.of(context).push(
@@ -680,6 +712,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                                             flex: 3,
                                             child: SizedBox(),
                                           ),
+                                          // skip this step hypertext
                                           Expanded(
                                             flex: 4,
                                             child: RichText(
@@ -738,6 +771,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                           ],
                         ),
                       ),
+                      // the progress bar portion of the screen
                       Expanded(
                         flex: 1,
                         child: Row(

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/apple_music_login.dart';
-import 'package:soar_initial_screens/other_sign_up.dart';
-import 'package:soar_initial_screens/spotify_login.dart';
+import 'package:soar_initial_screens/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OtherSignUp.dart';
+import 'package:soar_initial_screens/SpotifyLogin.dart';
+
+
+// Old register screen not being used in this iteration of the application
 
 class RegisterOneScreen extends StatefulWidget {
   static const String id = 'registerOne';

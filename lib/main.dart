@@ -1,21 +1,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/logged_out_view.dart';
-import 'package:soar_initial_screens/make_profile_screen.dart';
-import 'package:soar_initial_screens/register_step_one.dart';
-import 'package:soar_initial_screens/log_in_screen.dart';
-import 'package:soar_initial_screens/spotify_login.dart';
-import 'package:soar_initial_screens/apple_music_login.dart';
-import 'package:soar_initial_screens/other_sign_up.dart';
-import 'package:soar_initial_screens/connect_hr_device.dart';
-import 'package:soar_initial_screens/register_screen.dart';
-import 'package:soar_initial_screens/sign_in_screen.dart';
-import 'package:soar_initial_screens/splashScreen.dart';
-import 'package:soar_initial_screens/forgot_pass_screen.dart';
-import 'package:soar_initial_screens/create_acc_screen.dart';
-import 'package:soar_initial_screens/link_sp_screen.dart';
-import 'package:soar_initial_screens/make_profile_screen.dart';
+import 'package:soar_initial_screens/LoggedOutView.dart';
+import 'package:soar_initial_screens/MakeProfileScreen.dart';
+import 'package:soar_initial_screens/RegisterStepOne.dart';
+import 'package:soar_initial_screens/LogIn.dart';
+import 'package:soar_initial_screens/SpotifyLogin.dart';
+import 'package:soar_initial_screens/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OtherSignUp.dart';
+import 'package:soar_initial_screens/ConnectHRDevice.dart';
+import 'package:soar_initial_screens/RegisterScreen.dart';
+import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/SplashScreen.dart';
+import 'package:soar_initial_screens/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/CreateAccScreen.dart';
+import 'package:soar_initial_screens/LinkSpScreen.dart';
+import 'package:soar_initial_screens/MakeProfileScreen.dart';
+import 'package:animations/animations.dart';
+
 
 void main() => runApp(MainScreen());
 
@@ -23,6 +25,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+      ),
       debugShowCheckedModeBanner: false,
       //initialRoute: WelcomeScreen.id,
       initialRoute: SplashScreen.id,

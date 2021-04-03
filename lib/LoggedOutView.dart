@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/log_in_screen.dart';
-import 'package:soar_initial_screens/register_step_one.dart';
+import 'package:soar_initial_screens/LogIn.dart';
+import 'package:soar_initial_screens/RegisterStepOne.dart';
+
+// This is the LOGGED OUT view screen that is no longer being used in this iteration
+// of the application
 
 class LoggedOutScreen extends StatefulWidget {
   static const String id = 'loggedOut';

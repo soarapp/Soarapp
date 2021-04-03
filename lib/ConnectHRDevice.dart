@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/apple_music_login.dart';
-import 'package:soar_initial_screens/other_sign_up.dart';
-import 'package:soar_initial_screens/spotify_login.dart';
+import 'package:soar_initial_screens/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OtherSignUp.dart';
+import 'package:soar_initial_screens/SpotifyLogin.dart';
+
+// This is the connect Heart Screen which is no longer being used in this implementation
+// of the application
 
 class ConnectHRScreen extends StatefulWidget {
   static const String id = 'connectHR';

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/forgot_pass_screen.dart';
-import 'package:soar_initial_screens/create_acc_screen.dart';
+import 'package:soar_initial_screens/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/CreateAccScreen.dart';
+
+// This is the Sign In Screen that users will navigate to
+// after clicking Login
 
 class SignInScreen extends StatefulWidget {
   static const String id = 'signIn';
@@ -29,23 +32,29 @@ class _SignInScreenState extends State<SignInScreen> {
           alignment: Alignment.bottomCenter,
           child: Column(
             children: [
+              // Expanded with a SizedBox that allows the background image to render
+              // and pushes the rest of the card content below
               Expanded(
                 flex: 1,
                 child: SizedBox(),
               ),
+              // Start of the curved card content portion of the screen
               Expanded(
                 flex: 2,
                 child: Container(
                   width: double.infinity,
+                  // Decoration allows you to curve the corners of the card
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(40.0),
                         topLeft: Radius.circular(40.0)),
                     color: Colors.white,
                   ),
+                  // Column will hold widgets within the curved card part of the app
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // Sign In Text
                       Expanded(
                         flex: 3,
                         child: Row(
@@ -70,10 +79,12 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
+                      // Email Text and Text Field
                       Expanded(
                         flex: 2,
                         child: Column(
                           children: [
+                            // row to help space out the Email bold text horizontally
                             Row(
                               children: [
                                 Expanded(
@@ -94,15 +105,18 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ],
                             ),
+                            // helps space out the 'EMAIL' text and the text field underneath it
                             SizedBox(
                               height: 10,
                             ),
+                            // Row to help space out the blue text field portion of the user input
                             Row(
                               children: [
                                 Expanded(
                                   flex: 1,
                                   child: SizedBox(),
                                 ),
+                                // Blue text field portion for the email user input
                                 Expanded(
                                   flex: 5,
                                   child: Container(
@@ -133,6 +147,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
+                      // Password text underneath the blue user email input area
                       Expanded(
                         flex: 3,
                         child: Column(
@@ -166,6 +181,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   flex: 1,
                                   child: SizedBox(),
                                 ),
+                                // the pre-filled text for the password and
+                                // the text input box where users can enter their
+                                // password
                                 Expanded(
                                   flex: 5,
                                   child: Container(
@@ -196,15 +214,18 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ],
                             ),
+                            // space between the password text input
                             SizedBox(
                               height: 10,
                             ),
+                            // Spacing out the Forgot Password hyperlink with a row
                             Row(
                               children: [
                                 Expanded(
                                   flex: 4,
                                   child: SizedBox(),
                                 ),
+                                // Forgot password hypertext which will link to the Forgot Password page
                                 Expanded(
                                   flex: 3,
                                   child: RichText(
@@ -212,7 +233,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                       children: <TextSpan>[
                                         TextSpan(
                                             text: 'Forgot Password?',
-                                            style: TextStyle(color: Color(0xFF6AABEF), fontSize: 12, fontWeight: FontWeight.bold),
+                                            style: TextStyle(
+                                                color: Color(0xFF6AABEF),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () {
                                                 Navigator.of(context).push(
@@ -236,16 +260,19 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
+                      // Expanded area for the sign in button
                       Expanded(
                         flex: 3,
                         child: Column(
                           children: [
+                            // row to space out Sign In Button horizontally
                             Row(
                               children: [
                                 Expanded(
                                   child: SizedBox(),
                                   flex: 1,
                                 ),
+                                // Sign In Button
                                 Expanded(
                                   flex: 5,
                                   child: Container(
@@ -278,6 +305,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ],
                             ),
+                            // spacing between Sign In button and the text underneath it
                             SizedBox(
                               height: 10,
                             ),
@@ -287,29 +315,39 @@ class _SignInScreenState extends State<SignInScreen> {
                                   flex: 1,
                                   child: SizedBox(),
                                 ),
+                                // Hypertext that will lead to creating a new account
+                                // if the user does not have an account
                                 Expanded(
                                   flex: 4,
                                   child: RichText(
                                     text: TextSpan(
-                                      style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'OpenSans'),
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                          fontFamily: 'OpenSans'),
                                       children: <TextSpan>[
                                         TextSpan(
                                             text: 'Don\'t have an account? ',
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () {
-                                                print('Pressing Forgot Password');
+                                                print(
+                                                    'Pressing Forgot Password');
                                               }),
                                         TextSpan(
                                             text: 'Create new account',
-                                            style: TextStyle(color: Color(0xFF6AABEF), fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'OpenSans'),
+                                            style: TextStyle(
+                                                color: Color(0xFF6AABEF),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'OpenSans'),
                                             recognizer: TapGestureRecognizer()
-                                                ..onTap = () {
+                                              ..onTap = () {
                                                 Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                builder: (context) {
-                                                return CreateAccScreen();
-                                                },
-                                                ),
+                                                  MaterialPageRoute(
+                                                    builder: (context) {
+                                                      return CreateAccScreen();
+                                                    },
+                                                  ),
                                                 );
                                               }),
                                       ],
@@ -325,6 +363,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
+                      // Vertical spacing underneath the Sign in Button and text underneath it
+                      // to leave space between the widget and the bottom of the screen
                       Expanded(
                         flex: 1,
                         child: SizedBox(),

@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/forgot_pass_screen.dart';
-import 'package:soar_initial_screens/make_profile_screen.dart';
-import 'package:soar_initial_screens/sign_in_screen.dart';
-import 'package:soar_initial_screens/themeData.dart';
+import 'package:soar_initial_screens/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/MakeProfileScreen.dart';
+import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/ColorUtils.dart';
 import 'CommonWidgets.dart';
+
+// This is the Link Spotify screen where users can link their Spotify accounts
 
 class LinkSpotifyScreen extends StatefulWidget {
   static const String id = 'linkSpotify';
@@ -20,6 +22,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        // container which holds all components on the screen
         body: Container(
           width: double.infinity,
           height: 1600,
@@ -32,10 +35,12 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
           alignment: Alignment.bottomCenter,
           child: Column(
             children: [
+              // the open first half of the screen with the background image
               Expanded(
                 flex: 2,
                 child: SizedBox(),
               ),
+              // the rounded white card bottom half of the screen
               Expanded(
                 flex: 2,
                 child: Container(
@@ -55,6 +60,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                           children: [
                             Expanded(
                               flex: 1,
+                              // back button that allows users to navigate to the previous page
                               child: InkWell(
                                 onTap: () {
                                   Navigator.pop(context);
@@ -62,6 +68,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 0, 50),
+                                  // back button icon
                                   child: Tab(
                                     icon: Icon(
                                       Icons.arrow_back_ios,
@@ -71,6 +78,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                 ),
                               ),
                             ),
+                            // 'Link Your Music' Text
                             Expanded(
                               flex: 5,
                               child: Column(
@@ -108,6 +116,8 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                           ],
                         ),
                       ),
+                      // The part of the screen with the Spotify button
+                      // and the text underneath it
                       Expanded(
                         flex: 2,
                         child: Column(
@@ -122,6 +132,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                   flex: 5,
                                   child: Container(
                                     height: 50,
+                                    // the Spotify button
                                     child: ElevatedButton(
                                       onPressed: () {
                                         // Navigator.of(context).push(
@@ -132,6 +143,8 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                         //   ),
                                         // );
                                       },
+                                      // the row within the button where the logo and the
+                                      // text will be placed
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -170,6 +183,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                   flex: 2,
                                   child: SizedBox(),
                                 ),
+                                // Text underneath the button
                                 Expanded(
                                   flex: 4,
                                   child: Text(
@@ -189,10 +203,12 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                           ],
                         ),
                       ),
+                      // The skip this step button
                       Expanded(
                         flex: 2,
                         child: Column(
                           children: [
+                            // put in row to space horizontally easily
                             Row(
                               children: [
                                 Expanded(
@@ -203,6 +219,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                   flex: 5,
                                   child: Container(
                                     height: 50,
+                                    // the button specifically
                                     child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.of(context).push(
@@ -237,6 +254,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                           ],
                         ),
                       ),
+                      // The three dot progress indicator at the bottom of the screen
                       Expanded(
                         flex: 1,
                         child: Row(

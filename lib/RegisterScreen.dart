@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/create_acc_screen.dart';
-import 'package:soar_initial_screens/sign_in_screen.dart';
+import 'package:soar_initial_screens/CreateAccScreen.dart';
+import 'package:soar_initial_screens/SignInScreen.dart';
+
+// the initial register screen where users can login or create an account
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register';
@@ -16,6 +18,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        // overarching widget which encompasses all other components on the screen
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -28,20 +31,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
           alignment: Alignment.bottomCenter,
           child: Column(
             children: [
+              // expanded with SizedBox in a col helps create a gap between
+              // the top of the screen and the curved white card
               Expanded(
                 flex: 1,
                 child: SizedBox(),
               ),
+              // Container acts as curved white card which contains elements
               Expanded(
                 flex: 2,
                 child: Container(
+                  // in a col, so vertical axis is already defined by expanded
+                  // need to define cross axis dimensions
                   width: double.infinity,
                   decoration: BoxDecoration(
+                    // creating a curved border radius for the card
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(40.0),
                         topLeft: Radius.circular(40.0)),
                     color: Colors.white,
                   ),
+                  // adding vertical elements such as the the Synch Logo and buttons
+                  // within the card
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -63,7 +74,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               fontFamily: 'OpenSans'),
                         ),
                       ),
+                      // LOG IN Button
                       Expanded(
+                        // creating a row within a vertical expanded element helps optimize
+                        // the cross axis (the row) for effective resizing with different
+                        // screen sizes
                         flex: 2,
                         child: Row(
                           children: [
@@ -108,8 +123,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ],
                         ),
                       ),
+                      // NEW ACCOUNT button
                       Expanded(
                         flex: 2,
+                        // creating a row within a vertical expanded element helps optimize
+                        // the cross axis (the row) for effective resizing with different
+                        // screen sizes
                         child: Row(
                           children: [
                             Expanded(
@@ -155,10 +174,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ],
                         ),
                       ),
+                      // space between NEW ACCOUNT button and the 'Powered by SOAR' text
                       Expanded(
                         flex: 2,
                         child: SizedBox(),
                       ),
+                      // text at the bottom of the screen
                       Expanded(
                         flex: 1,
                         child: Text(
