@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:spotify_sdk/models/crossfade_state.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
+import 'package:soar/NewHomePage.dart';
 
 class SpotifyLoginScreen extends StatefulWidget {
   static const String id = 'spotifylogin';
@@ -14,10 +15,10 @@ class SpotifyLoginScreen extends StatefulWidget {
 
   SpotifyLoginScreen({this.redirectScreen});
   @override
-  Spotify createState() => Spotify();
+  SpotifyUtils createState() => SpotifyUtils();
 }
 
-class Spotify extends State<SpotifyLoginScreen> {
+class SpotifyUtils extends State<SpotifyLoginScreen> {
   bool _loading = false;
   bool _connected = false;
   final Logger _logger = Logger();
@@ -35,9 +36,32 @@ class Spotify extends State<SpotifyLoginScreen> {
           title: Text("Spotify Tester"),
         ),
         body: Center(
-          child: ElevatedButton(
-            child: Text("Login with Spotify"),
-            onPressed: getAuthenticationToken,
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text("Login with Spotify"),
+                onPressed: () async => {
+                  getAuthenticationToken(),
+                  await connectToSpotifyRemote(),
+                },
+              ),
+              ElevatedButton(
+                child: Text("Logout from Spotify"),
+                onPressed: disconnect,
+              ),
+              ElevatedButton(
+                child: Text("Go to Home Page"),
+                onPressed: () => {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomePageScreen();
+                      },
+                    ),
+                  )
+                },
+              ),
+            ],
           ),
         ),
       ),

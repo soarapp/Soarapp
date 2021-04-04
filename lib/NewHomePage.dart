@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar/models/Util/SpotifyUtils.dart';
 import 'package:soar/models/Util/StringUtils.dart';
 import 'package:soar/models/Util/ColorUtils.dart';
 
@@ -117,7 +118,7 @@ class HomePageSetup extends State<HomePage> {
                     children: [
                       Expanded(
                           flex: 1,
-                          child: FlatButton(
+                          child: TextButton(
                               child: (songIsPlaying == true)
                                   ? Image.asset(pauseIcon)
                                   : Image.asset(playIcon, scale: .9),
@@ -181,7 +182,7 @@ class HomePageSetup extends State<HomePage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  child: bottomIconBar(),
+                  child: bottomIconBar(context),
                 ),
               ),
             ],
@@ -232,7 +233,7 @@ Widget playlistBar(String imageName, String playlistName) {
   );
 }
 
-Widget bottomIconBar() {
+Widget bottomIconBar(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -275,6 +276,14 @@ Widget bottomIconBar() {
               child: Image.asset(userIcon),
               onPressed: () {
                 //navigate to profile page
+                // navigate back to login screen for testing
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return SpotifyLoginScreen();
+                //     },
+                //   ),
+                // );
               })),
       Expanded(flex: 1, child: SizedBox()),
     ],
@@ -428,10 +437,12 @@ Widget favSongBar() {
                     child: Row(children: [
                       Expanded(flex: 1, child: SizedBox()),
                       Expanded(
-                          flex: 2,
-                          child: TextButton(
-                              child: Image.asset(playIcon, scale: 1.4),
-                              onPressed: () {})),
+                        flex: 2,
+                        child: TextButton(
+                          child: Image.asset(playIcon, scale: 1.4),
+                          onPressed: () => SpotifyUtils.play(),
+                        ),
+                      ),
                       Expanded(flex: 1, child: SizedBox()),
                     ]),
                   ),

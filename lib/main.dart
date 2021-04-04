@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-import "package:soar/spotify_utils.dart";
-import "package:soar/screens/MyHome/NewHomePage.dart";
+import 'package:soar/models/Util/SpotifyUtils.dart';
+import 'package:soar/NewHomePage.dart';
 
 void main() async {
   await DotEnv.load();
