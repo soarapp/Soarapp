@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/ForgotPassScreen.dart';
 import 'package:soar_initial_screens/MakeProfileScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
-import 'package:soar_initial_screens/ColorUtils.dart';
+import 'package:soar_initial_screens/themeData/ColorUtils.dart';
 import 'CommonWidgets.dart';
 
 // This is the Link Spotify screen where users can link their Spotify accounts

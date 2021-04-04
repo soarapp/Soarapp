@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/ForgotPassScreen.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
-import 'package:soar_initial_screens/ColorUtils.dart';
+import 'package:soar_initial_screens/themeData/ColorUtils.dart';
 import 'CommonWidgets.dart';
 
 // This screen allows the user to customize their profile
