@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/ConnectHRDevice.dart';
+import 'package:soar_initial_screens/OldFiles/ConnectHRDevice.dart';
 
-// this is the apple music login screen that is no longer being used in this iteration
-// of the application
+// old other sign up screen no longer being used in this iteration of
+// the application
 
-class AppMusicLogInScreen extends StatefulWidget {
-  static const String id = 'appMusicLogIn';
+class OtherSignUpScreen extends StatefulWidget {
+  static const String id = 'otherSignUp';
 
   @override
-  _AppMusicLogInScreenState createState() => _AppMusicLogInScreenState();
+  _OtherSignUpScreenState createState() => _OtherSignUpScreenState();
 }
 
-class _AppMusicLogInScreenState extends State<AppMusicLogInScreen> {
+class _OtherSignUpScreenState extends State<OtherSignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +23,7 @@ class _AppMusicLogInScreenState extends State<AppMusicLogInScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Row(
                   children: [
                     Expanded(
@@ -31,25 +31,21 @@ class _AppMusicLogInScreenState extends State<AppMusicLogInScreen> {
                       child: SizedBox(),
                     ),
                     Expanded(
-                        flex: 1,
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Tab(
-                              icon: Image.asset(
-                                'assets/images/backArrow.png',
-                                width: 25,
-                                height: 25,
-                              ),
-                            ))),
-                    Expanded(flex: 3, child: SizedBox()),
-                    Expanded(
-                      flex: 5,
-                      child: Image.asset('assets/images/appleMusicLogo.png',
-                          width: 60, height: 60),
+                      flex: 1,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Tab(
+                          icon: Image.asset(
+                            'assets/images/backArrow.png',
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
+                      ),
                     ),
-                    Expanded(flex: 5, child: SizedBox()),
+                    Expanded(flex: 12, child: SizedBox()),
                   ],
                 ),
               ),
@@ -61,7 +57,7 @@ class _AppMusicLogInScreenState extends State<AppMusicLogInScreen> {
                     Expanded(
                       flex: 8,
                       child: Text(
-                        "Apple Music Login",
+                        "Sign Up",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Comfortaa',

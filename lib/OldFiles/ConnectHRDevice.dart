@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/AppleMusicLogin.dart';
-import 'package:soar_initial_screens/OtherSignUp.dart';
-import 'package:soar_initial_screens/SpotifyLogin.dart';
+import 'package:soar_initial_screens/OldFiles/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OldFiles/OtherSignUp.dart';
+import 'package:soar_initial_screens/OldFiles/SpotifyLogin.dart';
 
 // This is the connect Heart Screen which is no longer being used in this implementation
 // of the application

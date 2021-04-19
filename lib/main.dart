@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/LoggedOutView.dart';
+import 'package:soar_initial_screens/OldFiles/LoggedOutView.dart';
 import 'package:soar_initial_screens/MakeProfileScreen.dart';
-import 'package:soar_initial_screens/RegisterStepOne.dart';
-import 'package:soar_initial_screens/LogIn.dart';
-import 'package:soar_initial_screens/SpotifyLogin.dart';
-import 'package:soar_initial_screens/AppleMusicLogin.dart';
-import 'package:soar_initial_screens/OtherSignUp.dart';
-import 'package:soar_initial_screens/ConnectHRDevice.dart';
+import 'package:soar_initial_screens/OldFiles/RegisterStepOne.dart';
+import 'package:soar_initial_screens/OldFiles/LogIn.dart';
+import 'package:soar_initial_screens/OldFiles/SpotifyLogin.dart';
+import 'package:soar_initial_screens/OldFiles/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OldFiles/OtherSignUp.dart';
+import 'package:soar_initial_screens/OldFiles/ConnectHRDevice.dart';
 import 'package:soar_initial_screens/RegisterScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:soar_initial_screens/SplashScreen.dart';

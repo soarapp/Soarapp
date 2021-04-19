@@ -31,6 +31,8 @@ dependencies:
   favorite_button: ^0.0.3
   flutter_svg: ^0.19.3
   animations: ^2.0.0
+  flutter_screenutil: ^4.0.2+3
+
 
 dev_dependencies:
   flutter_test:

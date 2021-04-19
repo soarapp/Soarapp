@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/AppleMusicLogin.dart';
-import 'package:soar_initial_screens/OtherSignUp.dart';
-import 'package:soar_initial_screens/SpotifyLogin.dart';
+import 'package:soar_initial_screens/OldFiles/AppleMusicLogin.dart';
+import 'package:soar_initial_screens/OldFiles/OtherSignUp.dart';
+import 'package:soar_initial_screens/OldFiles/SpotifyLogin.dart';
 
 
 // Old register screen not being used in this iteration of the application

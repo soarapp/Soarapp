@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/ConnectHRDevice.dart';
+import 'package:soar_initial_screens/OldFiles/ConnectHRDevice.dart';
 
-// Old Spotify login screen used in previous app verison
+// this is the apple music login screen that is no longer being used in this iteration
+// of the application
 
-class SpotifyLogInScreen extends StatefulWidget {
-  static const String id = 'spotifyLogIn';
+class AppMusicLogInScreen extends StatefulWidget {
+  static const String id = 'appMusicLogIn';
 
   @override
-  _SpotifyLogInScreenState createState() => _SpotifyLogInScreenState();
+  _AppMusicLogInScreenState createState() => _AppMusicLogInScreenState();
 }
 
-class _SpotifyLogInScreenState extends State<SpotifyLogInScreen> {
+class _AppMusicLogInScreenState extends State<AppMusicLogInScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +46,8 @@ class _SpotifyLogInScreenState extends State<SpotifyLogInScreen> {
                     Expanded(flex: 3, child: SizedBox()),
                     Expanded(
                       flex: 5,
-                      child: Image.asset('assets/images/spotifyLogo.png'),
+                      child: Image.asset('assets/images/appleMusicLogo.png',
+                          width: 60, height: 60),
                     ),
                     Expanded(flex: 5, child: SizedBox()),
                   ],
@@ -59,7 +61,7 @@ class _SpotifyLogInScreenState extends State<SpotifyLogInScreen> {
                     Expanded(
                       flex: 8,
                       child: Text(
-                        "Spotify Login",
+                        "Apple Music Login",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Comfortaa',
