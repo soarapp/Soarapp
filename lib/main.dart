@@ -17,6 +17,10 @@ import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
 import 'package:soar_initial_screens/MakeProfileScreen.dart';
 import 'package:animations/animations.dart';
+import 'package:soar_initial_screens/SignInErrorScreen.dart';
+import 'package:soar_initial_screens/CheckEmailScreen.dart';
+import 'package:soar_initial_screens/AllSetPage.dart';
+import 'package:soar_initial_screens/ResetPassScreen.dart';
 
 
 void main() => runApp(MainScreen());
@@ -28,8 +32,9 @@ class MainScreen extends StatelessWidget {
       theme: ThemeData(
       ),
       debugShowCheckedModeBanner: false,
-      //initialRoute: WelcomeScreen.id,
-      initialRoute: SplashScreen.id,
+      // the route that the app directs to when the app first launches
+      initialRoute: ResetPassScreen.id,
+      // the other routes for the application
       routes: {
         LoggedOutScreen.id: (context) => LoggedOutScreen(),
         RegisterOneScreen.id: (context) => RegisterOneScreen(),
@@ -45,6 +50,10 @@ class MainScreen extends StatelessWidget {
         CreateAccScreen.id: (context) => CreateAccScreen(),
         LinkSpotifyScreen.id: (context) => LinkSpotifyScreen(),
         MakeProfileScreen.id: (context) => MakeProfileScreen(),
+        SignInErrorScreen.id: (context) => SignInErrorScreen(),
+        CheckEmailScreen.id: (context) => CheckEmailScreen(),
+        AllSetScreen.id: (context) => AllSetScreen(),
+        ResetPassScreen.id: (context) => ResetPassScreen(),
       },
     );
   }

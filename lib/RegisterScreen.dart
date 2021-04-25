@@ -87,7 +87,7 @@ class RegisterCard extends StatelessWidget {
             Expanded(
               flex: 3,
               child: Text(
-                "Synch",
+                "Waves",
                 style: TextStyle(
                     fontSize: 80.sp,
                     fontWeight: FontWeight.bold,
