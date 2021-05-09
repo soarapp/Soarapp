@@ -164,7 +164,7 @@ class HomePageSetup extends State<HomePage> {
                       ),
                       Expanded(
                         flex: 1,
-                        child: FlatButton(
+                        child: TextButton(
                           child: Image.asset(skipIcon),
                           onPressed: () {
                             //at this point skip to the next song in the playlist
@@ -240,7 +240,7 @@ Widget bottomIconBar(BuildContext context) {
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
           flex: 2,
-          child: FlatButton(
+          child: TextButton(
               child: Image.asset(chatIcon),
               onPressed: () {
                 //navigate to chat page
@@ -248,7 +248,7 @@ Widget bottomIconBar(BuildContext context) {
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
           flex: 2,
-          child: FlatButton(
+          child: TextButton(
               child: Image.asset(calendarIcon),
               onPressed: () {
                 //navigate to calendar page
@@ -256,7 +256,7 @@ Widget bottomIconBar(BuildContext context) {
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
           flex: 2,
-          child: FlatButton(
+          child: TextButton(
               child: Image.asset(musicIcon),
               onPressed: () {
                 //navigate to music page
@@ -264,7 +264,7 @@ Widget bottomIconBar(BuildContext context) {
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
           flex: 2,
-          child: FlatButton(
+          child: TextButton(
               child: Image.asset(questionIcon),
               onPressed: () {
                 //navigate to question page
@@ -272,7 +272,7 @@ Widget bottomIconBar(BuildContext context) {
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
           flex: 2,
-          child: FlatButton(
+          child: TextButton(
               child: Image.asset(userIcon),
               onPressed: () {
                 //navigate to profile page
@@ -440,7 +440,8 @@ Widget favSongBar() {
                         flex: 2,
                         child: TextButton(
                           child: Image.asset(playIcon, scale: 1.4),
-                          onPressed: () => SpotifyUtils.play(),
+                          // onPressed: () => SpotifyUtils.play(),
+                          onPressed: () => {},
                         ),
                       ),
                       Expanded(flex: 1, child: SizedBox()),

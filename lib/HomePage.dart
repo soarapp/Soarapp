@@ -133,7 +133,7 @@ class HomePageSetup extends State<HomePage> {
     );
   }
 
-  Widget _SpotifyPlayBar(String songTitle, String artist) {
+  Widget _spotifyPlayBar(String songTitle, String artist) {
     return Column(children: [
       Container(
         padding: EdgeInsets.only(left: 25, right: 25),
