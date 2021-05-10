@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'package:spotify_sdk/models/crossfade_state.dart';
+import 'package:spotify_sdk/spotify_sdk.dart';
+
+void main() async {
   await DotEnv.load();
   await SpotifySdk.connectToSpotifyRemote(
     clientId: env['CLIENT_ID'].toString(),
     redirectUrl: env['REDIRECT_URI'].toString(),
     accessToken: env['ACCESS_TOKEN'].toString(),
   );
-  runApp(MainScreen());
+  runApp(MyApp());
   SpotifySdk.play(spotifyUri: 'spotify:track:58kNJana4w5BIjlZE2wq5m');
 }
 
