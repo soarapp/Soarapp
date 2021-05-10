@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  await DotEnv.load();
+  await SpotifySdk.connectToSpotifyRemote(
+    clientId: env['CLIENT_ID'].toString(),
+    redirectUrl: env['REDIRECT_URI'].toString(),
+    accessToken: env['ACCESS_TOKEN'].toString(),
+  );
+  runApp(MainScreen());
+  SpotifySdk.play(spotifyUri: 'spotify:track:58kNJana4w5BIjlZE2wq5m');
 }
 
 class MyApp extends StatelessWidget {
