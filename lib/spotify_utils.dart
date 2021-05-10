@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
+import 'package:spotify_sdk/models/connection_status.dart';
 import 'package:spotify_sdk/models/crossfade_state.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 
@@ -19,6 +20,7 @@ class Spotify extends State<MyApp> {
   final Logger _logger = Logger();
 
   CrossfadeState crossfadeState;
+  String authToken;
 
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,9 +33,22 @@ class Spotify extends State<MyApp> {
           title: Text("Spotify Tester"),
         ),
         body: Center(
-          child: ElevatedButton(
-            child: Text("Login with Spotify"),
-            onPressed: getAuthenticationToken,
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text("Login with Spotify"),
+                onPressed: () async =>
+                    authToken = await getAuthenticationToken(),
+              ),
+              ElevatedButton(
+                child: Text("Connect to Spotify"),
+                onPressed: () async => await connectToSpotifyRemote(),
+              ),
+              ElevatedButton(
+                child: Text("Play Song"),
+                onPressed: play,
+              ),
+            ],
           ),
         ),
       ),
@@ -69,8 +84,9 @@ class Spotify extends State<MyApp> {
         _loading = true;
       });
       var result = await SpotifySdk.connectToSpotifyRemote(
-          clientId: env['CLIENT_ID'].toString(),
-          redirectUrl: env['REDIRECT_URL'].toString());
+        clientId: env['CLIENT_ID'].toString(),
+        redirectUrl: env['REDIRECT_URL'].toString(),
+      );
       setStatus(result
           ? 'connect to spotify successful'
           : 'connect to spotify failed');
