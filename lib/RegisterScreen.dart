@@ -18,9 +18,11 @@ class _RegisterScreenState extends State<RegisterScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
+      designSize: Size(screenWidth,
+          screenHeight),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -89,10 +91,13 @@ class RegisterCard extends StatelessWidget {
               child: Text(
                 "Waves",
                 style: TextStyle(
-                    fontSize: 80.sp,
+                    fontSize: (MediaQuery.of(context).size.height * 0.01) * 7,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'OpenSans'),
               ),
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02
             ),
             // LOG IN Button
             Expanded(
@@ -116,6 +121,9 @@ class RegisterCard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01
             ),
             // NEW ACCOUNT button
             Expanded(
@@ -151,7 +159,7 @@ class RegisterCard extends StatelessWidget {
               child: Text(
                 "Powered by SOAR",
                 style: TextStyle(
-                  fontSize: 16.sp,
+                  fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5,
                   fontFamily: 'OpenSans',
                 ),
               ),
@@ -171,7 +179,7 @@ class CreateAccButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55.h,
+      height: MediaQuery.of(context).size.height * 0.01 * 5,
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -184,9 +192,10 @@ class CreateAccButton extends StatelessWidget {
         },
         child: Text(
           "NEW ACCOUNT",
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 16.sp,
+            fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5,
           ),
         ),
         style: ElevatedButton.styleFrom(
@@ -209,7 +218,7 @@ class LogInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55.h,
+      height: (MediaQuery.of(context).size.height * 0.01) * 5,
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -222,7 +231,7 @@ class LogInButton extends StatelessWidget {
         },
         child: Text(
           "LOG IN",
-          style: TextStyle(color: Colors.white, fontSize: 16.sp),
+          style: TextStyle(color: Colors.white, fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5),
         ),
         style: ElevatedButton.styleFrom(
           primary: Color(0xFF80B7EF),

@@ -21,19 +21,24 @@ import 'package:soar_initial_screens/SignInErrorScreen.dart';
 import 'package:soar_initial_screens/CheckEmailScreen.dart';
 import 'package:soar_initial_screens/AllSetPage.dart';
 import 'package:soar_initial_screens/ResetPassScreen.dart';
+import 'package:device_preview/device_preview.dart';
 
 
-void main() => runApp(MainScreen());
+void main() => runApp(DevicePreview(builder: (context) => MainScreen()));
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       theme: ThemeData(
       ),
       debugShowCheckedModeBanner: false,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       // the route that the app directs to when the app first launches
-      initialRoute: ResetPassScreen.id,
+      initialRoute: SplashScreen.id,
       // the other routes for the application
       routes: {
         LoggedOutScreen.id: (context) => LoggedOutScreen(),

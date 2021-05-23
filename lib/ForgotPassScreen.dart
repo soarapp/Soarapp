@@ -72,7 +72,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                   },
                                   child: Padding(
                                     padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 0, 70),
+                                         EdgeInsets.fromLTRB(0, 0, 0, MediaQuery.of(context).size.height * 0.01 * 8),
                                     // back button
                                     child: Tab(
                                       icon: Icon(
@@ -87,28 +87,19 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                 flex: 5,
                                 // Forgot Password title text
                                 child: Text(
-                                  "Forgot Password",
+                                  "Forgot Password?",
                                   style: TextStyle(
-                                      fontSize: 48,
+                                      fontSize: MediaQuery.of(context).size.height * 0.01 * 4.8,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: SizedBox(),
-                              ),
                             ],
                           ),
                         ),
-                        // space between the Forgot Password text and the Email text
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
                         // The email text, user input for email, and text underneath
                         Expanded(
-                          flex: 3,
+                          flex: 4,
                           child: Column(
                             children: [
                               Row(
@@ -123,7 +114,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                       child: Text(
                                         "Email",
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: MediaQuery.of(context).size.height * 0.01 * 2,
                                             fontWeight: FontWeight.bold),
                                       )),
                                   Expanded(
@@ -133,7 +124,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: MediaQuery.of(context).size.height * 0.01 * 1.1,
                               ),
                               Row(
                                 children: [
@@ -150,9 +141,9 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                         borderRadius:
                                             new BorderRadius.circular(10.0),
                                       ),
-                                      height: 50,
+                                      height: MediaQuery.of(context).size.height * 0.01 * 5,
                                       child: Padding(
-                                        padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * 0.01, 0, 0, 0),
                                         child: TextField(
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
@@ -170,7 +161,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: MediaQuery.of(context).size.height * 0.01 * 1.2,
                               ),
                               Row(
                                 children: [
@@ -185,7 +176,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                       "Enter the email address associated with your account",
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 12,
+                                        fontSize: MediaQuery.of(context).size.height * 0.01 * 1.1,
                                       ),
                                     ),
                                   ),
@@ -213,7 +204,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                   Expanded(
                                     flex: 5,
                                     child: Container(
-                                      height: 50,
+                                      height: MediaQuery.of(context).size.height * 0.01 * 5,
                                       child: ElevatedButton(
                                         onPressed: () {
                                           // Navigator.of(context).push(
@@ -228,7 +219,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 18,
+                                                fontSize: MediaQuery.of(context).size.height * 0.01 * 2,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'OpenSans')),
                                         style: ElevatedButton.styleFrom(
@@ -243,7 +234,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: MediaQuery.of(context).size.height * 0.01 * 1.1,
                               ),
                             ],
                           ),

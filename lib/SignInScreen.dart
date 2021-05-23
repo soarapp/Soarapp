@@ -9,7 +9,6 @@ import 'package:soar_initial_screens/RegisterScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 
-
 // This is the Sign In Screen that users will navigate to
 // after clicking Login
 
@@ -20,8 +19,15 @@ class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> with SingleTickerProviderStateMixin {
+class _SignInScreenState extends State<SignInScreen>
+    with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
+    double anotherHeight = MediaQuery.of(context).size.height;
+    double anotherWidth = MediaQuery.of(context).size.width;
+    double totalSize = MediaQuery.of(context).size.aspectRatio;
+    print("This is the current height: $anotherHeight");
+    print("This is the current width: $anotherWidth");
+    print("This is the size: $totalSize");
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
@@ -69,7 +75,6 @@ class _SignInScreenState extends State<SignInScreen> with SingleTickerProviderSt
 
 // The large, rounded card on the screen
 class SignInCard extends StatelessWidget {
-
   const SignInCard({
     Key key,
   }) : super(key: key);
@@ -83,8 +88,7 @@ class SignInCard extends StatelessWidget {
         // Decoration allows you to curve the corners of the card
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40.0),
-              topLeft: Radius.circular(40.0)),
+              topRight: Radius.circular(40.0), topLeft: Radius.circular(40.0)),
           color: Colors.white,
         ),
         // Column will hold widgets within the curved card part of the app
@@ -105,7 +109,8 @@ class SignInCard extends StatelessWidget {
                       child: Text(
                         "Sign In",
                         style: TextStyle(
-                            fontSize: 80.sp,
+                            fontSize:
+                                (MediaQuery.of(context).size.height * 0.01) * 7,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'OpenSans'),
                       )),
@@ -129,13 +134,16 @@ class SignInCard extends StatelessWidget {
                         child: SizedBox(),
                       ),
                       Expanded(
-                          flex: 5,
-                          child: Text(
-                            "Email",
-                            style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold),
-                          ),),
+                        flex: 5,
+                        child: Text(
+                          "Email",
+                          style: TextStyle(
+                              fontSize:
+                                  (MediaQuery.of(context).size.height * 0.01) *
+                                      2,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       Expanded(
                         flex: 5,
                         child: SizedBox(),
@@ -144,7 +152,7 @@ class SignInCard extends StatelessWidget {
                   ),
                   // helps space out the 'EMAIL' text and the text field underneath it
                   SizedBox(
-                    height: 10.h,
+                    height: MediaQuery.of(context).size.height * 0.01,
                   ),
                   // Row to help space out the blue text field portion of the user input
                   Row(
@@ -159,10 +167,12 @@ class SignInCard extends StatelessWidget {
                         // text field from common widgets class
                         child: UsrInputTxtBox(
                           fieldColor: Color(0xFFe4f2fc),
-                          paddingLeft: 8.h,
+                          paddingLeft:
+                              MediaQuery.of(context).size.height * 0.01,
                           paddingBottom:
-                          MediaQuery.of(context).size.width / 50,
-                          fieldHeight: 50.h,
+                              MediaQuery.of(context).size.height * 0.01 * 1.2,
+                          fieldHeight:
+                              MediaQuery.of(context).size.height * 0.01 * 4.5,
                           borderRadius: 10.0,
                           hintTextColor: Colors.black,
                         ),
@@ -192,7 +202,9 @@ class SignInCard extends StatelessWidget {
                           child: Text(
                             "Password",
                             style: TextStyle(
-                                fontSize: 18.sp,
+                                fontSize: (MediaQuery.of(context).size.height *
+                                        0.01) *
+                                    2,
                                 fontWeight: FontWeight.bold),
                           )),
                       Expanded(
@@ -202,7 +214,7 @@ class SignInCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: MediaQuery.of(context).size.height * 0.01,
                   ),
                   Row(
                     children: [
@@ -215,11 +227,15 @@ class SignInCard extends StatelessWidget {
                       // password
                       Expanded(
                         flex: 5,
+                        // text field from common widgets class
                         child: UsrInputTxtBox(
                           fieldColor: Color(0xFFe4f2fc),
-                          paddingLeft: 8.h,
-                          paddingBottom: 0,
-                          fieldHeight: 50.h,
+                          paddingLeft:
+                              MediaQuery.of(context).size.height * 0.01,
+                          paddingBottom:
+                              MediaQuery.of(context).size.height * 0.01 * 0.7,
+                          fieldHeight:
+                              MediaQuery.of(context).size.height * 0.01 * 4.5,
                           borderRadius: 10.0,
                           hintTextColor: Colors.black,
                           hintText: '••••••••••••',
@@ -233,13 +249,13 @@ class SignInCard extends StatelessWidget {
                   ),
                   // space between the password text input
                   SizedBox(
-                    height: 10.h,
+                    height: MediaQuery.of(context).size.height * 0.01 * 1.5,
                   ),
                   // Spacing out the Forgot Password hyperlink with a row
                   Row(
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 2,
                         child: SizedBox(),
                       ),
                       // Forgot password hypertext which will link to the Forgot Password page
@@ -248,7 +264,7 @@ class SignInCard extends StatelessWidget {
                         child: ForgotPasswordText(),
                       ),
                       Expanded(
-                        flex: 4,
+                        flex: 2,
                         child: SizedBox(),
                       ),
                     ],
@@ -258,7 +274,7 @@ class SignInCard extends StatelessWidget {
             ),
             // Expanded area for the sign in button
             Expanded(
-              flex: 3,
+              flex: 5,
               child: Column(
                 children: [
                   // row to space out Sign In Button horizontally
@@ -281,7 +297,7 @@ class SignInCard extends StatelessWidget {
                   ),
                   // spacing between Sign In button and the text underneath it
                   SizedBox(
-                    height: 10.h,
+                    height: MediaQuery.of(context).size.height * 0.01 * 2,
                   ),
                   Row(
                     children: [
@@ -327,22 +343,19 @@ class DontHaveAcctTxt extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: TextStyle(
-            fontSize: 12.sp,
-            color: Colors.black,
-            fontFamily: 'OpenSans'),
+            fontSize: MediaQuery.of(context).size.height * 0.01 * 1.1, color: Colors.black, fontFamily: 'OpenSans'),
         children: <TextSpan>[
           TextSpan(
               text: 'Don\'t have an account? ',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  print(
-                      'Pressing Forgot Password');
+                  print('Pressing Forgot Password');
                 }),
           TextSpan(
               text: 'Create new account',
               style: TextStyle(
                   color: Color(0xFF6AABEF),
-                  fontSize: 12.sp,
+                  fontSize: MediaQuery.of(context).size.height * 0.01 * 1.1,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'OpenSans'),
               recognizer: TapGestureRecognizer()
@@ -369,7 +382,7 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
+      height: MediaQuery.of(context).size.height * 0.01 * 5,
       child: ElevatedButton(
         onPressed: () {
           // Navigator.of(context).push(
@@ -384,11 +397,10 @@ class SignInButton extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 18.sp,
+                fontSize: MediaQuery.of(context).size.height * 0.01 * 2,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'OpenSans')),
-        style: ElevatedButton.styleFrom(
-            primary: Color(0xFF6AABEF)),
+        style: ElevatedButton.styleFrom(primary: Color(0xFF6AABEF)),
       ),
     );
   }
@@ -408,7 +420,7 @@ class ForgotPasswordText extends StatelessWidget {
               text: 'Forgot Password?',
               style: TextStyle(
                   color: Color(0xFF6AABEF),
-                  fontSize: 12.sp,
+                  fontSize: MediaQuery.of(context).size.height * 0.01 * 1.5,
                   fontWeight: FontWeight.bold),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
