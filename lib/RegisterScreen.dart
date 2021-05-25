@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // the initial register screen where users can login or create an account
 
@@ -21,8 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen>
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return ScreenUtilInit(
-      designSize: Size(screenWidth,
-          screenHeight),
+      designSize: Size(screenWidth, screenHeight),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -83,21 +83,19 @@ class RegisterCard extends StatelessWidget {
               child: SizedBox(),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Image.asset('assets/images/synchLogo.png'),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Text(
                 "Waves",
                 style: TextStyle(
-                    fontSize: (MediaQuery.of(context).size.height * 0.01) * 7,
+                    fontSize:
+                        MediaQuery.of(context).size.height * LARGE_TXT_SCALER,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'OpenSans'),
               ),
-            ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02
             ),
             // LOG IN Button
             Expanded(
@@ -123,7 +121,7 @@ class RegisterCard extends StatelessWidget {
               ),
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01
+              height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 2,
             ),
             // NEW ACCOUNT button
             Expanded(
@@ -159,7 +157,8 @@ class RegisterCard extends StatelessWidget {
               child: Text(
                 "Powered by SOAR",
                 style: TextStyle(
-                  fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5,
+                  fontSize:
+                      MediaQuery.of(context).size.height * TINY_TXT_SCALER,
                   fontFamily: 'OpenSans',
                 ),
               ),
@@ -179,7 +178,7 @@ class CreateAccButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.01 * 5,
+      height: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -195,14 +194,14 @@ class CreateAccButton extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
-            fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5,
+            fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
           ),
         ),
         style: ElevatedButton.styleFrom(
           primary: Color(0xFFA2BBD5),
           elevation: 10.0,
           shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(8.0),
           ),
         ),
       ),
@@ -218,7 +217,7 @@ class LogInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: (MediaQuery.of(context).size.height * 0.01) * 5,
+      height: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -231,7 +230,9 @@ class LogInButton extends StatelessWidget {
         },
         child: Text(
           "LOG IN",
-          style: TextStyle(color: Colors.white, fontSize: (MediaQuery.of(context).size.height * 0.01) * 1.5),
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
         ),
         style: ElevatedButton.styleFrom(
           primary: Color(0xFF80B7EF),

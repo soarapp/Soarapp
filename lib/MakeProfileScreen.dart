@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/ForgotPassScreen.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
-import 'package:soar_initial_screens/themeData/ColorUtils.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,9 +22,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+      builder: () => Scaffold(
           // SingleChildScrollView widget allows the user to scroll through the screen
           body: SingleChildScrollView(
             child: ConstrainedBox(
@@ -49,11 +46,10 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                   child: Column(
                     children: [
                       // the top part of the screen where you can see the background
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
                       // the top part of the screen with the 'Create Your Profile' text
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+                      ),
                       Expanded(
                         flex: 2,
                         child: Row(
@@ -63,37 +59,21 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                               child: SizedBox(),
                             ),
                             Expanded(
-                              flex: 6,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              flex: 9,
+                              child: Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Create",
-                                        style: TextStyle(
-                                            fontSize: 38.sp,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'OpenSans'),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Your Profile",
-                                        style: TextStyle(
-                                            fontSize: 38.sp,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'OpenSans'),
-                                      ),
-                                    ],
+                                  Text(
+                                    "Create Your \nProfile",
+                                    style: TextStyle(
+                                        fontSize: MediaQuery.of(context).size.height * LARGE_TXT_SCALER,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'OpenSans'),
                                   ),
                                 ],
                               ),
                             ),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: SizedBox(),
                             ),
                           ],
@@ -102,7 +82,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                       // the bottom portion of the screen with the white card and all
                       // of the components within the white card
                       Expanded(
-                        flex: 13,
+                        flex: 12,
                         child: CreateProfileCard(),
                       ),
                     ],
@@ -112,7 +92,6 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
             ),
           ),
         ),
-      ),
     );
   }
 }
@@ -139,9 +118,8 @@ class CreateProfileCardState extends State<CreateProfileCard> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // space right above the photo upload portion of the screen
-          Expanded(
-            flex: 1,
-            child: SizedBox(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
           ),
           // circular widget with camera icon where users can see their
           // current user profile picture and upload a new picture
@@ -153,37 +131,22 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                   flex: 1,
                   child: Image.asset(
                     'assets/images/defaultCamPhoto.png',
-                    width: 80.w,
-                    height: 80.h,
+                    width: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 20,
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 20,
                   ),
                 ),
                 // space between camera icon logo and the 'Add Photo' text
                 SizedBox(
-                  height: 10.h,
+                  height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
                 ),
                 // The 'Add Photo' text
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: AddPhotoText(),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                  ],
-                ),
+                AddPhotoText(),
               ],
             ),
           ),
           // the part of the screen where users can enter their name in a text input
           Expanded(
-            flex: 3,
+            flex: 2,
             child: Column(
               children: [
                 Row(
@@ -198,7 +161,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                       child: Text(
                         "Name",
                         style: TextStyle(
-                            fontSize: 14.sp, fontWeight: FontWeight.bold),
+                            fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Expanded(
@@ -208,7 +171,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                   ],
                 ),
                 SizedBox(
-                  height: 10.h,
+                  height: MediaQuery.of(context).size.height * HUNDRETH_SCALER ,
                 ),
                 Row(
                   children: [
@@ -217,7 +180,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                       child: SizedBox(),
                     ),
                     Expanded(
-                      flex: 10,
+                      flex: 12,
                       // the text field where users can enter their name
                       child: NameTextField(),
                     ),
@@ -254,31 +217,12 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                       flex: 5,
                       child: Column(
                         children: [
-                          Container(
-                            height: 50.h,
-                            // the actual button
-                            child: CreateAcctButton(),
-                          ),
+                          CreateAcctButton(),
                           SizedBox(
-                            height: 7.h,
+                            height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 2,
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: SizedBox(),
-                              ),
-                              // skip this step hypertext
-                              Expanded(
-                                flex: 4,
-                                child: SkipStepText(),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
+                          // skip this step hypertext
+                          SkipStepText(),
                         ],
                       ),
                     ),
@@ -288,17 +232,11 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
               ],
             ),
           ),
           // the progress bar portion of the screen
-          Expanded(
-            flex: 1,
-            child: CircularProgressBar(),
-          ),
+          CircularProgressBar(),
           Expanded(
             flex: 1,
             child: SizedBox(),
@@ -321,19 +259,18 @@ class NameTextField extends StatelessWidget {
         color: Color(0xFFF4F6F9),
         borderRadius: new BorderRadius.circular(10.0),
       ),
-      height: 50.h,
+      height: MediaQuery.of(context).size.height * FIELD_SIZE_SCALER,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER / 3, 0, 0),
         child: TextField(
           decoration: InputDecoration(
             contentPadding: EdgeInsets.only(
-              bottom: 50.h / 2,
+              bottom: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
             ),
             border: InputBorder.none,
             hintStyle: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 34.sp),
+                fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -348,29 +285,31 @@ class AddPhotoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        style: TextStyle(
-            fontSize: 12.sp, color: Colors.black, fontFamily: 'OpenSans'),
-        children: <TextSpan>[
-          TextSpan(
-              text: 'Add Photo',
-              style: TextStyle(
-                  color: Color(0xFF6AABEF),
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans'),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignInScreen();
-                      },
-                    ),
-                  );
-                }),
-        ],
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          style: TextStyle(
+              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, color: Colors.black, fontFamily: 'OpenSans'),
+          children: <TextSpan>[
+            TextSpan(
+                text: 'Add Photo',
+                style: TextStyle(
+                    color: Color(0xFF6AABEF),
+                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans'),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SignInScreen();
+                        },
+                      ),
+                    );
+                  }),
+          ],
+        ),
       ),
     );
   }
@@ -397,7 +336,7 @@ class UserInfoCard extends StatelessWidget {
             Expanded(
               flex: 15,
               child: Container(
-                height: 250.h,
+                height: MediaQuery.of(context).size.height * 0.01 * 50,
                 decoration: BoxDecoration(
                   color: Color(0xFFFEFAFA),
                   borderRadius: BorderRadius.only(
@@ -423,7 +362,7 @@ class UserInfoCard extends StatelessWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 5.h,
+                            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                           ),
                           Row(
                             children: [
@@ -444,7 +383,7 @@ class UserInfoCard extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 5.h),
+                          SizedBox(height: MediaQuery.of(context).size.height * HUNDRETH_SCALER),
                           Row(
                             children: [
                               Expanded(
@@ -509,7 +448,7 @@ class SocialMediaBox extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 5.h,
+          height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
         ),
         Row(
           children: [
@@ -530,7 +469,7 @@ class SocialMediaBox extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 5.h),
+        SizedBox(height: MediaQuery.of(context).size.height * HUNDRETH_SCALER),
         Row(
           children: [
             Expanded(
@@ -540,7 +479,7 @@ class SocialMediaBox extends StatelessWidget {
             Expanded(
               flex: 15,
               child: Container(
-                height: 70.h,
+                height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 28,
                 decoration: BoxDecoration(
                   color: Color(0xFFF4F6F9),
                   borderRadius: BorderRadius.only(
@@ -620,7 +559,7 @@ class BioBox extends StatelessWidget {
             Expanded(
               flex: 15,
               child: Container(
-                height: 70.h,
+                height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 28,
                 decoration: BoxDecoration(
                   color: Color(0xFFF4F6F9),
                   borderRadius: BorderRadius.only(
@@ -667,7 +606,7 @@ class FavSongBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 95.h,
+      height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 30,
       decoration: BoxDecoration(
         color: Color(0xFFE1E4EB),
         borderRadius: BorderRadius.only(
@@ -678,15 +617,14 @@ class FavSongBox extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(
-            flex: 1,
-            child: SizedBox(),
+          SizedBox(
+            width: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
           ),
           // grey box within the grey rectangle
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
-              height: 60.h,
+                height: MediaQuery.of(context).size.width * HUNDRETH_SCALER * 20,
               decoration: BoxDecoration(
                 color: Color(0xFFC7CAD0),
                 borderRadius: BorderRadius.only(
@@ -716,10 +654,10 @@ class FavSongBox extends StatelessWidget {
                           fontFamily: 'OpenSans'),
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'Add Your Favorite Song',
+                            text: 'Add Your \nFavorite Song',
                             style: TextStyle(
                                 color: Color(0xFF6AABEF),
-                                fontSize: 12.sp,
+                                fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'OpenSans'),
                             recognizer: TapGestureRecognizer()
@@ -759,29 +697,31 @@ class SkipStepText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        style: TextStyle(
-            fontSize: 12.sp, color: Colors.black, fontFamily: 'OpenSans'),
-        children: <TextSpan>[
-          TextSpan(
-              text: 'Skip this step',
-              style: TextStyle(
-                  color: Color(0xFF6AABEF),
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans'),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignInScreen();
-                      },
-                    ),
-                  );
-                }),
-        ],
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          style: TextStyle(
+              fontSize: 12.sp, color: Colors.black, fontFamily: 'OpenSans'),
+          children: <TextSpan>[
+            TextSpan(
+                text: 'Skip this step',
+                style: TextStyle(
+                    color: Color(0xFF6AABEF),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans'),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SignInScreen();
+                        },
+                      ),
+                    );
+                  }),
+          ],
+        ),
       ),
     );
   }
@@ -823,31 +763,58 @@ class CircularProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ProgressBarButton(
-          colorData: Color(0xFFCDCDCD),
-          width: 10.w,
-          height: 10.h,
-        ),
-        SizedBox(
-          width: 5.w,
-        ),
-        ProgressBarButton(
-          colorData: Color(0xFFCDCDCD),
-          width: 10.w,
-          height: 10.h,
-        ),
-        SizedBox(
-          width: 5.w,
-        ),
-        ProgressBarButton(
-          colorData: Color(0xFF6AABEF),
-          width: 13.w,
-          height: 13.h,
-        ),
-      ],
+    return Expanded(
+      flex: 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ProgressBarButton(
+            colorData: Color(0xFFCDCDCD),
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+          ),
+          SizedBox(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * HUNDRETH_SCALER,
+          ),
+          ProgressBarButton(
+            colorData: Color(0xFFCDCDCD),
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+          ),
+          SizedBox(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * HUNDRETH_SCALER,
+          ),
+          ProgressBarButton(
+            colorData: Color(0xFF6AABEF),
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * PROG_BAR_SCALER,
+          ),
+        ],
+      ),
     );
   }
 }

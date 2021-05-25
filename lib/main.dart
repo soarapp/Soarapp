@@ -15,8 +15,6 @@ import 'package:soar_initial_screens/SplashScreen.dart';
 import 'package:soar_initial_screens/ForgotPassScreen.dart';
 import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
-import 'package:soar_initial_screens/MakeProfileScreen.dart';
-import 'package:animations/animations.dart';
 import 'package:soar_initial_screens/SignInErrorScreen.dart';
 import 'package:soar_initial_screens/CheckEmailScreen.dart';
 import 'package:soar_initial_screens/AllSetPage.dart';
@@ -24,13 +22,15 @@ import 'package:soar_initial_screens/ResetPassScreen.dart';
 import 'package:device_preview/device_preview.dart';
 
 
-void main() => runApp(DevicePreview(builder: (context) => MainScreen()));
+// void main() => runApp(DevicePreview(builder: (context) => MainScreen()));
+void main() => runApp(MainScreen());
+
+double screenHeight = 0;
+double screenWidth = 0;
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       theme: ThemeData(
       ),
