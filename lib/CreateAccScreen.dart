@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
+import 'package:soar_initial_screens/ThemeData/ColorUtils.dart';
+import 'package:soar_initial_screens/Backend Functions/Functions.dart';
 import 'CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 // This is the create accounts screen where users can enter their email,
 // password, and password verification
 
@@ -95,6 +97,30 @@ class CreateAcctCardState extends State<CreateAcctCard>
     super.dispose();
   }
 
+  String _email, _password, _confirmpass;
+  final auth = FirebaseAuth.instance;
+  final _cpassKey = GlobalKey<FormState>();
+  final _emailKey = GlobalKey<FormState>();
+  final _passKey = GlobalKey<FormState>();
+
+  // check if the user inputs are valid or not
+  void _checkForm() async {
+    final isCpassValid = _cpassKey.currentState.validate();
+    final isEmailValid = _emailKey.currentState.validate();
+    final isPassValid = _passKey.currentState.validate();
+    if (isEmailValid && isPassValid && isCpassValid) {
+      createAcc(_email, _password);
+      confirmEmail(_email, _password);
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return LinkSpotifyScreen();
+          },
+        ),
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Expanded(
       flex: 3,
@@ -124,8 +150,12 @@ class CreateAcctCardState extends State<CreateAcctCard>
                       // InkWell allows the icon to be clickable thus making it a button
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(
-                            MediaQuery.of(context).size.width * HUNDRETH_SCALER * 2,
-                            MediaQuery.of(context).size.width * HUNDRETH_SCALER * 2,
+                            MediaQuery.of(context).size.width *
+                                HUNDRETH_SCALER *
+                                2,
+                            MediaQuery.of(context).size.width *
+                                HUNDRETH_SCALER *
+                                2,
                             0,
                             MediaQuery.of(context).size.width / 10),
                         child: InkWell(
@@ -136,7 +166,8 @@ class CreateAcctCardState extends State<CreateAcctCard>
                             icon: Icon(
                               Icons.arrow_back_ios,
                               color: Colors.black,
-                              size: MediaQuery.of(context).size.height * 0.01 * 3,
+                              size:
+                                  MediaQuery.of(context).size.height * 0.01 * 3,
                             ),
                           ),
                         ),
@@ -159,11 +190,82 @@ class CreateAcctCardState extends State<CreateAcctCard>
                 flex: 2,
                 child: Column(
                   children: [
-                    EmailText(),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                            flex: 5,
+                            child: Text(
+                              "Email",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            )),
+                        Expanded(
+                          flex: 5,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height *
                           HUNDRETH_SCALER *
                           2,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        // this is the text field for a user's email
+                        Expanded(
+                          flex: 5,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFe4f2fc),
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
+                            height: 50,
+                            child: Padding(
+                                padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                child: Form(
+                                  key: _emailKey,
+                                  // Email TextField
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintStyle: TextStyle(color: Colors.grey),
+                                    ),
+                                    validator: (value) {
+                                      if (value.trim().isEmpty) {
+                                        return 'Please enter your email address';
+                                      }
+                                      // Check if the entered email has the right format
+                                      if (!RegExp(r'\S+@\S+\.\S+')
+                                          .hasMatch(value)) {
+                                        return 'Please enter a valid email address';
+                                      }
+                                      // Return null if email is valid
+                                      return null;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _email = value.trim();
+                                      });
+                                    },
+                                  ),
+                                )),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
                     ),
                     CreateAcctTxtBox(),
                   ],
@@ -178,8 +280,83 @@ class CreateAcctCardState extends State<CreateAcctCard>
                 flex: 2,
                 child: Column(
                   children: [
-                    // 'Password' Text above Password textbox
-                    PasswordText(),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(),
+                        ),
+                        // this is the password text
+                        Expanded(
+                            flex: 5,
+                            child: Text(
+                              "Password",
+                              style: TextStyle(
+                                  fontSize: 18.sp, fontWeight: FontWeight.bold),
+                            )),
+                        Expanded(
+                          flex: 5,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.w,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                          flex: 5,
+                          // the text field for the password
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFe4f2fc),
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
+                            height: 50,
+                            child: Padding(
+                                padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+                                child: Form(
+                                  key: _passKey,
+                                  // Password textfield
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 34),
+                                    ),
+                                    validator: (value) {
+                                      if (value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      if (value.trim().length < 8) {
+                                        return 'Password must be at least 8 characters in length';
+                                      }
+                                      // Return null if the entered password is valid
+                                      return null;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _password = value.trim();
+                                      });
+                                    },
+                                  ),
+                                )),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height:
                           MediaQuery.of(context).size.height * HUNDRETH_SCALER,
@@ -202,6 +379,63 @@ class CreateAcctCardState extends State<CreateAcctCard>
                       height:
                           MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                     ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                          flex: 5,
+                          // the text field for the confirm password
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFe4f2fc),
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
+                            height: 50,
+                            child: Padding(
+                                padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+                                // validate everything in the child form
+                                child: Form(
+                                  key: _cpassKey,
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 34),
+                                    ),
+                                    validator: (value) {
+                                      // check if value is empty
+                                      if (value.trim().isEmpty) {
+                                        return 'This field is required';
+                                      }
+                                      // check if the passwords are not equal
+
+                                      if (value.trim() != _password) {
+                                        return 'Confirmation password does not match the entered password';
+                                      }
+
+                                      return null;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _confirmpass = value.trim();
+                                      });
+                                    },
+                                  ),
+                                )),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
                     CreateAcctTxtBox(),
                   ],
                 ),
@@ -219,7 +453,24 @@ class CreateAcctCardState extends State<CreateAcctCard>
                         ),
                         Expanded(
                           flex: 5,
-                          child: NextStepButton(),
+                          child: Container(
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _checkForm();
+                              },
+                              // this is the next step button
+                              child: Text("NEXT STEP",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'OpenSans')),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFF6AABEF)),
+                            ),
+                          ),
                         ),
                         Expanded(
                           child: SizedBox(),

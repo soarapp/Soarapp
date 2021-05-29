@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/OldFiles/LoggedOutView.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:soar_initial_screens/MakeProfileScreen.dart';
 import 'package:soar_initial_screens/OldFiles/RegisterStepOne.dart';
 import 'package:soar_initial_screens/OldFiles/LogIn.dart';
@@ -21,9 +23,11 @@ import 'package:soar_initial_screens/AllSetPage.dart';
 import 'package:soar_initial_screens/ResetPassScreen.dart';
 import 'package:device_preview/device_preview.dart';
 
-
-// void main() => runApp(DevicePreview(builder: (context) => MainScreen()));
-void main() => runApp(MainScreen());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MainScreen());
+}
 
 double screenHeight = 0;
 double screenWidth = 0;
@@ -32,8 +36,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-      ),
+      theme: ThemeData(),
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,

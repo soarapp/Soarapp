@@ -83,10 +83,11 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                           child: TextField(
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Email',
-                              hintStyle: TextStyle(color: Colors.black),
+                              hintText: '??',
+                              hintStyle: TextStyle(color: Colors.grey),
                             ),
                           ),
                         ),
