@@ -32,8 +32,6 @@ dependencies:
   flutter_svg: ^0.21.0
   animations: ^2.0.0
   flutter_screenutil: ^4.0.2+3
-  device_preview: ^0.7.1
-
   
 
   firebase_core: ^0.7.0
