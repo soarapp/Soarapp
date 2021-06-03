@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
+import 'package:soar_initial_screens/NewHomePage.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:image_picker/image_picker.dart';
@@ -810,7 +811,7 @@ class CreateAcctButton extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return LinkSpotifyScreen();
+              return HomePageScreen();
             },
           ),
         );

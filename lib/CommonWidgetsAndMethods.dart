@@ -64,7 +64,7 @@ class PlaylistOrSongList extends State<PlaylistOrSongDisplay> {
                 Padding(
                   padding: const EdgeInsets.only(right: 7),
                   child: Image.asset(
-                      imagePath + _playlistOrSongImageList[index] + jpg,
+                      imagePath + forwardSlash + _playlistOrSongImageList[index] + jpg,
                       scale: 17),
                 ),
                 Padding(

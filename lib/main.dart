@@ -21,6 +21,7 @@ import 'package:soar_initial_screens/SignInErrorScreen.dart';
 import 'package:soar_initial_screens/CheckEmailScreen.dart';
 import 'package:soar_initial_screens/AllSetPage.dart';
 import 'package:soar_initial_screens/ResetPassScreen.dart';
+import 'package:soar_initial_screens/NewHomePage.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() async {
@@ -62,6 +63,7 @@ class MainScreen extends StatelessWidget {
         CheckEmailScreen.id: (context) => CheckEmailScreen(),
         AllSetScreen.id: (context) => AllSetScreen(),
         ResetPassScreen.id: (context) => ResetPassScreen(),
+        HomePageScreen.id: (context) => HomePageScreen(),
       },
     );
   }
