@@ -38,8 +38,8 @@ class MainScreen extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      //locale: DevicePreview.locale(context),
+      //builder: DevicePreview.appBuilder,
       // the route that the app directs to when the app first launches
       initialRoute: SplashScreen.id,
       // the other routes for the application
