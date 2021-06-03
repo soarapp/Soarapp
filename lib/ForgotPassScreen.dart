@@ -39,7 +39,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                         alignment: Alignment(-.2, 0),
                         // background image
                         image:
-                            AssetImage('assets/images/splashReplicaNoLogo.png'),
+                            AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
                         fit: BoxFit.cover),
                   ),
                   alignment: Alignment.bottomCenter,

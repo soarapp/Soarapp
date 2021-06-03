@@ -33,7 +33,7 @@ class _CheckEmailScreenState extends State<CheckEmailScreen>
             decoration: const BoxDecoration(
               image: DecorationImage(
                   alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/splashReplicaNoLogo.png'),
+                  image: AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
                   fit: BoxFit.cover),
             ),
             alignment: Alignment.bottomCenter,
@@ -90,7 +90,7 @@ class RegisterCard extends StatelessWidget {
               // the image of the security lock
               Expanded(
                 flex: 12,
-                child: Image.asset('assets/images/mailIcon.png'),
+                child: Image.asset('assets/images/icons/mailIcon.png'),
               ),
               Expanded(
                 flex: 3,

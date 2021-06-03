@@ -46,7 +46,7 @@ class _CreateAccScreenState extends State<CreateAccScreen>
                       // the background image for the  sp
                       // screen
                       image:
-                          AssetImage('assets/images/createAccBackground.png'),
+                          AssetImage('assets/images/backgrounds/createAccBackground.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,

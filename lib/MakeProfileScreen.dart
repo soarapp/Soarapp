@@ -85,7 +85,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       alignment: Alignment(-.2, 0),
-                      image: AssetImage('assets/images/Group1.png'),
+                      image: AssetImage('assets/images/backgrounds/Group1.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,
@@ -180,7 +180,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                 CircleAvatar(
                     radius: 40.0,
                     backgroundImage: (status)
-                        ? AssetImage('assets/images/defaultCamPhoto.png')
+                        ? AssetImage('assets/images/other/defaultCamPhoto.png')
                         : FileImage((File(path)))
                     // backgroundColor: Colors.transparent,
                     ),
@@ -751,7 +751,7 @@ class FavSongBox extends StatelessWidget {
           Expanded(
             flex: 2,
             child: new Tab(
-              icon: new Image.asset("assets/images/heartIcon.png"),
+              icon: new Image.asset("assets/images/icons/heartIcon.png"),
             ),
           ),
         ],

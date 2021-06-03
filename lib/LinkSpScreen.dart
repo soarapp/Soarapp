@@ -27,7 +27,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
               alignment: Alignment(-.2, 0),
-              image: AssetImage('assets/images/linkSpBackground.png'),
+              image: AssetImage('assets/images/backgrounds/linkSpBackground.png'),
               fit: BoxFit.fill),
         ),
         alignment: Alignment.bottomCenter,
@@ -146,7 +146,7 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Image.asset(
-                                            'assets/images/otherSpotifyLogo.png'),
+                                            'assets/images/icons/otherSpotifyLogo.png'),
                                         SizedBox(
                                           width: MediaQuery.of(context)
                                                   .size

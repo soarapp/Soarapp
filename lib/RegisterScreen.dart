@@ -33,7 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen>
             decoration: const BoxDecoration(
               image: DecorationImage(
                   alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/splash.png'),
+                  image: AssetImage('assets/images/backgrounds/splash.png'),
                   fit: BoxFit.cover),
             ),
             alignment: Alignment.bottomCenter,
@@ -84,7 +84,7 @@ class RegisterCard extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
-              child: Image.asset('assets/images/synchLogo.png'),
+              child: Image.asset('assets/images/icons/synchLogo.png'),
             ),
             Expanded(
               flex: 2,
