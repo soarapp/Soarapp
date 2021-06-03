@@ -1,4 +1,6 @@
-// Sizing multiplier constants for various texts
+// Sizing multiplier constants for various text and widgets
+// Used to create a responsive layout that dynamically changes with
+// different device sizes
 
 // One Hundreth Scaler:
 // Use cases:
