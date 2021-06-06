@@ -37,7 +37,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
             decoration: new BoxDecoration(
               image: new DecorationImage(
                 image: new AssetImage(
-                  'assets/images/resourcesPageBackground.png',
+                  'assets/images/backgrounds/resourcesPageBackground.png',
                 ),
                 fit: BoxFit.cover,
               ),
@@ -240,7 +240,7 @@ Widget infoBox(BuildContext context, int informationNum) {
                           break;
                         case 2:
                           {
-                            return FAQPage();
+                            return MentalHealthPage();
                           }
                           break;
                         case 3:
@@ -316,7 +316,7 @@ Widget underlinedTextWithIconBox(BuildContext context, String icon,
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
         flex: 6,
-        child: Image.asset(icon, scale: 1.1),
+        child: Image.asset(icon, scale: 4.1),
       ),
       Expanded(
         flex: 2,

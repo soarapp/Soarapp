@@ -106,8 +106,8 @@ class _SongPlayingBar extends State<SongPlayingBar> {
               flex: 1,
               child: TextButton(
                   child: (aSongCurrentlyPlaying == true)
-                      ? Image.asset(pauseIcon)
-                      : Image.asset(playIcon, scale: .9),
+                      ? Image.asset(pauseIcon, scale: 4)
+                      : Image.asset(playIcon, scale: 3.1),
                   onPressed: () {
                     //pause or play song accordingly
                     setState(() {
@@ -151,7 +151,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
           Expanded(
             flex: 1,
             child: TextButton(
-              child: Image.asset(skipIcon),
+              child: Image.asset(skipIcon, scale: 4),
               onPressed: () {
 //at this point skip to the next song in the playlist
               },
@@ -183,8 +183,8 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 1)
-                    ? Image.asset(chatIconB, scale: 1.1)
-                    : Image.asset(chatIcon, scale: 1.1),
+                    ? Image.asset(chatIconB, scale: 4.1)
+                    : Image.asset(chatIcon, scale: 4.1),
                 onPressed: () {
                   //navigate to chat page
                 })),
@@ -193,8 +193,8 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 2)
-                    ? Image.asset(calendarIconB, scale: 1.1)
-                    : Image.asset(calendarIcon, scale: 1.1),
+                    ? Image.asset(calendarIconB, scale: 4.1)
+                    : Image.asset(calendarIcon, scale: 4.1),
                 onPressed: () {
                   //navigate to calendar page
                 })),
@@ -203,8 +203,8 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 3)
-                    ? Image.asset(musicIconB, scale: 1.1)
-                    : Image.asset(musicIcon, scale: 1.1),
+                    ? Image.asset(musicIconB, scale: 4.1)
+                    : Image.asset(musicIcon, scale: 4.1),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -219,8 +219,8 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 4)
-                    ? Image.asset(questionIconB, scale: 1.1)
-                    : Image.asset(questionIcon, scale: 1.1),
+                    ? Image.asset(questionIconB, scale: 4.1)
+                    : Image.asset(questionIcon, scale: 4.1),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -235,8 +235,8 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 5)
-                    ? Image.asset(userIconB, scale: 1.1)
-                    : Image.asset(userIcon, scale: 1.1),
+                    ? Image.asset(userIconB, scale: 4.1)
+                    : Image.asset(userIcon, scale: 4.1),
                 onPressed: () {
                   //navigate to profile page
                   // navigate back to login screen for testing
