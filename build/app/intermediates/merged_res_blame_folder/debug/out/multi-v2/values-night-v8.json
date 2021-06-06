@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\tarun\\OneDrive - The University of Texas at Austin\\Documents\\Projects\\soar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\tarun\\OneDrive - The University of Texas at Austin\\Documents\\Projects\\soarapp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\tarun\\OneDrive - The University of Texas at Austin\\Documents\\Projects\\soar\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\tarun\\OneDrive - The University of Texas at Austin\\Documents\\Projects\\soarapp\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
