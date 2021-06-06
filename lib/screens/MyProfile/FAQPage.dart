@@ -212,7 +212,7 @@ class QuestionList extends State<FAQDisplay> {
                                 ),
                               ),
                             ),
-                            Expanded(flex: 2, child: Image.asset(downArrow)),
+                            Expanded(flex: 2, child: Image.asset('assets/images/icons/downArrowIcon.png')),
                           ],
                         ),
                       ),

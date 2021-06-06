@@ -32,7 +32,7 @@ int musicTypeChosen=0;
 //homepage
 List<String> playlistNamesList=[playlistName1,playlistName2,playlistName3,playlistName4,playlistName5];
 List<String> playlistImagesList=['album1','album2','album1','album4','album2'];
-String imagePath='assets/images/songs';
+String imagePath='assets/images/songs/';
 String homeBackgroundImg="assets/images/backgrounds/homepageBackground.png";
 String myMusic='My Music';
 String currSong='Lies We Told';
@@ -97,7 +97,7 @@ String bluePlusIcon = 'assets/images/icons/bluePlusIcon.png';
 String bluePhoneIcon = 'assets/images/icons/bluePhoneIcon.png';
 String bluePaperclipIcon = 'assets/images/icons/bluePaperclipIcon.png';
 String upArrow = 'assets/images/icons/upArrowIcon.png';
-String downArrow = 'assets/images/downArrowIcon.png';
+String downArrow = 'assets/images/icons/downArrowIcon.png';
 
 //bottomiconbar
 String chatIcon = 'assets/images/icons/chatIconGrey.png';
