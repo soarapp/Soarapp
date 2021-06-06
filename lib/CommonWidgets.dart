@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class Background extends StatelessWidget {
-  Background(this.childWidget, this.backgroundImage);
+  Background(this.backgroundImage, this.childWidget);
 
-  final Widget childWidget;
   final AssetImage backgroundImage;
+  final Widget childWidget;
 
   @override
   Widget build(BuildContext context) {
