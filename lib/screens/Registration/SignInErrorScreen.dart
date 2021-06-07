@@ -1,21 +1,23 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/CreateAccScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
-// the screen where users will receive a message to check their email
-// for further updates after trying to retrieve their new password
+// a screen which will let the user know that there has ben an error in signing into
+// their account
 
-class CheckEmailScreen extends StatefulWidget {
-  static const String id = 'checkEmailScreen';
+class SignInErrorScreen extends StatefulWidget {
+  static const String id = 'signInError';
 
   @override
-  _CheckEmailScreenState createState() => _CheckEmailScreenState();
+  _SignInErrorScreenState createState() => _SignInErrorScreenState();
 }
 
-class _CheckEmailScreenState extends State<CheckEmailScreen>
+class _SignInErrorScreenState extends State<SignInErrorScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -67,14 +69,14 @@ class RegisterCard extends StatelessWidget {
             MediaQuery.of(context).size.width / 20,
             0,
             MediaQuery.of(context).size.width / 20,
-            MediaQuery.of(context).size.height / 5),
+            MediaQuery.of(context).size.height / 6),
         child: Container(
           // in a col, so vertical axis is already defined by expanded
           // need to define cross axis dimensions
           width: double.infinity,
           decoration: BoxDecoration(
             // creating a curved border radius for the card
-            borderRadius: BorderRadius.all(Radius.circular(MED_BORDER_RADIUS)),
+            borderRadius: BorderRadius.all(Radius.circular(LG_BORDER_RADIUS)),
             color: Colors.white,
           ),
           // adding vertical elements such as the the Synch Logo and buttons
@@ -88,15 +90,15 @@ class RegisterCard extends StatelessWidget {
               ),
               // the image of the security lock
               Expanded(
-                flex: 7,
-                child: Image.asset('assets/images/icons/mailIcon.png'),
+                flex: 12,
+                child: Image.asset('assets/images/icons/lock.png'),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Text(
-                  "Check Your Email",
+                  "Sign In Error",
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
+                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -106,18 +108,23 @@ class RegisterCard extends StatelessWidget {
                 child: SizedBox(),
               ),
               Expanded(
-                flex: 2,
+                flex: 5,
                 child: Container(
-                    width: MediaQuery.of(context).size.width / 1.2,
+                    width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
-                      "A link to reset your password has been sent to the email address you entered!",
+                      "A link has been sent to your email address. Please confirm your email before signing in!",
                       style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
+              // space between above paragraph text and clickable didn't get the email text below
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
               // the clickable didn't get the email text
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
@@ -126,7 +133,7 @@ class RegisterCard extends StatelessWidget {
                         fontFamily: 'OpenSans'),
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'Didn\'t get the link?',
+                          text: 'Didn\'t get the email?',
                           style: TextStyle(
                               color: Color(0xFF6AABEF),
                               fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,

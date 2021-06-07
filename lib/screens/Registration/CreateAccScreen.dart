@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/LinkSpScreen.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/LinkSpScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/main.dart';
-import 'CommonWidgets.dart';
+import '../../CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:soar_initial_screens/RegisterScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/RegisterScreen.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 
 // This is the create accounts screen where users can enter their email,
@@ -48,7 +48,7 @@ class _CreateAccScreenState extends State<CreateAccScreen>
                       // the background image for the  sp
                       // screen
                       image:
-                          AssetImage('assets/images/createAccBackground.png'),
+                          AssetImage('assets/images/backgrounds/createAccBackground.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,

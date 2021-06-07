@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
@@ -60,7 +61,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                         children: [
                           Expanded(flex: 30, child: SizedBox()),
                           Expanded(
-                            flex: 103,
+                            flex: 90,
                             child: Row(children: [
                               Expanded(
                                 flex: 13,
@@ -70,7 +71,9 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                                     color: black,
                                     fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 53,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            MED_TXT_SCALER,
                                   ),
                                 ),
                               ),
@@ -83,7 +86,8 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                                 child: Icon(
                                   Icons.more_horiz,
                                   color: Color(0xFF2B2B2B),
-                                  size: 36,
+                                  size: MediaQuery.of(context).size.height *
+                                      MED_TXT_SCALER,
                                 ),
                               ),
                             ]),
@@ -102,9 +106,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                             child: SizedBox(),
                           ),
                           Expanded(
-                              flex: 148,
-                              child: musicTherapyFAQBox(context)
-                          ),
+                              flex: 148, child: musicTherapyFAQBox(context)),
                           Expanded(
                             flex: 158,
                             child: SizedBox(),
@@ -119,10 +121,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                   ],
                 ),
               ),
-              Expanded(
-                  flex: 69,
-                  child: bottomIconBar(context, 4)
-              ),
+              Expanded(flex: 69, child: bottomIconBar(context, 4)),
             ],
           )
         ],
@@ -169,7 +168,8 @@ Widget informationBox(BuildContext context) {
                   style: TextStyle(
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'OpenSans',
-                    fontSize: 24,
+                    fontSize:
+                        MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -248,7 +248,8 @@ Widget infoBox(BuildContext context, int informationNum) {
                             return FAQPage();
                           }
                           break;
-                      };
+                      }
+                      ;
                     },
                   ),
                 );
@@ -259,7 +260,8 @@ Widget infoBox(BuildContext context, int informationNum) {
                 style: TextStyle(
                   color: Color(0xFFFFFFFF),
                   fontFamily: 'OpenSans',
-                  fontSize: 18,
+                  fontSize:
+                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -290,7 +292,9 @@ Widget musicTherapyFAQBox(BuildContext context) {
                     //                   <--- left side
                     color: Color(0xFF000000).withOpacity(.1),
                     width: .5,
-                  ),),),
+                  ),
+                ),
+              ),
               child: underlinedTextWithIconBox(
                   context, questionQuoteIcon, "FAQ"))),
       Expanded(
@@ -300,8 +304,8 @@ Widget musicTherapyFAQBox(BuildContext context) {
   );
 }
 
-Widget underlinedTextWithIconBox(BuildContext context, String icon,
-    String string) {
+Widget underlinedTextWithIconBox(
+    BuildContext context, String icon, String string) {
   return TextButton(
     onPressed: () {
       Navigator.of(context).push(
@@ -329,7 +333,7 @@ Widget underlinedTextWithIconBox(BuildContext context, String icon,
             style: TextStyle(
               color: Colors.black,
               fontFamily: 'OpenSans',
-              fontSize: 18,
+              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
               fontWeight: FontWeight.normal,
             ),
           )),

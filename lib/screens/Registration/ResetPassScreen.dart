@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/ForgotPassScreen.dart';
-import 'package:soar_initial_screens/LinkSpScreen.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/ForgotPassScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/LinkSpScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/themeData/ColorUtils.dart';
-import 'CommonWidgets.dart';
+import '../../CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // This is the create accounts screen where users can enter their email,

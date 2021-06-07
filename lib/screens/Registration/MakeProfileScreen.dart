@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/NewHomePage.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/HomePgLanding.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +39,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       alignment: Alignment(-.2, 0),
-                      image: AssetImage('assets/images/Group1.png'),
+                      image: AssetImage('assets/images/backgrounds/Group1.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,
@@ -134,7 +134,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                 Expanded(
                   flex: 1,
                   child: Image.asset(
-                    'assets/images/defaultCamPhoto.png',
+                    'assets/images/other/defaultCamPhoto.png',
                     width: MediaQuery.of(context).size.height *
                         HUNDRETH_SCALER *
                         20,
@@ -704,7 +704,7 @@ class FavSongBox extends StatelessWidget {
           Expanded(
             flex: 2,
             child: new Tab(
-              icon: new Image.asset("assets/images/heartIcon.png"),
+              icon: new Image.asset("assets/images/icons/heartIcon.png"),
             ),
           ),
         ],

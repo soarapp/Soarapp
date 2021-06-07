@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/RegisterScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/RegisterScreen.dart';
 
 // this is the splash screen for the application
 

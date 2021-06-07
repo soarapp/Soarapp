@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
@@ -95,7 +96,9 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                                 Text(
                                   '        FAQ',
                                   style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              SMALL_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -119,13 +122,13 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                       flex: 3,
                       child: Container(
                           decoration:
-                          BoxDecoration(color: Colors.white, boxShadow: [
+                              BoxDecoration(color: Colors.white, boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
                               offset:
-                              Offset(3, 0), // changes position of shadow
+                                  Offset(3, 0), // changes position of shadow
                             ),
                           ]),
                           child: bottomIconBar(context, 4)),
@@ -156,7 +159,7 @@ class QuestionList extends State<FAQDisplay> {
   int resourceNum;
 
   QuestionList(int resourceNum) {
-    this.resourceNum =resourceNum;
+    this.resourceNum = resourceNum;
   }
 
   @override
@@ -184,88 +187,85 @@ class QuestionList extends State<FAQDisplay> {
             alignment: Alignment.center,
             child: (resourceNum == index)
                 ? Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      (resourceNum == index)
-                          ? resourceNum = 45
-                          : resourceNum = index;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        flex: 9,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 5.0, bottom: 5.0),
-                          child: Text(
-                            mentalHealthResources[index],
-                            style: TextStyle(
-                              color: Color(0xFF6AABEF),
-                              fontFamily: 'OpenSans',
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            (resourceNum == index)
+                                ? resourceNum = 45
+                                : resourceNum = index;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 9,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 5.0, bottom: 5.0),
+                                child: Text(
+                                  mentalHealthResources[index],
+                                  style: TextStyle(
+                                    color: Color(0xFF6AABEF),
+                                    fontFamily: 'OpenSans',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(flex: 2, child: Image.asset(downArrow)),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        mentalHealthResourcesDetails[index],
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          fontSize: MediaQuery.of(context).size.height *
+                              SMALL_TXT_SCALER,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      )
+                    ],
+                  )
+                : InkWell(
+                    onTap: () {
+                      setState(() {
+                        resourceNum = index;
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          flex: 9,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                            child: Text(
+                              mentalHealthResources[index],
+                              style: TextStyle(
+                                color: Color(0xFF6AABEF),
+                                fontFamily: 'OpenSans',
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(flex: 2, child: Image.asset(downArrow)),
-                    ],
-                  ),
-                ),
-
-
-
-
-                Text(
-                  mentalHealthResourcesDetails[index],
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans',
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                  ),
-                )
-              ],
-            )
-
-
-
-                : InkWell(
-              onTap: () {
-                setState(() {
-                  resourceNum = index;
-                });
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 9,
-                    child: Padding(
-                      padding:
-                      const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                      child: Text(
-                        mentalHealthResources[index],
-                        style: TextStyle(
-                          color: Color(0xFF6AABEF),
-                          fontFamily: 'OpenSans',
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          flex: 2,
+                          child: Image.asset(upArrow),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Image.asset(upArrow),
-                  ),
-                ],
-              ),
-            ),
           );
         });
   }

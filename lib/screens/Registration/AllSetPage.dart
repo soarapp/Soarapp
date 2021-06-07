@@ -2,22 +2,24 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/CreateAccScreen.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
+import 'package:soar_initial_screens/screens/Registration/CreateAccScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
-// a screen which will let the user know that there has ben an error in signing into
-// their account
+// a screen which will confirm with the user that they are all set
+// and should have received an email with their new credentials
+// details
 
-class SignInErrorScreen extends StatefulWidget {
-  static const String id = 'signInError';
+class AllSetScreen extends StatefulWidget {
+  static const String id = 'allSet';
 
   @override
-  _SignInErrorScreenState createState() => _SignInErrorScreenState();
+  _AllSetScreenState createState() => _AllSetScreenState();
 }
 
-class _SignInErrorScreenState extends State<SignInErrorScreen>
+class _AllSetScreenState extends State<AllSetScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,8 @@ class _SignInErrorScreenState extends State<SignInErrorScreen>
             decoration: const BoxDecoration(
               image: DecorationImage(
                   alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
+                  image: AssetImage(
+                      'assets/images/backgrounds/splashReplicaNoLogo.png'),
                   fit: BoxFit.cover),
             ),
             alignment: Alignment.bottomCenter,
@@ -76,7 +79,7 @@ class RegisterCard extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             // creating a curved border radius for the card
-            borderRadius: BorderRadius.all(Radius.circular(LG_BORDER_RADIUS)),
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
             color: Colors.white,
           ),
           // adding vertical elements such as the the Synch Logo and buttons
@@ -91,14 +94,19 @@ class RegisterCard extends StatelessWidget {
               // the image of the security lock
               Expanded(
                 flex: 12,
-                child: Image.asset('assets/images/icons/lock.png'),
+                child: Image.asset('assets/images/icons/circleChecked.png'),
+              ),
+              Expanded(
+                child: SizedBox(),
+                flex: 1,
               ),
               Expanded(
                 flex: 3,
                 child: Text(
-                  "Sign In Error",
+                  "You\'re All Set!",
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                      fontSize: MediaQuery.of(context).size.height *
+                          SEM_MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -112,48 +120,46 @@ class RegisterCard extends StatelessWidget {
                 child: Container(
                     width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
-                      "A link has been sent to your email address. Please confirm your email before signing in!",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
+                      "Your password has been succesfully updated",
+                      style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: MediaQuery.of(context).size.height *
+                              TINY_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
-              // space between above paragraph text and clickable didn't get the email text below
+              // The SIGN IN Button
               Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              // the clickable didn't get the email text
-              Expanded(
-                flex: 3,
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                        color: Colors.black,
-                        fontFamily: 'OpenSans'),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Didn\'t get the email?',
-                          style: TextStyle(
-                              color: Color(0xFF6AABEF),
-                              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'OpenSans'),
-                          // Sign In text that is clickable
-                          // and will allow the user to go to the
-                          // Sign in Page
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return SignInScreen();
-                                  },
-                                ),
-                              );
-                            }),
-                    ],
-                  ),
+                flex: 5,
+                child: Column(
+                  children: [
+                    // spacing out the 'ENTER' button horizontally
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(),
+                          flex: 1,
+                        ),
+                        // The 'ENTER' button
+                        Expanded(
+                          flex: 5,
+                          child: ReusableButton(
+                            buttonText: "SIGN IN",
+                            textColor: Colors.white,
+                            textSize: MediaQuery.of(context).size.height *
+                                SMALL_TXT_SCALER,
+                            buttonHeight: MediaQuery.of(context).size.height *
+                                LG_BUTTON_SCALER,
+                            onPressed: () {},
+                          ),
+                        ),
+                        Expanded(
+                          child: SizedBox(),
+                          flex: 1,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               Expanded(

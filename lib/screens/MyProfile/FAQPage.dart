@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
@@ -47,13 +48,14 @@ class FAQPageSetup extends State<FAQPage> {
               child: Container(
                 //width: double.infinity,
                 decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset:
-                    Offset(1, 0), // changes position of shadow
-                  ),],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 3,
+                      offset: Offset(1, 0), // changes position of shadow
+                    ),
+                  ],
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40.0),
                       topLeft: Radius.circular(40.0)),
@@ -106,7 +108,9 @@ class FAQPageSetup extends State<FAQPage> {
                                 Text(
                                   '        FAQ',
                                   style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              SEM_MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -141,6 +145,7 @@ class FAQPageSetup extends State<FAQPage> {
   }
 }
 
+// ignore: must_be_immutable
 class FAQDisplay extends StatefulWidget {
   int questionNum;
 
@@ -189,8 +194,8 @@ class QuestionList extends State<FAQDisplay> {
                         onTap: () {
                           setState(() {
                             (questionNum == index)
-                            ? questionNum = 45
-                            : questionNum = index;
+                                ? questionNum = 45
+                                : questionNum = index;
                           });
                         },
                         child: Row(
@@ -206,13 +211,17 @@ class QuestionList extends State<FAQDisplay> {
                                   style: TextStyle(
                                     color: Color(0xFF6AABEF),
                                     fontFamily: 'OpenSans',
-                                    fontSize: 16,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                             ),
-                            Expanded(flex: 2, child: Image.asset(downArrow, scale: 4)),
+                            Expanded(
+                                flex: 2,
+                                child: Image.asset(downArrow, scale: 4)),
                           ],
                         ),
                       ),
@@ -221,7 +230,8 @@ class QuestionList extends State<FAQDisplay> {
                         style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'OpenSans',
-                          fontSize: 14,
+                          fontSize: MediaQuery.of(context).size.height *
+                              SMALL_TXT_SCALER,
                           fontWeight: FontWeight.normal,
                         ),
                       )
@@ -246,7 +256,8 @@ class QuestionList extends State<FAQDisplay> {
                               style: TextStyle(
                                 color: Color(0xFF6AABEF),
                                 fontFamily: 'OpenSans',
-                                fontSize: 16,
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

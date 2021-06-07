@@ -5,7 +5,7 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
 import 'package:soar_initial_screens/screens/MyProfile/FAQPage.dart';
 import 'package:soar_initial_screens/screens/MyProfile/ResourcesPage.dart';
-import 'package:soar_initial_screens/NewHomePage.dart';
+import 'package:soar_initial_screens/HomePgLanding.dart';
 
 //This file includes the widgets and methods:
 //PlaylistOrSongDisplay - a dynamic list view that displays the playlists of a user

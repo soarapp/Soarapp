@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
-import 'package:soar_initial_screens/CreateAccScreen.dart';
-import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/CreateAccScreen.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
