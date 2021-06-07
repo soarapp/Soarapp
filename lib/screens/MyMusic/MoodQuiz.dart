@@ -455,7 +455,7 @@ class _MoodBox extends State<MoodBox> {
 // Word Box widget used extensively in the Mood Quiz:
 
 // ignore: must_be_immutable
-class WordBox extends StatefulWidget {
+class WordBox extends StatelessWidget {
   WordBox({
     Key key,
     this.buttonNum,
@@ -503,7 +503,7 @@ class WordBox extends StatefulWidget {
                       fontFamily: 'OpenSans',
                       fontWeight: FontWeight.bold,
                       fontSize:
-                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     ),
                   ),
                 ),
@@ -522,15 +522,4 @@ class WordBox extends StatefulWidget {
       ),
     );
   }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
 }
-
-
-
-
-

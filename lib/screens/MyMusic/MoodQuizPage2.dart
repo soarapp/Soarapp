@@ -4,6 +4,8 @@ import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 
+import '../../CommonWidgets.dart';
+
 class MoodQuizPage2 extends StatefulWidget {
   @override
   MoodQuizPage2Setup createState() => MoodQuizPage2Setup();
@@ -84,7 +86,10 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                                     Text(
                                       'How would you \nlike to feel?',
                                       style: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER ,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              SEM_MED_TXT_SCALER,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'OpenSans'),
                                     ),
@@ -147,37 +152,23 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                               ),
                               Expanded(
                                 flex: 5,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      color: tealButton.withOpacity(.9),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 1,
-                                          blurRadius: 2,
-                                          offset: Offset(0, 2), // changes position of shadow
-                                        ),
-                                      ]),
-                                  child: TextButton(
-                                    onPressed: () => {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return MoodQuizPage3();
-                                          },
-                                        ),
+                                child: ReusableButton(
+                                  buttonColor: tealButton,
+                                  buttonHeight:
+                                      MediaQuery.of(context).size.height *
+                                          BUTTON_SCALER,
+                                  buttonText: "NEXT",
+                                  textSize: MediaQuery.of(context).size.height *
+                                      SMALL_TXT_SCALER,
+                                  onPressed: () => {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MoodQuizPage3();
+                                        },
                                       ),
-                                    },
-                                    child: Text(next,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: MediaQuery.of(context).size.height *
-                                                SMALL_TXT_SCALER,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'OpenSans')),
-                                  ),
+                                    ),
+                                  },
                                 ),
                               ),
                               Expanded(
@@ -186,25 +177,22 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                               ),
                             ],
                           ),
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
                           //four dots on bottom indicating which page we're on
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(),
-                                ),
-                                Expanded(
-                                  flex: 5,
-                                  child: Image.asset(fourDots2, scale: 1.1),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(),
-                                ),
-                              ],
+                            child: CircularProgressBar(
+                              currPage: 2,
+                              numPages: 4,
+                              accent: tealButton,
                             ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
                           ),
                         ],
                       ),
@@ -501,7 +489,7 @@ class WordBox extends StatelessWidget {
                       fontFamily: 'OpenSans',
                       fontWeight: FontWeight.bold,
                       fontSize:
-                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     ),
                   ),
                 ),
@@ -521,6 +509,3 @@ class WordBox extends StatelessWidget {
     );
   }
 }
-
-
-
