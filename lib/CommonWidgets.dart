@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/ColorUtils.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // this file will contain all of the common, reusable widgets for our application
 
@@ -105,6 +107,101 @@ class UsrInputTxtBox extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+
+// this widget can be used to create the button that is present on most screens
+// ignore: must_be_immutable
+class ReusableButton extends StatelessWidget {
+  ReusableButton({
+    Key key, this.buttonText, this.buttonHeight, this.textSize, this.textColor, this.onPressed,
+    this.buttonColor = LIGHT_BLUE,
+  }) : super(key: key);
+
+  String buttonText;
+  double buttonHeight;
+  double textSize;
+  Color textColor;
+  VoidCallback onPressed;
+  Color buttonColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: buttonHeight,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: buttonColor,
+          elevation: 10.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(BORDER_RADIUS),
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(
+          buttonText,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: textSize,
+        ),
+      ),
+    )
+    );
+  }
+}
+
+
+
+// generates a dynamic circular progress bar based on the number of pages and the current page the user is extension
+// ignore: must_be_immutable
+class CircularProgressBar extends StatelessWidget {
+  CircularProgressBar({
+    Key key, @required this.numPages, @required this.currPage,
+  }) : super(key: key);
+
+  int numPages;
+  int currPage;
+
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        for(int i = 1; i < numPages; i++)
+          Row(
+            children: [
+              ProgressBarButton(
+                colorData: i == currPage ?  Color(0xFF6AABEF) : Color(0xFFCDCDCD),
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .height * PROG_BAR_SCALER,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * PROG_BAR_SCALER,
+              ),
+              SizedBox(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .height * HUNDRETH_SCALER,
+              ),
+            ],
+          ),
+        ProgressBarButton(
+          colorData: numPages == currPage ?  Color(0xFF6AABEF) : Color(0xFFCDCDCD),
+          width: MediaQuery
+              .of(context)
+              .size
+              .height * PROG_BAR_SCALER,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height * PROG_BAR_SCALER,
+        ),
+      ],
     );
   }
 }

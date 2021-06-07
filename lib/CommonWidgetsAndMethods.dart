@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
@@ -64,19 +65,26 @@ class PlaylistOrSongList extends State<PlaylistOrSongDisplay> {
                 Padding(
                   padding: const EdgeInsets.only(right: 7),
                   child: Image.asset(
-                      imagePath + forwardSlash + _playlistOrSongImageList[index] + jpg,
+                      imagePath + _playlistOrSongImageList[index] + jpg,
                       scale: 17),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                SizedBox(
+                  width:
+                      MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+                ),
+                Flexible(
                   child: Text(
                     _playlistOrSongNameList[index],
                     style: TextStyle(
                       color: Color(0xFF2B2B2B),
                       fontFamily: 'OpenSans',
-                      fontSize: 18,
+                      fontSize:
+                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                       fontWeight: FontWeight.normal,
                     ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    softWrap: false,
                   ),
                 ),
               ],
@@ -127,7 +135,8 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
-                      fontSize: 18,
+                      fontSize:
+                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
@@ -139,7 +148,8 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
-                      fontSize: 14,
+                      fontSize:
+                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                       fontWeight: FontWeight.normal,
                     ),
                   ),

@@ -6,7 +6,7 @@ import 'package:soar_initial_screens/MakeProfileScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/themeData/ColorUtils.dart';
-import 'CommonWidgets.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 
 // This is the Link Spotify screen where users can link their Spotify accounts
 
@@ -27,7 +27,8 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
               alignment: Alignment(-.2, 0),
-              image: AssetImage('assets/images/backgrounds/linkSpBackground.png'),
+              image:
+                  AssetImage('assets/images/backgrounds/linkSpBackground.png'),
               fit: BoxFit.fill),
         ),
         alignment: Alignment.bottomCenter,
@@ -254,52 +255,20 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                       ),
                     ),
                     // The three dot progress indicator at the bottom of the screen
-                    CircularProgressBar(),
+                    CircularProgressBar(
+                      numPages: 3,
+                      currPage: 2,
+                    ),
+                    Expanded(
+                      child: SizedBox(),
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CircularProgressBar extends StatelessWidget {
-  const CircularProgressBar({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ProgressBarButton(
-            colorData: Color(0xFFCDCDCD),
-            width: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-            height: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-          ),
-          ProgressBarButton(
-            colorData: Color(0xFF6AABEF),
-            width: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-            height: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-          ),
-          ProgressBarButton(
-            colorData: Color(0xFFCDCDCD),
-            width: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-            height: MediaQuery.of(context).size.height * PROG_BAR_SCALER,
-          ),
-        ],
       ),
     );
   }

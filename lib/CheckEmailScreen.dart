@@ -1,10 +1,9 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // the screen where users will receive a message to check their email
 // for further updates after trying to retrieve their new password
@@ -75,7 +74,7 @@ class RegisterCard extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             // creating a curved border radius for the card
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            borderRadius: BorderRadius.all(Radius.circular(MED_BORDER_RADIUS)),
             color: Colors.white,
           ),
           // adding vertical elements such as the the Synch Logo and buttons
@@ -89,15 +88,15 @@ class RegisterCard extends StatelessWidget {
               ),
               // the image of the security lock
               Expanded(
-                flex: 12,
+                flex: 7,
                 child: Image.asset('assets/images/icons/mailIcon.png'),
               ),
               Expanded(
-                flex: 3,
+                flex: 1,
                 child: Text(
                   "Check Your Email",
                   style: TextStyle(
-                      fontSize: 25.sp,
+                      fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -107,30 +106,30 @@ class RegisterCard extends StatelessWidget {
                 child: SizedBox(),
               ),
               Expanded(
-                flex: 5,
+                flex: 2,
                 child: Container(
                     width: MediaQuery.of(context).size.width / 1.2,
                     child: Text(
                       "A link to reset your password has been sent to the email address you entered!",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: 12.sp),
+                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
               // the clickable didn't get the email text
               Expanded(
-                flex: 3,
+                flex: 2,
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
-                        fontSize: 12.sp,
+                        fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                         color: Colors.black,
                         fontFamily: 'OpenSans'),
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'Didn\'t get the email?',
+                          text: 'Didn\'t get the link?',
                           style: TextStyle(
                               color: Color(0xFF6AABEF),
-                              fontSize: 12.sp,
+                              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans'),
                           // Sign In text that is clickable
@@ -155,79 +154,6 @@ class RegisterCard extends StatelessWidget {
                 child: SizedBox(),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CreateAccButton extends StatelessWidget {
-  const CreateAccButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return CreateAccScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "NEW ACCOUNT",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.sp,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFA2BBD5),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LogInButton extends StatelessWidget {
-  const LogInButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return SignInScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "LOG IN",
-          style: TextStyle(color: Colors.white, fontSize: 16.sp),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFF80B7EF),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
           ),
         ),
       ),

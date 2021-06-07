@@ -24,6 +24,9 @@ final double TINY_TXT_SCALER = HUNDRETH_SCALER * 1.5;
 // 1. above text input fields
 final double SMALL_TXT_SCALER = HUNDRETH_SCALER * 2;
 
+// Semi-Med Text scaler:
+final double SEM_MED_TXT_SCALER = HUNDRETH_SCALER * 3.5;
+
 // Medium Text scaler:
 final double MED_TXT_SCALER = HUNDRETH_SCALER * 5;
 
@@ -40,4 +43,10 @@ final double BUTTON_SCALER = HUNDRETH_SCALER * 6;
 final double LG_BUTTON_SCALER = BUTTON_SCALER * 1.2;
 
 // Border Radius Size:
-final double BORDER_RADIUS = 8.0;
+final double BORDER_RADIUS = 7.0;
+
+// Larger Border Radius to make something more circular:
+final double MED_BORDER_RADIUS = 14.0;
+
+// Largest Border Radius to make something even more circular: 
+final double LG_BORDER_RADIUS = 20.0;

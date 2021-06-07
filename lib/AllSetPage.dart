@@ -2,9 +2,11 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // a screen which will confirm with the user that they are all set
 // and should have received an email with their new credentials
@@ -94,11 +96,15 @@ class RegisterCard extends StatelessWidget {
                 child: Image.asset('assets/images/icons/circleChecked.png'),
               ),
               Expanded(
+                child: SizedBox(),
+                flex: 1,
+              ),
+              Expanded(
                 flex: 3,
                 child: Text(
                   "You\'re All Set!",
                   style: TextStyle(
-                      fontSize: 30.sp,
+                      fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -113,16 +119,11 @@ class RegisterCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
                       "Your password has been succesfully updated",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: 12.sp),
+                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * TINY_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
-              // space between above paragraph text and clickable didn't get the email text below
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              // the clickable didn't get the email text
+              // The SIGN IN Button
               Expanded(
                 flex: 5,
                 child: Column(
@@ -137,29 +138,8 @@ class RegisterCard extends StatelessWidget {
                         // The 'ENTER' button
                         Expanded(
                           flex: 5,
-                          child: Container(
-                            height: 50.h,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                // Navigator.of(context).push(
-                                //   MaterialPageRoute(
-                                //     builder: (context) {
-                                //       return ConnectHRScreen();
-                                //     },
-                                //   ),
-                                // );
-                              },
-                              child: Text("SIGN IN",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'OpenSans')),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFF6AABEF)),
-                            ),
-                          ),
+                          child: ReusableButton(buttonText: "SIGN IN", textColor: Colors.white, textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                          buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER, onPressed: () {},),
                         ),
                         Expanded(
                           child: SizedBox(),
@@ -182,75 +162,3 @@ class RegisterCard extends StatelessWidget {
   }
 }
 
-class CreateAccButton extends StatelessWidget {
-  const CreateAccButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return CreateAccScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "NEW ACCOUNT",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.sp,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFA2BBD5),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LogInButton extends StatelessWidget {
-  const LogInButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return SignInScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "LOG IN",
-          style: TextStyle(color: Colors.white, fontSize: 16.sp),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFF80B7EF),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
-    );
-  }
-}

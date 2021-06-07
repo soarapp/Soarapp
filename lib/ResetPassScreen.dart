@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/ForgotPassScreen.dart';
 import 'package:soar_initial_screens/LinkSpScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/themeData/ColorUtils.dart';
 import 'CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,8 +49,8 @@ class _ResetPassScreenState extends State<ResetPassScreen>
                         alignment: Alignment(-.2, 0),
                         // the background image for the  sp
                         // screen
-                        image:
-                            AssetImage('assets/images/backgrounds/createAccBackground.png'),
+                        image: AssetImage(
+                            'assets/images/backgrounds/createAccBackground.png'),
                         fit: BoxFit.fill),
                   ),
                   alignment: Alignment.bottomCenter,
@@ -83,330 +84,254 @@ class CreateAcctCard extends StatefulWidget {
 
 class CreateAcctCardState extends State<CreateAcctCard>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-
-  @override
-  void initState() {
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-    Timer(Duration(milliseconds: 300), () => animationController.forward());
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
   Widget build(BuildContext context) {
     return Expanded(
       flex: 3,
-      child: SlideTransition(
-        position: Tween<Offset>(
-          begin: Offset(0, 0.20),
-          end: Offset.zero,
-        ).animate(animationController),
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(40.0),
-                topLeft: Radius.circular(40.0)),
-            color: Colors.white,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // The Create New Account Text and the back button
-              Expanded(
-                flex: 5,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      // InkWell allows the icon to be clickable thus making it a button
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              // use MediaQuery.of(context) to get the dimensions of the device
-                              0,
-                              0,
-                              0,
-                              MediaQuery.of(context).size.width / 9),
-                          // the back button
-                          child: Tab(
-                            icon: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // The Create New Account text at the top of the screen
-                    Expanded(
-                      flex: 5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // separating the 'create' text and the 'new account'
-                          Row(
-                            children: [
-                              Text(
-                                "Reset",
-                                style: TextStyle(
-                                    fontSize: 38.sp,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'OpenSans'),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "Password",
-                                style: TextStyle(
-                                    fontSize: 38.sp,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'OpenSans'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 8,
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              // This is the email text
-              Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    EmailText(),
-                    SizedBox(
-                      height: 10.w,
-                    ),
-                    Row(
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40.0), topLeft: Radius.circular(40.0)),
+          color: Colors.white,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // The Create New Account Text and the back button
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    // InkWell allows the icon to be clickable thus making it a button
+                    child: BackButton(),
+                  ),
+                  // The Create New Account text at the top of the screen
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
-                        // this is the text field for a user's email
-                        Expanded(
-                          flex: 5,
-                          child: UsrInputTxtBox(
-                            fieldColor: Color(0xFFe4f2fc),
-                            paddingLeft: 8.h,
-                            paddingBottom:
-                                MediaQuery.of(context).size.width / 50,
-                            fieldHeight: MediaQuery.of(context).size.width / 10,
-                            borderRadius: 10.0,
-                            hintTextColor: Colors.black,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
-                        ),
-                        // this is the password text
-                        Expanded(
-                            flex: 11,
-                            child: Text(
-                              "Confirm New Password",
+                        // separating the 'create' text and the 'new account'
+                        Row(
+                          children: [
+                            Text(
+                              "Reset \nPassword",
                               style: TextStyle(
-                                  fontSize: 18.sp, fontWeight: FontWeight.bold),
-                            )),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.w,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
-                        Expanded(
-                          flex: 5,
-                          // the text field for the password
-                          child: UsrInputTxtBox(
-                            fieldColor: Color(0xFFe4f2fc),
-                            paddingLeft: 8.h,
-                            paddingBottom:
-                                MediaQuery.of(context).size.width / 50,
-                            fieldHeight: MediaQuery.of(context).size.width / 10,
-                            borderRadius: 10.0,
-                            hintTextColor: Colors.black,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      LARGE_TXT_SCALER,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 150,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 8,
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
+            ),
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+            // This is the email text
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  EmailText(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height *
+                        HUNDRETH_SCALER *
+                        2,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      // this is the text field for a user's email
+                      Expanded(
+                        flex: 5,
+                        child: UsrInputTxtBox(
+                          fieldColor: Color(0xFFe4f2fc),
+                          paddingLeft: MediaQuery.of(context).size.height *
+                              HUNDRETH_SCALER,
+                          paddingBottom: MediaQuery.of(context).size.height *
+                              HUNDRETH_SCALER,
+                          fieldHeight: MediaQuery.of(context).size.height *
+                              FIELD_SIZE_SCALER,
+                          borderRadius: 10.0,
+                          hintTextColor: Colors.black,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              // this is the expanded container that has the 'NEXT STEP' button
-              Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(),
-                          flex: 1,
+            ),
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(),
+                      ),
+                      // this is the password text
+                      Expanded(
+                          flex: 11,
+                          child: Text(
+                            "Confirm New Password",
+                            style: TextStyle(
+                                fontSize:  MediaQuery.of(context).size.height * SMALL_TXT_SCALER, fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        // the text field for the password
+                        child: UsrInputTxtBox(
+                          fieldColor: Color(0xFFe4f2fc),
+                          paddingLeft: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                          paddingBottom: MediaQuery.of(context).size.width / 50,
+                          fieldHeight: MediaQuery.of(context).size.width / 10,
+                          borderRadius: 10.0,
+                          hintTextColor: Colors.black,
                         ),
-                        Expanded(
-                          flex: 5,
-                          child: NextStepButton(),
-                        ),
-                        Expanded(
-                          child: SizedBox(),
-                          flex: 1,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: SizedBox(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 150,
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
+            ),
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+            // this is the expanded container that has the 'NEXT STEP' button
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: ReusableButton(
+                          buttonHeight: MediaQuery.of(context).size.height *
+                              LG_BUTTON_SCALER,
+                          buttonText: "RESET PASSWORD",
+                          textSize: MediaQuery.of(context).size.height *
+                              SMALL_TXT_SCALER,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return LinkSpotifyScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class CircularProgressBar extends StatelessWidget {
-  const CircularProgressBar({
+class BackButton extends StatelessWidget {
+  const BackButton({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ProgressBarButton(
-            colorData: Color(0xFF6AABEF),
-            width: 13.w,
-            height: 13.h,
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+            // use MediaQuery.of(context) to get the dimensions of the device
+            0,
+            0,
+            0,
+            MediaQuery.of(context).size.width / 9),
+        // the back button
+        child: Tab(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
           ),
-          SizedBox(
-            width: 5.w,
-          ),
-          ProgressBarButton(
-            colorData: Color(0xFFCDCDCD),
-            width: 10.w,
-            height: 10.h,
-          ),
-          SizedBox(
-            width: 5.w,
-          ),
-          ProgressBarButton(
-            colorData: Color(0xFFCDCDCD),
-            width: 10.w,
-            height: 10.h,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class NextStepButton extends StatelessWidget {
-  const NextStepButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return LinkSpotifyScreen();
-              },
-            ),
-          );
-        },
-        // this is the next step button
-        child: Text("RESET PASSWORD",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans')),
-        style: ElevatedButton.styleFrom(primary: Color(0xFF6AABEF)),
+        ),
       ),
     );
   }
@@ -429,7 +354,7 @@ class EmailText extends StatelessWidget {
             flex: 5,
             child: Text(
               "New Password",
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, fontWeight: FontWeight.bold),
             )),
         Expanded(
           flex: 5,

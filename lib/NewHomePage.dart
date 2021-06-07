@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
@@ -42,7 +43,7 @@ class HomePageSetup extends State<HomePageScreen> {
           //everything on top of background
           Column(
             children: [
-              Expanded(flex: 35, child: SizedBox()),
+              Expanded(flex: 50, child: SizedBox()),
               //my music bar
               Expanded(
                 flex: 65,
@@ -58,7 +59,7 @@ class HomePageSetup extends State<HomePageScreen> {
                           color: Color(0xFF2B2B2B),
                           fontFamily: 'OpenSans',
                           fontWeight: FontWeight.bold,
-                          fontSize: 36,
+                          fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                         ),
                       ),
                     ),
@@ -67,7 +68,7 @@ class HomePageSetup extends State<HomePageScreen> {
                       child: Icon(
                         Icons.more_horiz,
                         color: Color(0xFF2B2B2B),
-                        size: 36,
+                        size: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                       ),
                     ),
                   ],
@@ -90,7 +91,7 @@ class HomePageSetup extends State<HomePageScreen> {
               Expanded(
                 flex: 337,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 60, right: 60),
+                  padding: EdgeInsets.only(left: 60, right: 60),
                   child: playlistBlock(context),
                 ),
               ),
@@ -127,7 +128,7 @@ Widget playlistBlock(BuildContext context) {
   return Container(
     decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: new BorderRadius.circular(20.0),
+        borderRadius: new BorderRadius.circular(LG_BORDER_RADIUS),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -161,7 +162,7 @@ Widget playlistBlock(BuildContext context) {
                         style: TextStyle(
                           color: Color(0xFF000000),
                           fontFamily: 'OpenSans',
-                          fontSize: 24,
+                          fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -181,7 +182,7 @@ Widget playlistBlock(BuildContext context) {
                         child: Icon(
                           Icons.control_point_rounded,
                           color: Colors.black,
-                          size: 36,
+                          size: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                         ),
                       ),
                     ),
@@ -225,7 +226,7 @@ class _FavSongBar extends State<FavSongBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 55.0, right: 55),
+      padding: EdgeInsets.only(left: 55.0, right: 55),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Expanded(
           flex: 199,
@@ -269,7 +270,7 @@ class _FavSongBar extends State<FavSongBar> {
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: 14,
+                    fontSize: MediaQuery.of(context).size.height * TINY_TXT_SCALER * 1.2,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -281,7 +282,7 @@ class _FavSongBar extends State<FavSongBar> {
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: 24,
+                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     fontWeight: FontWeight.normal,
                   ),
                   scrollAxis: Axis.horizontal,
@@ -300,7 +301,7 @@ class _FavSongBar extends State<FavSongBar> {
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: 14,
+                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -321,7 +322,7 @@ class _FavSongBar extends State<FavSongBar> {
                             flex: 5,
                             child: TextButton(
                               child: (favSongCurrentlyPlaying == true)
-                                  ? Image.asset(playIcon, scale: .3)
+                                  ? Image.asset(playIcon, scale: 1)
                                   : Image.asset(pauseIcon, scale: 1),
                               onPressed: () {
                                 //spotifyPlayer.play();

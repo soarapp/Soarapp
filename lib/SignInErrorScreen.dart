@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // a screen which will let the user know that there has ben an error in signing into
 // their account
@@ -75,7 +76,7 @@ class RegisterCard extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             // creating a curved border radius for the card
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            borderRadius: BorderRadius.all(Radius.circular(LG_BORDER_RADIUS)),
             color: Colors.white,
           ),
           // adding vertical elements such as the the Synch Logo and buttons
@@ -97,7 +98,7 @@ class RegisterCard extends StatelessWidget {
                 child: Text(
                   "Sign In Error",
                   style: TextStyle(
-                      fontSize: 30.sp,
+                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -112,7 +113,7 @@ class RegisterCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
                       "A link has been sent to your email address. Please confirm your email before signing in!",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: 12.sp),
+                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
@@ -127,7 +128,7 @@ class RegisterCard extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
-                        fontSize: 12.sp,
+                        fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                         color: Colors.black,
                         fontFamily: 'OpenSans'),
                     children: <TextSpan>[
@@ -135,7 +136,7 @@ class RegisterCard extends StatelessWidget {
                           text: 'Didn\'t get the email?',
                           style: TextStyle(
                               color: Color(0xFF6AABEF),
-                              fontSize: 12.sp,
+                              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans'),
                           // Sign In text that is clickable
@@ -160,79 +161,6 @@ class RegisterCard extends StatelessWidget {
                 child: SizedBox(),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CreateAccButton extends StatelessWidget {
-  const CreateAccButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return CreateAccScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "NEW ACCOUNT",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.sp,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFA2BBD5),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LogInButton extends StatelessWidget {
-  const LogInButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return SignInScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "LOG IN",
-          style: TextStyle(color: Colors.white, fontSize: 16.sp),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFF80B7EF),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
           ),
         ),
       ),

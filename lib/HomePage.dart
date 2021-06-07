@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
@@ -14,9 +15,10 @@ import 'package:marquee/marquee.dart';
 
 class HomePageScreen extends StatefulWidget {
   static const String id = 'homepage';
-  SpotifyUtils spotifyPlayer;
-
-  HomePageScreen({this.spotifyPlayer});
+  // commented  the lines below because they were causing an error:
+  // SpotifyUtils spotifyPlayer;
+  //
+  // HomePageScreen({this.spotifyPlayer});
 
   @override
   HomePageSetup createState() => HomePageSetup();
@@ -58,7 +60,7 @@ class HomePageSetup extends State<HomePageScreen> {
                           color: Color(0xFF2B2B2B),
                           fontFamily: 'OpenSans',
                           fontWeight: FontWeight.bold,
-                          fontSize: 36,
+                          fontSize: MediaQuery.of(context).size.height * TINY_TXT_SCALER,
                         ),
                       ),
                     ),

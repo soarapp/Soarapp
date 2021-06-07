@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/main.dart';
 
@@ -67,6 +68,9 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                             SizedBox(
+                               height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+                             ),
                               // the back button and the Forgot Password text
                               Expanded(
                                 flex: 1,
@@ -77,6 +81,9 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                     ForgotPswdText(),
                                   ],
                                 ),
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
                               ),
                               // The email text, user input for email, and text underneath
                               Expanded(
@@ -107,7 +114,24 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                                 flex: 1,
                                 child: Column(
                                   children: [
-                                    EnterButton(),
+                                Row(
+                                children: [
+                                Expanded(
+                                child: SizedBox(),
+                                flex: 1,
+                              ),
+                              // The 'ENTER' button
+                              Expanded(
+                                flex: 5,
+                                child: ReusableButton(buttonHeight: MediaQuery.of(context).size.height * BUTTON_SCALER, buttonText: "ENTER",
+                                  textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, onPressed: () {}),
+                              ),
+                              Expanded(
+                                child: SizedBox(),
+                                flex: 1,
+                              ),
+                            ]
+                          ),
                                   ],
                                 ),
                               ),
@@ -131,55 +155,6 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
   }
 }
 
-// The blue enter button at the bottom of the screen
-class EnterButton extends StatelessWidget {
-  const EnterButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: SizedBox(),
-          flex: 1,
-        ),
-        // The 'ENTER' button
-        Expanded(
-          flex: 5,
-          child: Container(
-            height: MediaQuery.of(context).size.height * BUTTON_SCALER,
-            child: ElevatedButton(
-              onPressed: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return ConnectHRScreen();
-                //     },
-                //   ),
-                // );
-              },
-              child: Text("ENTER",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize:
-                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans')),
-              style: ElevatedButton.styleFrom(primary: Color(0xFF6AABEF)),
-            ),
-          ),
-        ),
-        Expanded(
-          child: SizedBox(),
-          flex: 1,
-        ),
-      ],
-    );
-  }
-}
 
 // The additional email information underneath the email textbox
 class EmailAddlInfo extends StatelessWidget {
@@ -312,7 +287,7 @@ class BackButton extends StatelessWidget {
         },
         child: Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0,
-              MediaQuery.of(context).size.height * HUNDRETH_SCALER * 6),
+              MediaQuery.of(context).size.height * HUNDRETH_SCALER * 9),
           // back button
           child: Tab(
             icon: Icon(

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:soar_initial_screens/CreateAccScreen.dart';
 import 'package:soar_initial_screens/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen>
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    // getter method for screenHeight
     return ScreenUtilInit(
       designSize: Size(screenWidth, screenHeight),
       builder: () => MaterialApp(
@@ -58,7 +60,6 @@ class _RegisterScreenState extends State<RegisterScreen>
 
 class RegisterCard extends StatelessWidget {
   const RegisterCard({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -111,7 +112,17 @@ class RegisterCard extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 3,
-                    child: LogInButton(),
+                    child: ReusableButton(buttonText: "LOG IN", buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
+                      textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, textColor: Colors.white,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return CreateAccScreen();
+                            },
+                          ),
+                        );
+                      },),
                   ),
                   Expanded(
                     flex: 2,
@@ -137,7 +148,17 @@ class RegisterCard extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 3,
-                    child: CreateAccButton(),
+                    child: ReusableButton(buttonText: "NEW ACCOUNT", buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
+                      textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, textColor: Colors.white,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CreateAccScreen();
+                          },
+                        ),
+                      );
+                    }, buttonColor: Color(0xFFA2BBD5),),
                   ),
                   Expanded(
                     flex: 2,
@@ -164,82 +185,6 @@ class RegisterCard extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CreateAccButton extends StatelessWidget {
-  const CreateAccButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return CreateAccScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "NEW ACCOUNT",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFA2BBD5),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LogInButton extends StatelessWidget {
-  const LogInButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return SignInScreen();
-              },
-            ),
-          );
-        },
-        child: Text(
-          "LOG IN",
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFF80B7EF),
-          elevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          ),
         ),
       ),
     );
