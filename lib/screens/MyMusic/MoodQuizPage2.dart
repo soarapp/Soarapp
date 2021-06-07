@@ -197,7 +197,7 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                                 ),
                                 Expanded(
                                   flex: 5,
-                                  child: Image.asset(fourDots2, scale: 1.1),
+                                  child: Image.asset(fourDots2, scale: 4.1),
                                 ),
                                 Expanded(
                                   flex: 2,

@@ -391,7 +391,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                                             (musicType == 1)
                                                                 ? whiteQuestionIcon
                                                                 : blackQuestionIcon,
-                                                            scale: 1)),
+                                                            scale: 4)),
                                                   ),
                                                 ],
                                               ),
@@ -540,7 +540,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                                             (musicType == 2)
                                                                 ? whiteQuestionIcon
                                                                 : blackQuestionIcon,
-                                                            scale: 1)),
+                                                            scale: 4)),
                                                   ),
                                                 ],
                                               ),
@@ -654,7 +654,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                 ),
                                 Expanded(
                                   flex: 5,
-                                  child: Image.asset(fourDots3, scale: 1.1),
+                                  child: Image.asset(fourDots3, scale: 4.1),
                                 ),
                                 Expanded(
                                   flex: 2,

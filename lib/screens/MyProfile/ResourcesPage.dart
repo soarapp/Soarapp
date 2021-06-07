@@ -235,12 +235,12 @@ Widget infoBox(BuildContext context, int informationNum) {
                       switch (informationNum) {
                         case 1:
                           {
-                            return MentalHealthPage();
+                            return MentalHealthPage('mental health');
                           }
                           break;
                         case 2:
                           {
-                            return MentalHealthPage();
+                            return MentalHealthPage('cancer');
                           }
                           break;
                         case 3:
@@ -316,7 +316,7 @@ Widget underlinedTextWithIconBox(BuildContext context, String icon,
       Expanded(flex: 1, child: SizedBox()),
       Expanded(
         flex: 6,
-        child: Image.asset(icon, scale: 4.1),
+        child: Image.asset(icon, scale: 5.1),
       ),
       Expanded(
         flex: 2,
