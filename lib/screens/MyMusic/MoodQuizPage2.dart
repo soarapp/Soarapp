@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
@@ -81,20 +82,9 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                                 Row(
                                   children: [
                                     Text(
-                                      'How would you',
+                                      'How would you \nlike to feel?',
                                       style: TextStyle(
-                                          fontSize: 26,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'OpenSans'),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'like to feel?',
-                                      style: TextStyle(
-                                          fontSize: 26,
+                                          fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER ,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'OpenSans'),
                                     ),
@@ -134,7 +124,8 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                             color: tealButton,
                             fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold,
-                            fontSize: 13,
+                            fontSize: MediaQuery.of(context).size.height *
+                                SMALL_TXT_SCALER,
                           ),
                         ),
                       ),
@@ -182,7 +173,8 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 18,
+                                            fontSize: MediaQuery.of(context).size.height *
+                                                SMALL_TXT_SCALER,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'OpenSans')),
                                   ),
@@ -260,7 +252,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[0] = 1;
                       })
                     },
-                    child: WordBox(0, moodSoonButton0),
+                    child: WordBox(buttonNum: 0, word: moodSoonButton0),
                   ),
                 ),
                 Expanded(
@@ -284,7 +276,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[1] = 1;
                       })
                     },
-                    child: WordBox(1, moodSoonButton1),
+                    child: WordBox(buttonNum: 1, word: moodSoonButton1),
                   ),
                 ),
                 Expanded(
@@ -308,7 +300,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[2] = 1;
                       })
                     },
-                    child: WordBox(2, moodSoonButton2),
+                    child: WordBox(buttonNum: 2, word: moodSoonButton2),
                   ),
                 ),
                 Expanded(
@@ -333,7 +325,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[3] = 1;
                       })
                     },
-                    child: WordBox(3, moodSoonButton3),
+                    child: WordBox(buttonNum: 3, word: moodSoonButton3),
                   ),
                 ),
                 Expanded(
@@ -366,7 +358,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[4] = 1;
                       })
                     },
-                    child: WordBox(4, moodSoonButton4),
+                    child: WordBox(buttonNum: 4, word: moodSoonButton4),
                   ),
                 ),
                 Expanded(
@@ -390,7 +382,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[5] = 1;
                       })
                     },
-                    child: WordBox(5, moodSoonButton5),
+                    child: WordBox(buttonNum: 5, word: moodSoonButton5),
                   ),
                 ),
                 Expanded(
@@ -414,7 +406,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[6] = 1;
                       })
                     },
-                    child: WordBox(6, moodSoonButton6),
+                    child: WordBox(buttonNum: 6, word: moodSoonButton6),
                   ),
                 ),
                 Expanded(
@@ -438,7 +430,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[7] = 1;
                       })
                     },
-                    child: WordBox(7, moodSoonButton7),
+                    child: WordBox(buttonNum: 7, word: moodSoonButton7),
                   ),
                 ),
                 Expanded(
@@ -458,59 +450,77 @@ class _MoodBox extends State<MoodBox> {
   }
 }
 
-//widget for the individual buttons for each mood
-Widget WordBox(int buttonNum, String word) {
-  return Container(
-    decoration: BoxDecoration(
-        borderRadius: new BorderRadius.circular(10.0),
-        color: (moodDesiredButtonArray[buttonNum] == 0) ? greyButton : tealButton,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ]),
-    child: Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        ),
-        Expanded(
-          ////
-          flex: 3,
-          child: Row(children: [
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
+// Word Box widget used extensively in the Mood Quiz:
+
+// ignore: must_be_immutable
+class WordBox extends StatelessWidget {
+  WordBox({
+    Key key,
+    this.buttonNum,
+    this.word,
+  }) : super(key: key);
+
+  int buttonNum;
+  String word;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: new BorderRadius.circular(10.0),
+          color: (moodNowButtonArray[buttonNum] == 0) ? greyButton : tealButton,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-            Expanded(
-              flex: 4,
-              child: Center(
-                child: Text(
-                  word,
-                  style: TextStyle(
-                    color: Color(0xFF2B2B2B),
-                    fontFamily: 'OpenSans',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+          ]),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          ),
+          Expanded(
+            ////
+            flex: 3,
+            child: Row(children: [
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+              Expanded(
+                flex: 4,
+                child: Center(
+                  child: Text(
+                    word,
+                    style: TextStyle(
+                      color: Color(0xFF2B2B2B),
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.bold,
+                      fontSize:
+                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
-            ),
-          ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        )
-      ],
-    ),
-  );
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+            ]),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          )
+        ],
+      ),
+    );
+  }
 }
+
+
+

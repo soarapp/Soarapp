@@ -36,7 +36,8 @@ class _AllSetScreenState extends State<AllSetScreen>
             decoration: const BoxDecoration(
               image: DecorationImage(
                   alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
+                  image: AssetImage(
+                      'assets/images/backgrounds/splashReplicaNoLogo.png'),
                   fit: BoxFit.cover),
             ),
             alignment: Alignment.bottomCenter,
@@ -104,7 +105,8 @@ class RegisterCard extends StatelessWidget {
                 child: Text(
                   "You\'re All Set!",
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
+                      fontSize: MediaQuery.of(context).size.height *
+                          SEM_MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -119,7 +121,10 @@ class RegisterCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
                       "Your password has been succesfully updated",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * TINY_TXT_SCALER),
+                      style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: MediaQuery.of(context).size.height *
+                              TINY_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
@@ -138,8 +143,15 @@ class RegisterCard extends StatelessWidget {
                         // The 'ENTER' button
                         Expanded(
                           flex: 5,
-                          child: ReusableButton(buttonText: "SIGN IN", textColor: Colors.white, textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                          buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER, onPressed: () {},),
+                          child: ReusableButton(
+                            buttonText: "SIGN IN",
+                            textColor: Colors.white,
+                            textSize: MediaQuery.of(context).size.height *
+                                SMALL_TXT_SCALER,
+                            buttonHeight: MediaQuery.of(context).size.height *
+                                LG_BUTTON_SCALER,
+                            onPressed: () {},
+                          ),
                         ),
                         Expanded(
                           child: SizedBox(),
@@ -161,4 +173,3 @@ class RegisterCard extends StatelessWidget {
     );
   }
 }
-

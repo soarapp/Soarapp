@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage2.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 
 // import 'package:soar/models/Util/StringUtils.dart';
 // import 'package:soar/models/Util/ColorUtils.dart';
@@ -98,18 +100,10 @@ class MoodQuizSetup extends State<MoodQuiz> {
                                     Text(
                                       feelNow,
                                       style: TextStyle(
-                                          fontSize: 26,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'OpenSans'),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      rn,
-                                      style: TextStyle(
-                                          fontSize: 26,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              SEM_MED_TXT_SCALER,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'OpenSans'),
                                     ),
@@ -149,7 +143,8 @@ class MoodQuizSetup extends State<MoodQuiz> {
                             color: tealButton,
                             fontFamily: 'OpenSans',
                             fontWeight: FontWeight.bold,
-                            fontSize: 13,
+                            fontSize: MediaQuery.of(context).size.height *
+                                SMALL_TXT_SCALER,
                           ),
                         ),
                       ),
@@ -171,38 +166,23 @@ class MoodQuizSetup extends State<MoodQuiz> {
                               ),
                               Expanded(
                                 flex: 5,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          new BorderRadius.circular(10.0),
-                                      color: tealButton.withOpacity(.9),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 1,
-                                          blurRadius: 2,
-                                          offset: Offset(0,
-                                              2), // changes position of shadow
-                                        ),
-                                      ]),
-                                  child: TextButton(
-                                    onPressed: () => {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return MoodQuizPage2();
-                                          },
-                                        ),
+                                child: ReusableButton(
+                                  buttonColor: tealButton,
+                                  buttonHeight:
+                                      MediaQuery.of(context).size.height *
+                                          BUTTON_SCALER,
+                                  buttonText: "NEXT",
+                                  textSize: MediaQuery.of(context).size.height *
+                                      SMALL_TXT_SCALER,
+                                  onPressed: () => {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MoodQuizPage2();
+                                        },
                                       ),
-                                    },
-                                    child: Text(next,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'OpenSans')),
-                                  ),
+                                    ),
+                                  },
                                 ),
                               ),
                               Expanded(
@@ -218,21 +198,10 @@ class MoodQuizSetup extends State<MoodQuiz> {
                           //four dots on bottom indicating which page we're on
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(),
-                                ),
-                                Expanded(
-                                  flex: 5,
-                                  child: Image.asset(fourDots, scale: 1.1),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: SizedBox(),
-                                ),
-                              ],
+                            child: CircularProgressBar(
+                              currPage: 1,
+                              numPages: 4,
+                              accent: tealButton,
                             ),
                           ),
                           Expanded(
@@ -285,7 +254,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[0] = 1;
                       })
                     },
-                    child: WordBox(0, moodNowButton0),
+                    child: WordBox(buttonNum: 0, word: moodNowButton0),
                   ),
                 ),
                 Expanded(
@@ -309,7 +278,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[1] = 1;
                       })
                     },
-                    child: WordBox(1, moodNowButton1),
+                    child: WordBox(buttonNum: 1, word: moodNowButton1),
                   ),
                 ),
                 Expanded(
@@ -333,7 +302,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[2] = 1;
                       })
                     },
-                    child: WordBox(2, moodNowButton2),
+                    child: WordBox(buttonNum: 2, word: moodNowButton2),
                   ),
                 ),
                 Expanded(
@@ -358,7 +327,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[3] = 1;
                       })
                     },
-                    child: WordBox(3, moodNowButton3),
+                    child: WordBox(buttonNum: 3, word: moodNowButton3),
                   ),
                 ),
                 Expanded(
@@ -391,7 +360,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[4] = 1;
                       })
                     },
-                    child: WordBox(4, moodNowButton4),
+                    child: WordBox(buttonNum: 4, word: moodNowButton4),
                   ),
                 ),
                 Expanded(
@@ -415,7 +384,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[5] = 1;
                       })
                     },
-                    child: WordBox(5, moodNowButton5),
+                    child: WordBox(buttonNum: 5, word: moodNowButton5),
                   ),
                 ),
                 Expanded(
@@ -439,7 +408,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[6] = 1;
                       })
                     },
-                    child: WordBox(6, moodNowButton6),
+                    child: WordBox(buttonNum: 6, word: moodNowButton6),
                   ),
                 ),
                 Expanded(
@@ -463,7 +432,7 @@ class _MoodBox extends State<MoodBox> {
                         moodNowButtonArray[7] = 1;
                       })
                     },
-                    child: WordBox(7, moodNowButton7),
+                    child: WordBox(buttonNum: 7, word: moodNowButton7),
                   ),
                 ),
                 Expanded(
@@ -483,59 +452,85 @@ class _MoodBox extends State<MoodBox> {
   }
 }
 
-//widget for the individual buttons for each mood
-Widget WordBox(int buttonNum, String word) {
-  return Container(
-    decoration: BoxDecoration(
-        borderRadius: new BorderRadius.circular(10.0),
-        color: (moodNowButtonArray[buttonNum] == 0) ? greyButton : tealButton,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ]),
-    child: Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        ),
-        Expanded(
-          ////
-          flex: 3,
-          child: Row(children: [
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
+// Word Box widget used extensively in the Mood Quiz:
+
+// ignore: must_be_immutable
+class WordBox extends StatefulWidget {
+  WordBox({
+    Key key,
+    this.buttonNum,
+    this.word,
+  }) : super(key: key);
+
+  int buttonNum;
+  String word;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: new BorderRadius.circular(10.0),
+          color: (moodNowButtonArray[buttonNum] == 0) ? greyButton : tealButton,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-            Expanded(
-              flex: 4,
-              child: Center(
-                child: Text(
-                  word,
-                  style: TextStyle(
-                    color: Color(0xFF2B2B2B),
-                    fontFamily: 'OpenSans',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+          ]),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          ),
+          Expanded(
+            ////
+            flex: 3,
+            child: Row(children: [
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+              Expanded(
+                flex: 4,
+                child: Center(
+                  child: Text(
+                    word,
+                    style: TextStyle(
+                      color: Color(0xFF2B2B2B),
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.bold,
+                      fontSize:
+                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
-            ),
-          ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: SizedBox(),
-        )
-      ],
-    ),
-  );
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+            ]),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
+  }
 }
+
+
+
+
+

@@ -23,138 +23,146 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
       builder: () => Scaffold(
-          // overarching container for the entire screen
-          body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.height,
-              ),
-              // sizes the container child to the intrinsic height of the screen
-              child: IntrinsicHeight(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        alignment: Alignment(-.2, 0),
-                        // background image
-                        image:
-                            AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
-                        fit: BoxFit.cover),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    children: [
-                      // part of the screen that allows the background image to display
-                      // on the top of the screen
-                      Expanded(
-                        flex: 2,
-                        child: SizedBox(),
-                      ),
-                      // bottom two thirds portion of the screen with the information on the card
-                      Expanded(
-                        flex: 4,
-                        child: Container(
-                          width: double.infinity,
-                          // gives the circular borders to the card on the screen
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(40.0),
-                                topLeft: Radius.circular(40.0)),
-                            color: Colors.white,
-                          ),
-                          // column that will hold the widgets in the card
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                             SizedBox(
-                               height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
-                             ),
-                              // the back button and the Forgot Password text
-                              Expanded(
-                                flex: 1,
-                                // back button and forgot password text are in line horizontally
-                                child: Row(
-                                  children: [
-                                    BackButton(),
-                                    ForgotPswdText(),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-                              ),
-                              // The email text, user input for email, and text underneath
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  children: [
-                                    EmailText(),
-                                    // space in between the email text and the actual text field for the
-                                    // email text
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              HUNDRETH_SCALER *
-                                              1.1,
-                                    ),
-                                    EmailTextBox(),
-                                    // space in between the email textbox and the additional info text
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              HUNDRETH_SCALER,
-                                    ),
-                                    EmailAddlInfo(),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  children: [
-                                Row(
+        // overarching container for the entire screen
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.of(context).size.width,
+              minHeight: MediaQuery.of(context).size.height,
+            ),
+            // sizes the container child to the intrinsic height of the screen
+            child: IntrinsicHeight(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      alignment: Alignment(-.2, 0),
+                      // background image
+                      image: AssetImage(
+                          'assets/images/backgrounds/splashReplicaNoLogo.png'),
+                      fit: BoxFit.cover),
+                ),
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  children: [
+                    // part of the screen that allows the background image to display
+                    // on the top of the screen
+                    Expanded(
+                      flex: 2,
+                      child: SizedBox(),
+                    ),
+                    // bottom two thirds portion of the screen with the information on the card
+                    Expanded(
+                      flex: 4,
+                      child: Container(
+                        width: double.infinity,
+                        // gives the circular borders to the card on the screen
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(40.0),
+                              topLeft: Radius.circular(40.0)),
+                          color: Colors.white,
+                        ),
+                        // column that will hold the widgets in the card
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER *
+                                  5,
+                            ),
+                            // the back button and the Forgot Password text
+                            Expanded(
+                              flex: 1,
+                              // back button and forgot password text are in line horizontally
+                              child: Row(
                                 children: [
-                                Expanded(
-                                child: SizedBox(),
-                                flex: 1,
+                                  BackButton(),
+                                  ForgotPswdText(),
+                                ],
                               ),
-                              // The 'ENTER' button
-                              Expanded(
-                                flex: 5,
-                                child: ReusableButton(buttonHeight: MediaQuery.of(context).size.height * BUTTON_SCALER, buttonText: "ENTER",
-                                  textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, onPressed: () {}),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER *
+                                  2,
+                            ),
+                            // The email text, user input for email, and text underneath
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                children: [
+                                  EmailText(),
+                                  // space in between the email text and the actual text field for the
+                                  // email text
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        HUNDRETH_SCALER *
+                                        1.1,
+                                  ),
+                                  EmailTextBox(),
+                                  // space in between the email textbox and the additional info text
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        HUNDRETH_SCALER,
+                                  ),
+                                  EmailAddlInfo(),
+                                ],
                               ),
-                              Expanded(
-                                child: SizedBox(),
-                                flex: 1,
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                children: [
+                                  Row(children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                      flex: 1,
+                                    ),
+                                    // The 'ENTER' button
+                                    Expanded(
+                                      flex: 5,
+                                      child: ReusableButton(
+                                          buttonHeight: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              BUTTON_SCALER,
+                                          buttonText: "ENTER",
+                                          textSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              SMALL_TXT_SCALER,
+                                          onPressed: () {}),
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                      flex: 1,
+                                    ),
+                                  ]),
+                                ],
                               ),
-                            ]
-                          ),
-                                  ],
-                                ),
-                              ),
-                              // space underneath the 'ENTER' button
-                              Expanded(
-                                child: SizedBox(),
-                                flex: 1,
-                              ),
-                            ],
-                          ),
+                            ),
+                            // space underneath the 'ENTER' button
+                            Expanded(
+                              child: SizedBox(),
+                              flex: 1,
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
+        ),
       ),
     );
   }
 }
-
 
 // The additional email information underneath the email textbox
 class EmailAddlInfo extends StatelessWidget {
