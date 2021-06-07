@@ -235,12 +235,12 @@ Widget infoBox(BuildContext context, int informationNum) {
                       switch (informationNum) {
                         case 1:
                           {
-                            return MentalHealthPage('mental health');
+                            return MentalHealthPage();
                           }
                           break;
                         case 2:
                           {
-                            return MentalHealthPage('cancer');
+                            return MentalHealthPage();
                           }
                           break;
                         case 3:

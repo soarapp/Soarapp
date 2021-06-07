@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
@@ -106,7 +107,7 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
                                 Text(
                                   '        FAQ',
                                   style: TextStyle(
-                                      fontSize: 30,
+                                      fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -141,6 +142,7 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
   }
 }
 
+// ignore: must_be_immutable
 class FAQDisplay extends StatefulWidget {
   int questionNum;
 
@@ -206,13 +208,17 @@ class QuestionList extends State<FAQDisplay> {
                             style: TextStyle(
                               color: Color(0xFF6AABEF),
                               fontFamily: 'OpenSans',
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-                      Expanded(flex: 2, child: Image.asset(downArrow, scale: 4)),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                            MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
+                        child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(upArrow)),
+                      ),
                     ],
                   ),
                 ),
@@ -221,7 +227,7 @@ class QuestionList extends State<FAQDisplay> {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'OpenSans',
-                    fontSize: 14,
+                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     fontWeight: FontWeight.normal,
                   ),
                 )
@@ -246,15 +252,16 @@ class QuestionList extends State<FAQDisplay> {
                         style: TextStyle(
                           color: Color(0xFF6AABEF),
                           fontFamily: 'OpenSans',
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Image.asset(upArrow, scale: 4),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
+                    child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(downArrow)),
                   ),
                 ],
               ),

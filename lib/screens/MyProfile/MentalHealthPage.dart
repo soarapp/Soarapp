@@ -97,8 +97,7 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                                   '        FAQ',
                                   style: TextStyle(
                                       fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              SMALL_TXT_SCALER,
+                                      MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -144,6 +143,7 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
   }
 }
 
+// ignore: must_be_immutable
 class FAQDisplay extends StatefulWidget {
   int resourceNum;
 
@@ -217,7 +217,11 @@ class QuestionList extends State<FAQDisplay> {
                                 ),
                               ),
                             ),
-                            Expanded(flex: 2, child: Image.asset(downArrow)),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                                  MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
+                              child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(upArrow)),
+                            ),
                           ],
                         ),
                       ),
@@ -259,9 +263,10 @@ class QuestionList extends State<FAQDisplay> {
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 2,
-                          child: Image.asset(upArrow),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                              MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
+                          child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(downArrow)),
                         ),
                       ],
                     ),
