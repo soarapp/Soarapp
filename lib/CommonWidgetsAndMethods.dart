@@ -114,8 +114,8 @@ class _SongPlayingBar extends State<SongPlayingBar> {
               flex: 1,
               child: TextButton(
                   child: (aSongCurrentlyPlaying == true)
-                      ? Image.asset(pauseIcon, scale: 4)
-                      : Image.asset(playIcon, scale: 3.1),
+                      ? Image.asset(pauseIcon, scale: 4.3)
+                      : Image.asset(playIcon, scale: 3.4),
                   onPressed: () {
                     //pause or play song accordingly
                     setState(() {
@@ -161,7 +161,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
           Expanded(
             flex: 1,
             child: TextButton(
-              child: Image.asset(skipIcon, scale: 4),
+              child: Image.asset(skipIcon, scale: 4.3),
               onPressed: () {
 //at this point skip to the next song in the playlist
               },
