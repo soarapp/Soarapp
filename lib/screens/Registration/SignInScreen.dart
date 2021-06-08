@@ -13,6 +13,14 @@ import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 // This is the Sign In Screen that users will navigate to
 // after clicking Login
 
+// method that serves as a getter for the height of this screen
+// for the bouncing animation
+double ogHeight = 0;
+
+double getHeight() {
+  return ogHeight;
+}
+
 class SignInScreen extends StatefulWidget {
   static const String id = 'signIn';
 
@@ -23,6 +31,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen>
     with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
+    ogHeight = MediaQuery.of(context).size.height;
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
@@ -42,7 +51,8 @@ class _SignInScreenState extends State<SignInScreen>
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         alignment: Alignment(-.2, 0),
-                        image: AssetImage('assets/images/signInBackground.png'),
+                        image: AssetImage(
+                            'assets/images/backgrounds/signInBackground.png'),
                         fit: BoxFit.cover),
                   ),
                   alignment: Alignment.bottomCenter,
@@ -68,13 +78,27 @@ class _SignInScreenState extends State<SignInScreen>
   }
 }
 
-// The large, rounded card on the screen
-class SignInCard extends StatelessWidget {
-  const SignInCard({
-    Key key,
-  }) : super(key: key);
+class SignInCard extends StatefulWidget {
+  SignInCard({Key key}) : super(key: key);
 
   @override
+  SignInCardState createState() => SignInCardState();
+}
+
+// The large, rounded card on the screen
+class SignInCardState extends State<SignInCard>
+    with SingleTickerProviderStateMixin {
+  double _height = getHeight() - (getHeight() / 10);
+
+  @override
+  void initState() {
+    //Start the animation
+    Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
+          _height = getHeight();
+        }));
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Expanded(
       flex: 2,
@@ -87,238 +111,255 @@ class SignInCard extends StatelessWidget {
           color: Colors.white,
         ),
         // Column will hold widgets within the curved card part of the app
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Sign In Text
-            Expanded(
-              flex: 3,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(),
-                  ),
-                  Expanded(
-                      flex: 7,
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height *
-                                LARGE_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'OpenSans'),
-                      )),
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(),
-                  ),
-                ],
-              ),
-            ),
-            // Email Text and Text Field
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  // row to help space out the Email bold text horizontally
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
-                        flex: 5,
+        child: AnimatedContainer(
+          //Duration of the animation
+          duration: Duration(milliseconds: 600),
+          //Animation finish
+          curve: Curves.bounceOut,
+          width: double.infinity,
+          //height pointing to the global variable for the animation
+          height: _height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(40.0),
+                topLeft: Radius.circular(40.0)),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Sign In Text
+              Expanded(
+                flex: 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                        flex: 7,
                         child: Text(
-                          "Email",
+                          "Sign In",
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.height *
-                                  SMALL_TXT_SCALER,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: SizedBox(),
-                      ),
-                    ],
-                  ),
-                  // helps space out the 'EMAIL' text and the text field underneath it
-                  SizedBox(
-                    height:
-                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                  ),
-                  // Row to help space out the blue text field portion of the user input
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      // Blue text field portion for the email user input
-                      Expanded(
-                        flex: 5,
-                        // text field from common widgets class
-                        child: UsrInputTxtBox(
-                          fieldColor: Color(0xFFe4f2fc),
-                          paddingLeft: MediaQuery.of(context).size.height *
-                              HUNDRETH_SCALER,
-                          fieldHeight: MediaQuery.of(context).size.height *
-                              FIELD_SIZE_SCALER,
-                          paddingBottom: MediaQuery.of(context).size.height *
-                              FIELD_SIZE_SCALER /
-                              1.5,
-                          borderRadius: BORDER_RADIUS,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                    ],
-                  ),
-                ],
+                                  LARGE_TXT_SCALER,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'OpenSans'),
+                        )),
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-            ),
-            // Password text underneath the blue user email input area
-            Expanded(
-              flex: 3,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
+              // Email Text and Text Field
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    // row to help space out the Email bold text horizontally
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
                           flex: 5,
                           child: Text(
-                            "Password",
+                            "Email",
                             style: TextStyle(
-                                fontSize: (MediaQuery.of(context).size.height *
-                                        HUNDRETH_SCALER) *
-                                    2,
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER,
                                 fontWeight: FontWeight.bold),
-                          )),
-                      Expanded(
-                        flex: 5,
-                        child: SizedBox(),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height:
-                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      // the pre-filled text for the password and
-                      // the text input box where users can enter their
-                      // password
-                      Expanded(
-                        flex: 5,
-                        // text field from common widgets class
-                        child: UsrInputTxtBox(
-                          fieldColor: Color(0xFFe4f2fc),
-                          paddingLeft: MediaQuery.of(context).size.height *
-                              HUNDRETH_SCALER,
-                          paddingBottom: 0,
-                          fieldHeight: MediaQuery.of(context).size.height *
-                              FIELD_SIZE_SCALER,
-                          borderRadius: 8.0,
-                          hintTextColor: Colors.black,
-                          hintText: '••••••••••••',
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                    ],
-                  ),
-                  // space between the password text input
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        HUNDRETH_SCALER *
-                        1.5,
-                  ),
-                  // Spacing out the Forgot Password hyperlink with a row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Forgot password hypertext which will link to the Forgot Password page
-                      ForgotPasswordText(),
-                    ],
-                  ),
-                ],
+                        Expanded(
+                          flex: 5,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                    // helps space out the 'EMAIL' text and the text field underneath it
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    ),
+                    // Row to help space out the blue text field portion of the user input
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        // Blue text field portion for the email user input
+                        Expanded(
+                          flex: 5,
+                          // text field from common widgets class
+                          child: UsrInputTxtBox(
+                            fieldColor: Color(0xFFe4f2fc),
+                            paddingLeft: MediaQuery.of(context).size.height *
+                                HUNDRETH_SCALER,
+                            fieldHeight: MediaQuery.of(context).size.height *
+                                FIELD_SIZE_SCALER,
+                            paddingBottom: MediaQuery.of(context).size.height *
+                                FIELD_SIZE_SCALER /
+                                1.5,
+                            borderRadius: BORDER_RADIUS,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            // Expanded area for the sign in button
-            Expanded(
-              flex: 5,
-              child: Column(
-                children: [
-                  // row to space out Sign In Button horizontally
-                  Row(
-                    children: [
-                      Expanded(
-                        child: SizedBox(),
-                        flex: 1,
-                      ),
-                      // Sign In Button
-                      Expanded(
-                        flex: 5,
-                        child: SignInButton(),
-                      ),
-                      Expanded(
-                        child: SizedBox(),
-                        flex: 1,
-                      ),
-                    ],
-                  ),
-                  // spacing between Sign In button and the text underneath it
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        HUNDRETH_SCALER *
-                        2,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      // Hypertext that will lead to creating a new account
-                      // if the user does not have an account
-                      Expanded(
-                        flex: 4,
-                        child: DontHaveAcctTxt(),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                    ],
-                  ),
-                ],
+              SizedBox(
+                height:
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
               ),
-            ),
-            // Vertical spacing underneath the Sign in Button and text underneath it
-            // to leave space between the widget and the bottom of the screen
-            Expanded(
-              flex: 1,
-              child: SizedBox(),
-            ),
-          ],
+              // Password text underneath the blue user email input area
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                            flex: 5,
+                            child: Text(
+                              "Password",
+                              style: TextStyle(
+                                  fontSize:
+                                      (MediaQuery.of(context).size.height *
+                                              HUNDRETH_SCALER) *
+                                          2,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                        Expanded(
+                          flex: 5,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        // the pre-filled text for the password and
+                        // the text input box where users can enter their
+                        // password
+                        Expanded(
+                          flex: 5,
+                          // text field from common widgets class
+                          child: UsrInputTxtBox(
+                            fieldColor: Color(0xFFe4f2fc),
+                            paddingLeft: MediaQuery.of(context).size.height *
+                                HUNDRETH_SCALER,
+                            paddingBottom: 0,
+                            fieldHeight: MediaQuery.of(context).size.height *
+                                FIELD_SIZE_SCALER,
+                            borderRadius: 8.0,
+                            hintTextColor: Colors.black,
+                            hintText: '••••••••••••',
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                    // space between the password text input
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          1.5,
+                    ),
+                    // Spacing out the Forgot Password hyperlink with a row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Forgot password hypertext which will link to the Forgot Password page
+                        ForgotPasswordText(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // Expanded area for the sign in button
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: [
+                    // row to space out Sign In Button horizontally
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(),
+                          flex: 1,
+                        ),
+                        // Sign In Button
+                        Expanded(
+                          flex: 5,
+                          child: SignInButton(),
+                        ),
+                        Expanded(
+                          child: SizedBox(),
+                          flex: 1,
+                        ),
+                      ],
+                    ),
+                    // spacing between Sign In button and the text underneath it
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          2,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                        // Hypertext that will lead to creating a new account
+                        // if the user does not have an account
+                        Expanded(
+                          flex: 4,
+                          child: DontHaveAcctTxt(),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // Vertical spacing underneath the Sign in Button and text underneath it
+              // to leave space between the widget and the bottom of the screen
+              Expanded(
+                flex: 1,
+                child: SizedBox(),
+              ),
+            ],
+          ),
         ),
       ),
     );

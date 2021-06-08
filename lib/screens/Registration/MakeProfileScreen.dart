@@ -9,6 +9,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // This screen allows the user to customize their profile
 
+// method that serves as a getter for the height of this screen
+// for the bouncing animation
+double ogHeight = 0;
+
+double getHeight() {
+  return ogHeight;
+}
+
 class MakeProfileScreen extends StatefulWidget {
   static const String id = 'makeProfile';
 
@@ -19,6 +27,7 @@ class MakeProfileScreen extends StatefulWidget {
 class _MakeProfileScreenState extends State<MakeProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    ogHeight = MediaQuery.of(context).size.height;
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
@@ -28,7 +37,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
           child: ConstrainedBox(
             constraints: BoxConstraints(
               minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height,
+              minHeight: MediaQuery.of(context).size.height * 1.7,
             ),
             // the overarching container that contains the entirety of the components
             // on the screen
@@ -50,7 +59,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height *
                           HUNDRETH_SCALER *
-                          2,
+                          4,
                     ),
                     Expanded(
                       flex: 2,
@@ -86,7 +95,7 @@ class _MakeProfileScreenState extends State<MakeProfileScreen> {
                     // the bottom portion of the screen with the white card and all
                     // of the components within the white card
                     Expanded(
-                      flex: 12,
+                      flex: 6,
                       child: CreateProfileCard(),
                     ),
                   ],
@@ -108,7 +117,16 @@ class CreateProfileCard extends StatefulWidget {
 }
 
 class CreateProfileCardState extends State<CreateProfileCard> {
+  double _height = getHeight() - (getHeight() / 50);
+
   @override
+  void initState() {
+    //Start the animation
+    Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
+      _height = getHeight();
+    }));
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -118,140 +136,154 @@ class CreateProfileCardState extends State<CreateProfileCard> {
         color: Colors.white,
       ),
       // column within the white card
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // space right above the photo upload portion of the screen
-          SizedBox(
-            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
-          ),
-          // circular widget with camera icon where users can see their
-          // current user profile picture and upload a new picture
-          Expanded(
-            flex: 3,
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Image.asset(
-                    'assets/images/other/defaultCamPhoto.png',
-                    width: MediaQuery.of(context).size.height *
-                        HUNDRETH_SCALER *
-                        20,
-                    height: MediaQuery.of(context).size.height *
-                        HUNDRETH_SCALER *
-                        20,
+      child: AnimatedContainer(
+        //Duration of the animation
+        duration: Duration(milliseconds: 600),
+        //Animation finish
+        curve: Curves.bounceOut,
+        width: double.infinity,
+        //height pointing to the global variable for the animation
+        height: _height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40.0),
+              topLeft: Radius.circular(40.0)),
+          color: Colors.white,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // space right above the photo upload portion of the screen
+            SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
+            ),
+            // circular widget with camera icon where users can see their
+            // current user profile picture and upload a new picture
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Image.asset(
+                      'assets/images/other/defaultCamPhoto.png',
+                      width: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          20,
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          20,
+                    ),
                   ),
-                ),
-                // space between camera icon logo and the 'Add Photo' text
-                SizedBox(
-                  height:
-                      MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-                ),
-                // The 'Add Photo' text
-                AddPhotoText(),
-              ],
+                  // space between camera icon logo and the 'Add Photo' text
+                  SizedBox(
+                    height:
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                  ),
+                  // The 'Add Photo' text
+                  AddPhotoText(),
+                ],
+              ),
             ),
-          ),
-          // the part of the screen where users can enter their name in a text input
-          Expanded(
-            flex: 2,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                    // 'Name' text
-                    Expanded(
-                      flex: 10,
-                      child: Text(
-                        "Name",
-                        style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height *
-                                SMALL_TXT_SCALER,
-                            fontWeight: FontWeight.bold),
+            // the part of the screen where users can enter their name in a text input
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                    Expanded(
-                      flex: 12,
-                      // the text field where users can enter their name
-                      child: NameTextField(),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 6,
-            // the part of the screen where the large card will be placed
-            child: UserInfoCard(),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
-          ),
-          // the create account button
-          Expanded(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ReusableButton(
-                  buttonHeight:
-                      MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-                  buttonText: "CREATE ACCOUNT",
-                  textSize:
-                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return HomePageScreen();
-                        },
+                      // 'Name' text
+                      Expanded(
+                        flex: 10,
+                        child: Text(
+                          "Name",
+                          style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.height *
+                                  SMALL_TXT_SCALER,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    );
-                  },
-                ),
-              ],
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 12,
+                        // the text field where users can enter their name
+                        child: NameTextField(),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-          ),
-          SkipStepText(),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
-          ),
-          // the progress bar portion of the screen
-          CircularProgressBar(numPages: 3, currPage: 3),
-          Expanded(
-            flex: 1,
-            child: SizedBox(),
-          ),
-        ],
+            Expanded(
+              flex: 6,
+              // the part of the screen where the large card will be placed
+              child: UserInfoCard(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
+            ),
+            // the create account button
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ReusableButton(
+                    buttonHeight:
+                        MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
+                    buttonText: "CREATE ACCOUNT",
+                    textSize:
+                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    textColor: Colors.white,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return HomePageScreen();
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+            ),
+            SkipStepText(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
+            ),
+            // the progress bar portion of the screen
+            CircularProgressBar(numPages: 3, currPage: 3),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+            ),
+          ],
+        ),
       ),
     );
   }

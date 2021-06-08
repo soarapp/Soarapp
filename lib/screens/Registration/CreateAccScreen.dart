@@ -15,6 +15,14 @@ import 'package:soar_initial_screens/CommonWidgets.dart';
 // This is the create accounts screen where users can enter their email,
 // password, and password verification
 
+// method that serves as a getter for the height of this screen
+// for the bouncing animation
+double ogHeight = 0;
+
+double getHeight() {
+  return ogHeight;
+}
+
 class CreateAccScreen extends StatefulWidget {
   static const String id = 'createAccount';
 
@@ -28,6 +36,7 @@ class _CreateAccScreenState extends State<CreateAccScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    ogHeight = MediaQuery.of(context).size.height;
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
@@ -47,8 +56,8 @@ class _CreateAccScreenState extends State<CreateAccScreen>
                       alignment: Alignment(-.2, 0),
                       // the background image for the  sp
                       // screen
-                      image:
-                          AssetImage('assets/images/backgrounds/createAccBackground.png'),
+                      image: AssetImage(
+                          'assets/images/backgrounds/createAccBackground.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,
@@ -81,13 +90,13 @@ class CreateAcctCard extends StatefulWidget {
 
 class CreateAcctCardState extends State<CreateAcctCard>
     with SingleTickerProviderStateMixin {
-  double _height = screenHeight - (screenHeight / 4);
+  double _height = getHeight() - (getHeight() / 10);
 
   @override
   void initState() {
     //Start the animation
     Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
-          _height = screenHeight;
+          _height = getHeight();
         }));
     super.initState();
   }

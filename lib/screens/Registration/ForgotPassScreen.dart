@@ -9,6 +9,14 @@ import 'package:soar_initial_screens/main.dart';
 // This is the forgot password screen where users can enter their email
 // address
 
+// method that serves as a getter for the height of this screen
+// for the bouncing animation
+double ogHeight = 0;
+
+double getHeight() {
+  return ogHeight;
+}
+
 class ForgotPassScreen extends StatefulWidget {
   static const String id = 'forgotPass';
 
@@ -19,6 +27,7 @@ class ForgotPassScreen extends StatefulWidget {
 class _ForgotPassScreenState extends State<ForgotPassScreen> {
   @override
   Widget build(BuildContext context) {
+    ogHeight = MediaQuery.of(context).size.height;
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
@@ -53,110 +62,149 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                       child: SizedBox(),
                     ),
                     // bottom two thirds portion of the screen with the information on the card
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        width: double.infinity,
-                        // gives the circular borders to the card on the screen
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(40.0),
-                              topLeft: Radius.circular(40.0)),
-                          color: Colors.white,
-                        ),
-                        // column that will hold the widgets in the card
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height *
-                                  HUNDRETH_SCALER *
-                                  5,
-                            ),
-                            // the back button and the Forgot Password text
-                            Expanded(
-                              flex: 1,
-                              // back button and forgot password text are in line horizontally
-                              child: Row(
-                                children: [
-                                  BackButton(),
-                                  ForgotPswdText(),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height *
-                                  HUNDRETH_SCALER *
-                                  2,
-                            ),
-                            // The email text, user input for email, and text underneath
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  EmailText(),
-                                  // space in between the email text and the actual text field for the
-                                  // email text
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        HUNDRETH_SCALER *
-                                        1.1,
-                                  ),
-                                  EmailTextBox(),
-                                  // space in between the email textbox and the additional info text
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        HUNDRETH_SCALER,
-                                  ),
-                                  EmailAddlInfo(),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                children: [
-                                  Row(children: [
-                                    Expanded(
-                                      child: SizedBox(),
-                                      flex: 1,
-                                    ),
-                                    // The 'ENTER' button
-                                    Expanded(
-                                      flex: 5,
-                                      child: ReusableButton(
-                                          buttonHeight: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              BUTTON_SCALER,
-                                          buttonText: "ENTER",
-                                          textSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              SMALL_TXT_SCALER,
-                                          onPressed: () {}),
-                                    ),
-                                    Expanded(
-                                      child: SizedBox(),
-                                      flex: 1,
-                                    ),
-                                  ]),
-                                ],
-                              ),
-                            ),
-                            // space underneath the 'ENTER' button
-                            Expanded(
-                              child: SizedBox(),
-                              flex: 1,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    ForgotPassCard(),
                   ],
                 ),
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ForgotPassCard extends StatefulWidget {
+  ForgotPassCard({Key key}) : super(key: key);
+
+  @override
+  ForgotPassCardState createState() => ForgotPassCardState();
+}
+
+class ForgotPassCardState extends State<ForgotPassCard>
+    with SingleTickerProviderStateMixin {
+  double _height = getHeight() - (getHeight() / 10);
+
+  @override
+  void initState() {
+    //Start the animation
+    Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
+      _height = getHeight();
+    }));
+    super.initState();
+  }
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 4,
+      child: Container(
+        width: double.infinity,
+        // gives the circular borders to the card on the screen
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40.0),
+              topLeft: Radius.circular(40.0)),
+          color: Colors.white,
+        ),
+        // column that will hold the widgets in the card
+        child: AnimatedContainer(
+          //Duration of the animation
+          duration: Duration(milliseconds: 600),
+          //Animation finish
+          curve: Curves.bounceOut,
+          width: double.infinity,
+          //height pointing to the global variable for the animation
+          height: _height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(40.0),
+                topLeft: Radius.circular(40.0)),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height *
+                    HUNDRETH_SCALER *
+                    5,
+              ),
+              // the back button and the Forgot Password text
+              Expanded(
+                flex: 1,
+                // back button and forgot password text are in line horizontally
+                child: Row(
+                  children: [
+                    BackButton(),
+                    ForgotPswdText(),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height *
+                    HUNDRETH_SCALER *
+                    2,
+              ),
+              // The email text, user input for email, and text underneath
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    EmailText(),
+                    // space in between the email text and the actual text field for the
+                    // email text
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          1.1,
+                    ),
+                    EmailTextBox(),
+                    // space in between the email textbox and the additional info text
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER,
+                    ),
+                    EmailAddlInfo(),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Row(children: [
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                      // The 'ENTER' button
+                      Expanded(
+                        flex: 5,
+                        child: ReusableButton(
+                            buttonHeight: MediaQuery.of(context)
+                                    .size
+                                    .height *
+                                BUTTON_SCALER,
+                            buttonText: "ENTER",
+                            textSize: MediaQuery.of(context)
+                                    .size
+                                    .height *
+                                SMALL_TXT_SCALER,
+                            onPressed: () {}),
+                      ),
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                    ]),
+                  ],
+                ),
+              ),
+              // space underneath the 'ENTER' button
+              Expanded(
+                child: SizedBox(),
+                flex: 1,
+              ),
+            ],
           ),
         ),
       ),
