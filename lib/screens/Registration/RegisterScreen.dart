@@ -127,7 +127,7 @@ class RegisterCardState extends State<RegisterCard>
               ),
               Expanded(
                 flex: 2,
-                child: Image.asset('assets/images/icons/synchLogo.png'),
+                child: Image.asset('assets/images/icons/wavesLogo.png'),
               ),
               Expanded(
                 flex: 2,

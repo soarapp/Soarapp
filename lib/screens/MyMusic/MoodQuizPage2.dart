@@ -99,7 +99,7 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                             ),
                           ),
                           Expanded(
-                            flex: 6,
+                            flex: 4,
                             child: SizedBox(),
                           ),
                         ],

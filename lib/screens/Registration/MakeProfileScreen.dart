@@ -248,7 +248,7 @@ class CreateProfileCardState extends State<CreateProfileCard>
                 children: [
                   UserInfoCard(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3,
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

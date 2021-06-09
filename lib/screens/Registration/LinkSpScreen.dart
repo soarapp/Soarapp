@@ -257,7 +257,7 @@ class LinkSpCardState extends State<LinkSpCard>
               ),
               // The skip this step button
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Column(
                   children: [
                     // put in row to space horizontally easily
@@ -318,7 +318,7 @@ class LinkSpCardState extends State<LinkSpCard>
               // The three dot progress indicator at the bottom of the screen
               Expanded(
                 child: SizedBox(),
-                flex: 7,
+                flex: 5,
               ),
             ],
           ),

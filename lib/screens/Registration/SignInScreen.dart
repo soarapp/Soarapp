@@ -347,58 +347,6 @@ class SignInCardState extends State<SignInCard>
               SizedBox(
                 height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
               ),
-              // Expanded area for the sign in button
-              // Expanded(
-              //   flex: 3,
-              //   child: Column(
-              //     children: [
-              //       // row to space out Sign In Button horizontally
-              //       Row(
-              //         children: [
-              //           Expanded(
-              //             child: SizedBox(),
-              //             flex: 1,
-              //           ),
-              //           // Sign In Button
-              //           Expanded(
-              //             flex: 5,
-              //             child: SignInButton(),
-              //           ),
-              //           Expanded(
-              //             child: SizedBox(),
-              //             flex: 1,
-              //           ),
-              //         ],
-              //       ),
-              //       // spacing between Sign In button and the text underneath it
-              //       SizedBox(
-              //         height: MediaQuery.of(context).size.height *
-              //             HUNDRETH_SCALER *
-              //             2,
-              //       ),
-              //       Row(
-              //         children: [
-              //           Expanded(
-              //             flex: 1,
-              //             child: SizedBox(),
-              //           ),
-              //           // Hypertext that will lead to creating a new account
-              //           // if the user does not have an account
-              //           Expanded(
-              //             flex: 4,
-              //             child: DontHaveAcctTxt(),
-              //           ),
-              //           Expanded(
-              //             flex: 1,
-              //             child: SizedBox(),
-              //           ),
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Vertical spacing underneath the Sign in Button and text underneath it
-              // to leave space between the widget and the bottom of the screen
               Expanded(
                 flex: 2,
                 child: SizedBox(),

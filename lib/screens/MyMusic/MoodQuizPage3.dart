@@ -32,7 +32,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.height,
+                minHeight: MediaQuery.of(context).size.height * 1.9,
               ),
               child: IntrinsicHeight(
                 child: Container(
@@ -97,7 +97,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                     ),
                                     //this is the text asking how you fmoodSoon
                                     Expanded(
-                                      flex: 10,
+                                      flex: 14,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -342,7 +342,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                                       MediaQuery.of(context)
                                                               .size
                                                               .height *
-                                                          SEM_MED_TXT_SCALER,
+                                                          SMALL_TXT_SCALER * 1.2,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: 'OpenSans'),
                                             ),
@@ -750,7 +750,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                     ),
                                     Expanded(
                                       child: SizedBox(),
-                                      flex: 5,
+                                      flex: 10,
                                     ),
                                     //four dots on bottom indicating which page we're on
                                     CircularProgressBar(
