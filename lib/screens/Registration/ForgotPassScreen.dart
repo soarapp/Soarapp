@@ -89,10 +89,11 @@ class ForgotPassCardState extends State<ForgotPassCard>
   void initState() {
     //Start the animation
     Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
-      _height = getHeight();
-    }));
+          _height = getHeight();
+        }));
     super.initState();
   }
+
   Widget build(BuildContext context) {
     return Expanded(
       flex: 4,
@@ -101,8 +102,7 @@ class ForgotPassCardState extends State<ForgotPassCard>
         // gives the circular borders to the card on the screen
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40.0),
-              topLeft: Radius.circular(40.0)),
+              topRight: Radius.circular(40.0), topLeft: Radius.circular(40.0)),
           color: Colors.white,
         ),
         // column that will hold the widgets in the card
@@ -124,9 +124,8 @@ class ForgotPassCardState extends State<ForgotPassCard>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height *
-                    HUNDRETH_SCALER *
-                    5,
+                height:
+                MediaQuery.of(context).size.height * HUNDRETH_SCALER,
               ),
               // the back button and the Forgot Password text
               Expanded(
@@ -140,9 +139,8 @@ class ForgotPassCardState extends State<ForgotPassCard>
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height *
-                    HUNDRETH_SCALER *
-                    2,
+                height:
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
               ),
               // The email text, user input for email, and text underneath
               Expanded(
@@ -160,15 +158,15 @@ class ForgotPassCardState extends State<ForgotPassCard>
                     EmailTextBox(),
                     // space in between the email textbox and the additional info text
                     SizedBox(
-                      height: MediaQuery.of(context).size.height *
-                          HUNDRETH_SCALER,
+                      height:
+                          MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                     ),
                     EmailAddlInfo(),
                   ],
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Column(
                   children: [
                     Row(children: [
@@ -180,14 +178,10 @@ class ForgotPassCardState extends State<ForgotPassCard>
                       Expanded(
                         flex: 5,
                         child: ReusableButton(
-                            buttonHeight: MediaQuery.of(context)
-                                    .size
-                                    .height *
+                            buttonHeight: MediaQuery.of(context).size.height *
                                 BUTTON_SCALER,
                             buttonText: "ENTER",
-                            textSize: MediaQuery.of(context)
-                                    .size
-                                    .height *
+                            textSize: MediaQuery.of(context).size.height *
                                 SMALL_TXT_SCALER,
                             onPressed: () {}),
                       ),

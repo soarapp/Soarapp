@@ -130,7 +130,7 @@ class SignInCardState extends State<SignInCard>
             children: [
               // Sign In Text
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Row(
                   children: [
                     Expanded(
@@ -156,7 +156,7 @@ class SignInCardState extends State<SignInCard>
               ),
               // Email Text and Text Field
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Column(
                   children: [
                     // row to help space out the Email bold text horizontally
@@ -219,13 +219,9 @@ class SignInCardState extends State<SignInCard>
                   ],
                 ),
               ),
-              SizedBox(
-                height:
-                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-              ),
               // Password text underneath the blue user email input area
               Expanded(
-                flex: 3,
+                flex: 17,
                 child: Column(
                   children: [
                     Row(
@@ -289,7 +285,7 @@ class SignInCardState extends State<SignInCard>
                     SizedBox(
                       height: MediaQuery.of(context).size.height *
                           HUNDRETH_SCALER *
-                          1.5,
+                          3,
                     ),
                     // Spacing out the Forgot Password hyperlink with a row
                     Row(
@@ -299,15 +295,11 @@ class SignInCardState extends State<SignInCard>
                         ForgotPasswordText(),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              // Expanded area for the sign in button
-              Expanded(
-                flex: 5,
-                child: Column(
-                  children: [
-                    // row to space out Sign In Button horizontally
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          2,
+                    ),
                     Row(
                       children: [
                         Expanded(
@@ -352,10 +344,63 @@ class SignInCardState extends State<SignInCard>
                   ],
                 ),
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+              ),
+              // Expanded area for the sign in button
+              // Expanded(
+              //   flex: 3,
+              //   child: Column(
+              //     children: [
+              //       // row to space out Sign In Button horizontally
+              //       Row(
+              //         children: [
+              //           Expanded(
+              //             child: SizedBox(),
+              //             flex: 1,
+              //           ),
+              //           // Sign In Button
+              //           Expanded(
+              //             flex: 5,
+              //             child: SignInButton(),
+              //           ),
+              //           Expanded(
+              //             child: SizedBox(),
+              //             flex: 1,
+              //           ),
+              //         ],
+              //       ),
+              //       // spacing between Sign In button and the text underneath it
+              //       SizedBox(
+              //         height: MediaQuery.of(context).size.height *
+              //             HUNDRETH_SCALER *
+              //             2,
+              //       ),
+              //       Row(
+              //         children: [
+              //           Expanded(
+              //             flex: 1,
+              //             child: SizedBox(),
+              //           ),
+              //           // Hypertext that will lead to creating a new account
+              //           // if the user does not have an account
+              //           Expanded(
+              //             flex: 4,
+              //             child: DontHaveAcctTxt(),
+              //           ),
+              //           Expanded(
+              //             flex: 1,
+              //             child: SizedBox(),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
               // Vertical spacing underneath the Sign in Button and text underneath it
               // to leave space between the widget and the bottom of the screen
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: SizedBox(),
               ),
             ],

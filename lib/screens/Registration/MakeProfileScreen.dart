@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,81 +25,84 @@ class MakeProfileScreen extends StatefulWidget {
   _MakeProfileScreenState createState() => _MakeProfileScreenState();
 }
 
-class _MakeProfileScreenState extends State<MakeProfileScreen> {
+class _MakeProfileScreenState extends State<MakeProfileScreen>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
     return ScreenUtilInit(
       designSize: Size(MediaQuery.of(context).size.width,
           MediaQuery.of(context).size.height),
-      builder: () => Scaffold(
+      builder: () => MaterialApp(
+        debugShowCheckedModeBanner: false,
         // SingleChildScrollView widget allows the user to scroll through the screen
-        body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height * 1.7,
-            ),
-            // the overarching container that contains the entirety of the components
-            // on the screen
-            child: IntrinsicHeight(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      alignment: Alignment(-.2, 0),
-                      image: AssetImage('assets/images/backgrounds/Group1.png'),
-                      fit: BoxFit.fill),
-                ),
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    // the top part of the screen where you can see the background
-                    // the top part of the screen with the 'Create Your Profile' text
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height *
-                          HUNDRETH_SCALER *
-                          4,
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: SizedBox(),
-                          ),
-                          Expanded(
-                            flex: 9,
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Create Your \nProfile",
-                                  style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              MED_TXT_SCALER,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'OpenSans'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(),
-                          ),
-                        ],
+        home: Scaffold(
+          body: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: MediaQuery.of(context).size.width,
+                minHeight: MediaQuery.of(context).size.height * 1.7,
+              ),
+              // the overarching container that contains the entirety of the components
+              // on the screen
+              child: IntrinsicHeight(
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        alignment: Alignment(-.2, 0),
+                        image: AssetImage('assets/images/backgrounds/Group1.png'),
+                        fit: BoxFit.fill),
+                  ),
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    children: [
+                      // the top part of the screen where you can see the background
+                      // the top part of the screen with the 'Create Your Profile' text
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height *
+                            HUNDRETH_SCALER * 3
                       ),
-                    ),
-                    // the bottom portion of the screen with the white card and all
-                    // of the components within the white card
-                    Expanded(
-                      flex: 6,
-                      child: CreateProfileCard(),
-                    ),
-                  ],
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: SizedBox(),
+                            ),
+                            Expanded(
+                              flex: 9,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Create Your \nProfile",
+                                    style: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                MED_TXT_SCALER,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'OpenSans'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: SizedBox(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // the bottom portion of the screen with the white card and all
+                      // of the components within the white card
+                      Expanded(
+                        flex: 8,
+                        child: CreateProfileCard(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -116,17 +120,19 @@ class CreateProfileCard extends StatefulWidget {
   CreateProfileCardState createState() => CreateProfileCardState();
 }
 
-class CreateProfileCardState extends State<CreateProfileCard> {
-  double _height = getHeight() - (getHeight() / 50);
+class CreateProfileCardState extends State<CreateProfileCard>
+    with SingleTickerProviderStateMixin{
+  double _height = getHeight() * 1.7 - (getHeight() * 1.7 / 10);
 
   @override
   void initState() {
     //Start the animation
     Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
-      _height = getHeight();
-    }));
+          _height = getHeight() * 1.7;
+        }));
     super.initState();
   }
+
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -146,8 +152,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
         height: _height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40.0),
-              topLeft: Radius.circular(40.0)),
+              topRight: Radius.circular(40.0), topLeft: Radius.circular(40.0)),
           color: Colors.white,
         ),
         child: Column(
@@ -155,12 +160,12 @@ class CreateProfileCardState extends State<CreateProfileCard> {
           children: [
             // space right above the photo upload portion of the screen
             SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3,
             ),
             // circular widget with camera icon where users can see their
             // current user profile picture and upload a new picture
             Expanded(
-              flex: 3,
+              flex: 1,
               child: Column(
                 children: [
                   Expanded(
@@ -175,10 +180,9 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                           20,
                     ),
                   ),
-                  // space between camera icon logo and the 'Add Photo' text
                   SizedBox(
                     height:
-                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                   ),
                   // The 'Add Photo' text
                   AddPhotoText(),
@@ -187,7 +191,7 @@ class CreateProfileCardState extends State<CreateProfileCard> {
             ),
             // the part of the screen where users can enter their name in a text input
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Column(
                 children: [
                   Row(
@@ -214,7 +218,8 @@ class CreateProfileCardState extends State<CreateProfileCard> {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    height:
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                   ),
                   Row(
                     children: [
@@ -237,50 +242,51 @@ class CreateProfileCardState extends State<CreateProfileCard> {
               ),
             ),
             Expanded(
-              flex: 6,
+              flex: 8,
               // the part of the screen where the large card will be placed
-              child: UserInfoCard(),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
-            ),
-            // the create account button
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
                 children: [
-                  ReusableButton(
-                    buttonHeight:
-                        MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-                    buttonText: "CREATE ACCOUNT",
-                    textSize:
-                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return HomePageScreen();
-                          },
-                        ),
-                      );
-                    },
+                  UserInfoCard(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ReusableButton(
+                        buttonHeight:
+                        MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
+                        buttonText: "CREATE ACCOUNT",
+                        textSize:
+                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return HomePageScreen();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+                  ),
+                  SkipStepText(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+                  ),
+                  CircularProgressBar(numPages: 3, currPage: 3),
                 ],
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-            ),
-            SkipStepText(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 4,
-            ),
-            // the progress bar portion of the screen
-            CircularProgressBar(numPages: 3, currPage: 3),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+            Expanded(
+              flex: 2,
+              child: SizedBox(
+              ),
             ),
           ],
         ),
