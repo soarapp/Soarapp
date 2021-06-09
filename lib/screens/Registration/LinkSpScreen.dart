@@ -47,8 +47,8 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       alignment: Alignment(-.2, 0),
-                      image:
-                          AssetImage('assets/images/backgrounds/linkSpBackground.png'),
+                      image: AssetImage(
+                          'assets/images/backgrounds/linkSpBackground.png'),
                       fit: BoxFit.fill),
                 ),
                 alignment: Alignment.bottomCenter,
@@ -120,7 +120,7 @@ class LinkSpCardState extends State<LinkSpCard>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Row(
                   children: [
                     Expanded(
@@ -139,7 +139,7 @@ class LinkSpCardState extends State<LinkSpCard>
                               0,
                               MediaQuery.of(context).size.height *
                                   HUNDRETH_SCALER *
-                                  5),
+                                  7),
                           // back button icon
                           child: Tab(
                             icon: Icon(
@@ -174,12 +174,13 @@ class LinkSpCardState extends State<LinkSpCard>
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                height:
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3,
               ),
               // The part of the screen with the Spotify button
               // and the text underneath it
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Column(
                   children: [
                     Row(
@@ -238,8 +239,8 @@ class LinkSpCardState extends State<LinkSpCard>
                       ],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height *
-                          HUNDRETH_SCALER,
+                      height:
+                          MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                     ),
                     Center(
                       child: Text(
@@ -254,13 +255,9 @@ class LinkSpCardState extends State<LinkSpCard>
                   ],
                 ),
               ),
-              SizedBox(
-                height:
-                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-              ),
               // The skip this step button
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Column(
                   children: [
                     // put in row to space horizontally easily
@@ -306,20 +303,22 @@ class LinkSpCardState extends State<LinkSpCard>
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          HUNDRETH_SCALER *
+                          10,
+                    ),
+                    CircularProgressBar(
+                      numPages: 3,
+                      currPage: 2,
+                    ),
                   ],
                 ),
               ),
               // The three dot progress indicator at the bottom of the screen
-              CircularProgressBar(
-                numPages: 3,
-                currPage: 2,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3,
-              ),
               Expanded(
                 child: SizedBox(),
-                flex: 3,
+                flex: 7,
               ),
             ],
           ),

@@ -145,7 +145,7 @@ class CreateAcctCardState extends State<CreateAcctCard>
                                 HUNDRETH_SCALER *
                                 2,
                             0,
-                            MediaQuery.of(context).size.width / 10),
+                            MediaQuery.of(context).size.width / 7),
                         child: InkWell(
                           onTap: () {
                             Navigator.pop(context);
@@ -188,10 +188,6 @@ class CreateAcctCardState extends State<CreateAcctCard>
                   ],
                 ),
               ),
-              SizedBox(
-                height:
-                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-              ),
               // Password text and password textbox
               Expanded(
                 flex: 2,
@@ -207,13 +203,9 @@ class CreateAcctCardState extends State<CreateAcctCard>
                   ],
                 ),
               ),
-              SizedBox(
-                height:
-                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-              ),
               // Confirm Password Text and Field
               Expanded(
-                flex: 3,
+                flex: 2,
                 child: Column(
                   children: [
                     ConfirmPsswdText(),
@@ -225,9 +217,13 @@ class CreateAcctCardState extends State<CreateAcctCard>
                   ],
                 ),
               ),
+              SizedBox(
+                height:
+                MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+              ),
               // this is the expanded container that has the 'NEXT STEP' button
               Expanded(
-                flex: 3,
+                flex: 2,
                 child: Column(
                   children: [
                     Row(
@@ -269,13 +265,17 @@ class CreateAcctCardState extends State<CreateAcctCard>
                   ],
                 ),
               ),
+              SizedBox(
+                height:
+                MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+              ),
               // the three dot progress indicator at the bottom of the screen
               CircularProgressBar(
                 numPages: 3,
                 currPage: 1,
               ),
               Expanded(
-                flex: 1,
+                flex: 4,
                 child: SizedBox(),
               ),
             ],
