@@ -22,6 +22,7 @@ import 'package:soar_initial_screens/screens/Registration/CheckEmailScreen.dart'
 import 'package:soar_initial_screens/screens/Registration/AllSetPage.dart';
 import 'package:soar_initial_screens/screens/Registration/ResetPassScreen.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
+import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() async {
@@ -42,7 +43,7 @@ class MainScreen extends StatelessWidget {
       //locale: DevicePreview.locale(context),
       //builder: DevicePreview.appBuilder,
       // the route that the app directs to when the app first launches
-      initialRoute: SplashScreen.id,
+      initialRoute: HomePageScreen.id,
       // the other routes for the application
       routes: {
         LoggedOutScreen.id: (context) => LoggedOutScreen(),
@@ -64,6 +65,7 @@ class MainScreen extends StatelessWidget {
         AllSetScreen.id: (context) => AllSetScreen(),
         ResetPassScreen.id: (context) => ResetPassScreen(),
         HomePageScreen.id: (context) => HomePageScreen(),
+        PlayingNowScreen.id: (context) => PlayingNowScreen(),
       },
     );
   }

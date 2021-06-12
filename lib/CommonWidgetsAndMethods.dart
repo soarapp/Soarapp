@@ -3,8 +3,10 @@ import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
+import 'package:soar_initial_screens/models/Util/SongUtils.dart';
 import 'package:soar_initial_screens/screens/MyProfile/FAQPage.dart';
 import 'package:soar_initial_screens/screens/MyProfile/ResourcesPage.dart';
+import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
 
 //This file includes the widgets and methods:
@@ -125,37 +127,42 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                   })),
           Expanded(
             flex: 5,
-            child: Column(
-              children: [
-                Expanded(flex: 1, child: SizedBox()),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    currSong,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'OpenSans',
-                      fontSize:
-                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.normal,
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(PlayingNowScreen.id);
+              },
+              child: Column(
+                children: [
+                  Expanded(flex: 1, child: SizedBox()),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      currSong,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    currSongArtist,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'OpenSans',
-                      fontSize:
-                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.normal,
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      currSongArtist,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(flex: 1, child: SizedBox())
-              ],
+                  Expanded(flex: 1, child: SizedBox())
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -263,5 +270,3 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
     ),
   );
 }
-
-
