@@ -129,7 +129,13 @@ class _SongPlayingBar extends State<SongPlayingBar> {
             flex: 5,
             child: InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed(PlayingNowScreen.id);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PlayingNowScreen();
+                    },
+                  ),
+                );
               },
               child: Column(
                 children: [
