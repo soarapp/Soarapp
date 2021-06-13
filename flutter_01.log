@@ -1,0 +1,71 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+UnsupportedError: Unsupported operation: Illegal character in path: *
+
+```
+#0      _Uri._checkWindowsPathReservedCharacters (dart:core/uri.dart:1644:11)
+#1      _Uri._toWindowsFilePath (dart:core/uri.dart:2674:7)
+#2      _Uri.toFilePath (dart:core/uri.dart:2646:38)
+#3      ManifestAssetBundle._parseAssetsFromFolder (package:flutter_tools/src/asset.dart:690:29)
+#4      ManifestAssetBundle._parseAssets (package:flutter_tools/src/asset.dart:631:9)
+#5      ManifestAssetBundle.build (package:flutter_tools/src/asset.dart:229:53)
+<asynchronous suspension>
+#6      HotRunner._updateDevFS (package:flutter_tools/src/run_hot.dart:385:26)
+<asynchronous suspension>
+#7      HotRunner._reloadSources (package:flutter_tools/src/run_hot.dart:813:41)
+<asynchronous suspension>
+#8      HotRunner._hotReloadHelper (package:flutter_tools/src/run_hot.dart:726:16)
+<asynchronous suspension>
+#9      HotRunner.restart (package:flutter_tools/src/run_hot.dart:650:36)
+<asynchronous suspension>
+#10     TerminalHandler._commonTerminalInputHandler (package:flutter_tools/src/resident_runner.dart:1589:40)
+<asynchronous suspension>
+#11     TerminalHandler.processTerminalInput (package:flutter_tools/src/resident_runner.dart:1644:7)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 2.2.1, on Microsoft Windows [Version 10.0.19042.985], locale en-US)
+    • Flutter version 2.2.1 at C:\src\flutter
+    • Framework revision 02c026b03c (10 days ago), 2021-05-27 12:24:44 -0700
+    • Engine revision 0fdb562ac8
+    • Dart version 2.13.1
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+    • Android SDK at C:\Users\tarun\AppData\Local\Android\sdk
+    • Platform android-30, build-tools 30.0.3
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 11.0.8+10-b944.6842174)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✓] Android Studio (version 4.1.0)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 11.0.8+10-b944.6842174)
+
+[✓] VS Code (version 1.56.2)
+    • VS Code at C:\Users\tarun\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.23.0
+
+[✓] Connected device (3 available)
+    • sdk gphone x86 arm (mobile) • emulator-5554 • android-x86    • Android 11 (API 30) (emulator)
+    • Chrome (web)                • chrome        • web-javascript • Google Chrome 91.0.4472.77
+    • Edge (web)                  • edge          • web-javascript • Microsoft Edge 91.0.864.37
+
+• No issues found!
+```
