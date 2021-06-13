@@ -6,6 +6,7 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuiz.dart';
 import 'package:marquee/marquee.dart';
+import 'package:soar_initial_screens/screens/MyMusic/playlists.dart';
 
 //this is the homepage for the app: it contains the playlists which
 // the user can play as well as profile settings
@@ -59,7 +60,8 @@ class HomePageSetup extends State<HomePageScreen> {
                           color: Color(0xFF2B2B2B),
                           fontFamily: 'OpenSans',
                           fontWeight: FontWeight.bold,
-                          fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                          fontSize: MediaQuery.of(context).size.height *
+                              MED_TXT_SCALER,
                         ),
                       ),
                     ),
@@ -68,7 +70,8 @@ class HomePageSetup extends State<HomePageScreen> {
                       child: Icon(
                         Icons.more_horiz,
                         color: Color(0xFF2B2B2B),
-                        size: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                        size:
+                            MediaQuery.of(context).size.height * MED_TXT_SCALER,
                       ),
                     ),
                   ],
@@ -157,13 +160,36 @@ Widget playlistBlock(BuildContext context) {
                     ),
                     Expanded(
                       flex: 7,
-                      child: Text(
-                        myPlaylists,
-                        style: TextStyle(
-                          color: Color(0xFF000000),
-                          fontFamily: 'OpenSans',
-                          fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
-                          fontWeight: FontWeight.bold,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return PlaylistsScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return PlaylistsScreen();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text(
+                            myPlaylists,
+                            style: TextStyle(
+                              color: Color(0xFF000000),
+                              fontFamily: 'OpenSans',
+                              fontSize: MediaQuery.of(context).size.height *
+                                  SEM_MED_TXT_SCALER,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -182,7 +208,8 @@ Widget playlistBlock(BuildContext context) {
                         child: Icon(
                           Icons.control_point_rounded,
                           color: Colors.black,
-                          size: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
+                          size: MediaQuery.of(context).size.height *
+                              SEM_MED_TXT_SCALER,
                         ),
                       ),
                     ),
@@ -264,13 +291,14 @@ class _FavSongBar extends State<FavSongBar> {
               ),
               Expanded(
                 flex: 1,
-                child:
-                Text(
+                child: Text(
                   currFavSong,
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: MediaQuery.of(context).size.height * TINY_TXT_SCALER * 1.2,
+                    fontSize: MediaQuery.of(context).size.height *
+                        TINY_TXT_SCALER *
+                        1.2,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -282,7 +310,8 @@ class _FavSongBar extends State<FavSongBar> {
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    fontSize:
+                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     fontWeight: FontWeight.normal,
                   ),
                   scrollAxis: Axis.horizontal,
@@ -292,7 +321,6 @@ class _FavSongBar extends State<FavSongBar> {
                   //numberOfRounds: 5,
                   startPadding: 10,
                 ),
-
               ),
               Expanded(
                 flex: 1,
@@ -301,7 +329,8 @@ class _FavSongBar extends State<FavSongBar> {
                   style: TextStyle(
                     color: black,
                     fontFamily: 'Roboto',
-                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                    fontSize:
+                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
                     fontWeight: FontWeight.normal,
                   ),
                 ),

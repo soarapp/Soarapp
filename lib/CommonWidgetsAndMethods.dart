@@ -5,8 +5,10 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/models/Util/SpotifyUtils.dart';
 import 'package:soar_initial_screens/models/Util/SongUtils.dart';
 import 'package:soar_initial_screens/screens/MyProfile/FAQPage.dart';
+import 'package:soar_initial_screens/screens/MyProfile/ProfileScreen.dart';
 import 'package:soar_initial_screens/screens/MyProfile/ResourcesPage.dart';
 import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
+import 'package:soar_initial_screens/screens/MyMusic/playlist.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
 
 //This file includes the widgets and methods:
@@ -46,50 +48,62 @@ class PlaylistOrSongList extends State<PlaylistOrSongDisplay> {
     return new ListView.builder(
         itemCount: _playlistOrSongNameList.length,
         itemBuilder: (BuildContext ctxt, int index) {
-          return Container(
-            padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  //                   <--- left side
-                  color: Color(0xFF000000).withOpacity(.1),
-                  width: .5,
+          return InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PlaylistScreen(name: _playlistOrSongNameList[index]);
+                  },
                 ),
-                top: BorderSide(
-                  //                    <--- top side
-                  color: Color(0xFF000000).withOpacity(.1),
-                  width: .5,
-                ),
-              ),
-            ),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 7),
-                  child: Image.asset(
-                      imagePath + _playlistOrSongImageList[index] + jpg,
-                      scale: 17),
-                ),
-                SizedBox(
-                  width:
-                      MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
-                ),
-                Flexible(
-                  child: Text(
-                    _playlistOrSongNameList[index],
-                    style: TextStyle(
-                      color: Color(0xFF2B2B2B),
-                      fontFamily: 'OpenSans',
-                      fontSize:
-                          MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    //                   <--- left side
+                    color: Color(0xFF000000).withOpacity(.1),
+                    width: .5,
+                  ),
+                  top: BorderSide(
+                    //                    <--- top side
+                    color: Color(0xFF000000).withOpacity(.1),
+                    width: .5,
                   ),
                 ),
-              ],
+              ),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 7),
+                    child: Image.asset(
+                        imagePath + _playlistOrSongImageList[index] + jpg,
+                        scale: 17),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.height *
+                        HUNDRETH_SCALER *
+                        2,
+                  ),
+                  Flexible(
+                    child: Text(
+                      _playlistOrSongNameList[index],
+                      style: TextStyle(
+                        color: Color(0xFF2B2B2B),
+                        fontFamily: 'OpenSans',
+                        fontSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });
@@ -261,15 +275,14 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
                     ? Image.asset(userIconB, scale: 4.1)
                     : Image.asset(userIcon, scale: 4.1),
                 onPressed: () {
-                  //navigate to profile page
-                  // navigate back to login screen for testing
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return SpotifyLoginScreen();
-                  //     },
-                  //   ),
-                  // );
+                  // navigate to profile page
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ProfileScreen();
+                      },
+                    ),
+                  );
                 })),
         Expanded(flex: 1, child: SizedBox()),
       ],

@@ -5,10 +5,10 @@ import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 // this file will contain all of the common, reusable widgets for our application
 
 class Background extends StatelessWidget {
-  Background(this.childWidget, this.backgroundImage);
+  Background(this.backgroundImage, this.childWidget);
 
-  final Widget childWidget;
   final AssetImage backgroundImage;
+  final Widget childWidget;
 
   @override
   Widget build(BuildContext context) {
