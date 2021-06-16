@@ -456,7 +456,7 @@ class WordBox extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: new BorderRadius.circular(10.0),
-          color: (moodNowButtonArray[buttonNum] == 0) ? greyButton : tealButton,
+          color: (moodDesiredButtonArray[buttonNum] == 0) ? greyButton : tealButton,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

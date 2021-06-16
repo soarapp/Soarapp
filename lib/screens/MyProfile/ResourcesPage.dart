@@ -6,6 +6,8 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 import 'package:soar_initial_screens/screens/MyProfile/FAQPage.dart';
 import 'package:soar_initial_screens/screens/MyProfile/MentalHealthPage.dart';
+import 'package:soar_initial_screens/screens/MyProfile/MusicTherapy.dart';
+import 'package:soar_initial_screens/screens/MyProfile/Helplines.dart';
 
 void main() => runApp(ResourcesScreen());
 
@@ -235,17 +237,17 @@ Widget infoBox(BuildContext context, int informationNum) {
                       switch (informationNum) {
                         case 1:
                           {
-                            return MentalHealthPage();
+                            return MentalHealthPage('mental health');
                           }
                           break;
                         case 2:
                           {
-                            return MentalHealthPage();
+                            return MentalHealthPage('cancer');
                           }
                           break;
                         case 3:
                           {
-                            return FAQPage();
+                            return MusicTherapyPage();
                           }
                           break;
                       }
@@ -311,7 +313,7 @@ Widget underlinedTextWithIconBox(
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return (string == 'FAQ') ? FAQPage() : ResourcesPage();
+            return (string == 'FAQ') ? FAQPage() : HelplinesPage();
           },
         ),
       );

@@ -140,6 +140,46 @@ List<String> cancerResourcesDetails = [
 ];
 List<String> cancerResourcesNumbers = ['800-843-8114', '', ''];
 List<String> cancerResourcesLinks = ['https://www.aicr.org/', '', ''];
+List<String> musicTherapyResourcesAbbreviations = [
+  'AMTA',
+  'WFMT',
+  '',
+  ''
+];
+List<String> musicTherapyResources = [
+  'American Music Therapy Association',
+  'World Federation of Music Therapy',
+  '',
+  ''
+];
+List<String> musicTherapyResourcesDetails = [
+  '',
+  'International nonprofit organization bringing together music therapy associations and individuals interested in developing and promoting music therapy globally through the exchange of information, collaboration among professionals, and actions. ',
+  '',
+  ''
+];
+List<String> musicTherapyResourcesLinks = [
+  '',
+  'https://wfmt.info/',
+  '',
+  ''
+];
+List<String> helplinesResources = [
+  'National Center for Learning Disabilities',
+  'National Eating Disorder Association',
+  'National Domestic Violence Hot-line',
+  'National Alliance on Mental Illness',
+  'Substance and Mental Health Services Administration',
+  'Suicide Prevention Lifeline'
+];
+List<String> helplinesResourcesNumbers = [
+  '',
+  '',
+  '800-799-7233',
+  '',
+  '',
+  ''
+];
 String questionQuoteIcon = 'assets/images/icons/questionQuoteIcon.png';
 String callIcon = 'assets/images/icons/callIcon.png';
 String bluePlusIcon = 'assets/images/icons/bluePlusIcon.png';

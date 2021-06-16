@@ -137,6 +137,8 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                     setState(() {
                       aSongCurrentlyPlaying =
                           (aSongCurrentlyPlaying == false) ? true : false;
+                      favSongCurrentlyPlaying =
+                      (favSongCurrentlyPlaying == true) ? false : false;
                     });
                   })),
           Expanded(
