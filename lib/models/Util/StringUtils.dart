@@ -1,3 +1,7 @@
+import 'dart:core';
+
+import 'dart:core';
+
 ////////////////////////////////////
 //****GLOBALLYUSEDVARIABLES****//
 ///////////////////////////////////
@@ -5,7 +9,7 @@
 //Thesevariablestellthecurrentstateofwhetherasongisplayingornotandwhichone
 bool favSongCurrentlyPlaying = false;
 bool aSongCurrentlyPlaying = false;
-bool songIsOrWasPlaying = true;
+bool songIsOrWasPlaying = false;
 
 //Thevaluesoftheindicesofthisarrayindicatewhetherornotadesiredmoodwaschosen(1=chosen,0=not)
 //theindicescorrespondtothephysicallocationsofthebuttonslikethis:
@@ -198,7 +202,7 @@ String chatIconB = 'assets/images/icons/chatIconBlack.png';
 String calendarIconB = 'assets/images/icons/calendarIconBlack.png';
 String musicIconB = 'assets/images/icons/musicIconBlack.png';
 String questionIconB = 'assets/images/icons/questionIconBlack.png';
-String userIconB = 'assets/images/icons/userIconGrey.png';
+String userIconB = 'assets/images/icons/userIconBlack.png';
 
 //playlistpage
 String playlistName1 = 'Restless to Sleepy';
@@ -206,3 +210,7 @@ String playlistName2 = 'Down to Lighthearted';
 String playlistName3 = 'Tired to Upbeat';
 String playlistName4 = 'Human to SuperHero';
 String playlistName5 = 'Stress to Relaxation';
+
+//comingSoon
+String comingSoonBackground = 'assets/images/backgrounds/comingSoonBackground.png';
+String cautionIcon = 'assets/images/other/cautionIcon.png';

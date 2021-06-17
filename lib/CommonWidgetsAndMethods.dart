@@ -10,6 +10,7 @@ import 'package:soar_initial_screens/screens/MyProfile/ResourcesPage.dart';
 import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
 import 'package:soar_initial_screens/screens/MyMusic/playlist.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
+import 'package:soar_initial_screens/ComingSoon.dart';
 
 //This file includes the widgets and methods:
 //PlaylistOrSongDisplay - a dynamic list view that displays the playlists of a user
@@ -164,10 +165,13 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                         color: Colors.white,
                         fontFamily: 'OpenSans',
                         fontSize: MediaQuery.of(context).size.height *
-                            SMALL_TXT_SCALER,
+                            SMALL_TXT_SCALER * 1.3,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
+                  ),
+                  Expanded(flex: 1,
+                    child: SizedBox(),
                   ),
                   Expanded(
                     flex: 2,
@@ -222,20 +226,34 @@ Widget bottomIconBar(BuildContext context, int blackIcon) {
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 1)
-                    ? Image.asset(chatIconB, scale: 4.1)
+                    ? Image.asset(chatIconB, scale: 2.8)
                     : Image.asset(chatIcon, scale: 4.1),
                 onPressed: () {
                   //navigate to chat page
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ComingSoonScreen(1);
+                      },
+                    ),
+                  );
                 })),
         Expanded(flex: 1, child: SizedBox()),
         Expanded(
             flex: 2,
             child: TextButton(
                 child: (blackIcon == 2)
-                    ? Image.asset(calendarIconB, scale: 4.1)
+                    ? Image.asset(calendarIconB, scale: 2.9)
                     : Image.asset(calendarIcon, scale: 4.1),
                 onPressed: () {
                   //navigate to calendar page
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ComingSoonScreen(2);
+                      },
+                    ),
+                  );
                 })),
         Expanded(flex: 1, child: SizedBox()),
         Expanded(

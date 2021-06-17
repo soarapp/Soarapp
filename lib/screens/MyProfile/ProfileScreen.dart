@@ -138,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: bottomIconBar(context, 3),
+                          child: bottomIconBar(context, 5),
                         ),
                       ),
                     ],

@@ -16,6 +16,7 @@ import 'package:soar_initial_screens/screens/MyMusic/playlists.dart';
 
 class HomePageScreen extends StatefulWidget {
   static const String id = 'homepage';
+
   //SpotifyUtils spotifyPlayer;
 
   HomePageScreen();
@@ -84,7 +85,152 @@ class HomePageSetup extends State<HomePageScreen> {
               //favorite song image and title row
               Expanded(
                 flex: 199,
-                child: FavSongBar(),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 55.0, right: 55),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    Expanded(
+                      flex: 199,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: new BorderRadius.circular(28.0),
+                              image: DecorationImage(
+                                image: AssetImage(favSongImg),
+                                fit: BoxFit.fill,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 3,
+                                  offset: Offset(0, 3), // changes position of shadow
+                                ),
+                              ]),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 17,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                      flex: 190,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Text(
+                              currFavSong,
+                              style: TextStyle(
+                                color: black,
+                                fontFamily: 'Roboto',
+                                fontSize: MediaQuery.of(context).size.height *
+                                    TINY_TXT_SCALER *
+                                    1.2,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: (favSongName.length > 13)
+                                ? Marquee(
+                              text: favSongName,
+                              style: TextStyle(
+                                color: black,
+                                fontFamily: 'Roboto',
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER *
+                                    1.5,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              scrollAxis: Axis.horizontal,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              blankSpace: 20.0,
+                              velocity: 10.0,
+                              //numberOfRounds: 5,
+                              startPadding: 10,
+                            )
+                                : Text(
+                              favSongName,
+                              style: TextStyle(
+                                color: black,
+                                fontFamily: 'Roboto',
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER *
+                                    1.5,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Text(
+                              favSongArtist,
+                              style: TextStyle(
+                                color: black,
+                                fontFamily: 'Roboto',
+                                fontSize:
+                                MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Row(children: [
+                              Expanded(flex: 2, child: SizedBox()),
+                              Expanded(
+                                flex: 2,
+                                child: ClipRRect(
+                                  borderRadius: new BorderRadius.all(Radius.circular(8)),
+                                  child: Container(
+                                    color: opaqueBlack,
+                                    child: Row(children: [
+                                      Expanded(flex: 1, child: SizedBox()),
+                                      Expanded(
+                                        flex: 5,
+                                        child: TextButton(
+                                          child: (favSongCurrentlyPlaying == true)
+                                              ? Image.asset(pauseIcon, scale: 1)
+                                              : Image.asset(playIcon, scale: 1),
+                                          onPressed: () {
+                                            //spotifyPlayer.play();
+                                            setState(() {
+                                              if (favSongCurrentlyPlaying == true) {
+                                                favSongCurrentlyPlaying = false;
+                                                aSongCurrentlyPlaying = false;
+                                              } else {
+                                                favSongCurrentlyPlaying = true;
+                                                aSongCurrentlyPlaying = true;
+                                                songIsOrWasPlaying = true;
+                                              }
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(flex: 1, child: SizedBox()),
+                                    ]),
+                                  ),
+                                ),
+                              ),
+                              Expanded(flex: 2, child: SizedBox())
+                            ]),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]),
+                ),
               ),
               Expanded(
                 flex: 50,
@@ -230,160 +376,4 @@ Widget playlistBlock(BuildContext context) {
       ],
     ),
   );
-}
-
-class FavSongBar extends StatefulWidget {
-  //SpotifyUtils spotifyPlayer;
-
-  FavSongBar() {
-    //this.spotifyPlayer = spotifyPlayer;
-  }
-
-  @override
-  _FavSongBar createState() => _FavSongBar();
-}
-
-class _FavSongBar extends State<FavSongBar> {
-  //SpotifyUtils spotifyPlayer;
-
-  _FavSongBar() {
-    //this.spotifyPlayer = spotifyPlayer;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 55.0, right: 55),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Expanded(
-          flex: 199,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.circular(28.0),
-                  image: DecorationImage(
-                    image: AssetImage(favSongImg),
-                    fit: BoxFit.fill,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 3,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ]),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 17,
-          child: SizedBox(),
-        ),
-        Expanded(
-          flex: 190,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  currFavSong,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize: MediaQuery.of(context).size.height *
-                        TINY_TXT_SCALER *
-                        1.2,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Marquee(
-                  text: favSongName,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize:
-                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  scrollAxis: Axis.horizontal,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  blankSpace: 20.0,
-                  velocity: 10.0,
-                  //numberOfRounds: 5,
-                  startPadding: 10,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  favSongArtist,
-                  style: TextStyle(
-                    color: black,
-                    fontFamily: 'Roboto',
-                    fontSize:
-                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Row(children: [
-                  Expanded(flex: 2, child: SizedBox()),
-                  Expanded(
-                    flex: 2,
-                    child: ClipRRect(
-                      borderRadius: new BorderRadius.all(Radius.circular(8)),
-                      child: Container(
-                        color: opaqueBlack,
-                        child: Row(children: [
-                          Expanded(flex: 1, child: SizedBox()),
-                          Expanded(
-                            flex: 5,
-                            child: TextButton(
-                              child: (favSongCurrentlyPlaying == true)
-                                  ? Image.asset(playIcon, scale: 1)
-                                  : Image.asset(pauseIcon, scale: 1),
-                              onPressed: () {
-                                //spotifyPlayer.play();
-                                setState(() {
-                                  if (favSongCurrentlyPlaying == true) {
-                                    favSongCurrentlyPlaying = false;
-                                    aSongCurrentlyPlaying = false;
-                                  } else {
-                                    favSongCurrentlyPlaying = true;
-                                    aSongCurrentlyPlaying = true;
-                                    songIsOrWasPlaying = true;
-                                  }
-                                });
-                              },
-                            ),
-                          ),
-                          Expanded(flex: 1, child: SizedBox()),
-                        ]),
-                      ),
-                    ),
-                  ),
-                  Expanded(flex: 2, child: SizedBox())
-                ]),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-            ],
-          ),
-        ),
-      ]),
-    );
-  }
 }
