@@ -477,7 +477,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                                                           ? whiteQuestionIcon
                                                                           : blackQuestionIcon,
                                                                       scale:
-                                                                          0.7)),
+                                                                          3)),
                                                             ),
                                                           ],
                                                         ),
@@ -652,7 +652,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                                                           ? whiteQuestionIcon
                                                                           : blackQuestionIcon,
                                                                       scale:
-                                                                          1)),
+                                                                          3)),
                                                             ),
                                                           ],
                                                         ),

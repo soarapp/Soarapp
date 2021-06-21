@@ -1,3 +1,7 @@
+import 'dart:core';
+
+import 'dart:core';
+
 ////////////////////////////////////
 //****GLOBALLYUSEDVARIABLES****//
 ///////////////////////////////////
@@ -5,7 +9,7 @@
 //Thesevariablestellthecurrentstateofwhetherasongisplayingornotandwhichone
 bool favSongCurrentlyPlaying = false;
 bool aSongCurrentlyPlaying = false;
-bool songIsOrWasPlaying = true;
+bool songIsOrWasPlaying = false;
 
 //Thevaluesoftheindicesofthisarrayindicatewhetherornotadesiredmoodwaschosen(1=chosen,0=not)
 //theindicescorrespondtothephysicallocationsofthebuttonslikethis:
@@ -140,6 +144,46 @@ List<String> cancerResourcesDetails = [
 ];
 List<String> cancerResourcesNumbers = ['800-843-8114', '', ''];
 List<String> cancerResourcesLinks = ['https://www.aicr.org/', '', ''];
+List<String> musicTherapyResourcesAbbreviations = [
+  'AMTA',
+  'WFMT',
+  '',
+  ''
+];
+List<String> musicTherapyResources = [
+  'American Music Therapy Association',
+  'World Federation of Music Therapy',
+  '',
+  ''
+];
+List<String> musicTherapyResourcesDetails = [
+  '',
+  'International nonprofit organization bringing together music therapy associations and individuals interested in developing and promoting music therapy globally through the exchange of information, collaboration among professionals, and actions. ',
+  '',
+  ''
+];
+List<String> musicTherapyResourcesLinks = [
+  '',
+  'https://wfmt.info/',
+  '',
+  ''
+];
+List<String> helplinesResources = [
+  'National Center for Learning Disabilities',
+  'National Eating Disorder Association',
+  'National Domestic Violence Hot-line',
+  'National Alliance on Mental Illness',
+  'Substance and Mental Health Services Administration',
+  'Suicide Prevention Lifeline'
+];
+List<String> helplinesResourcesNumbers = [
+  '',
+  '',
+  '800-799-7233',
+  '',
+  '',
+  ''
+];
 String questionQuoteIcon = 'assets/images/icons/questionQuoteIcon.png';
 String callIcon = 'assets/images/icons/callIcon.png';
 String bluePlusIcon = 'assets/images/icons/bluePlusIcon.png';
@@ -158,7 +202,7 @@ String chatIconB = 'assets/images/icons/chatIconBlack.png';
 String calendarIconB = 'assets/images/icons/calendarIconBlack.png';
 String musicIconB = 'assets/images/icons/musicIconBlack.png';
 String questionIconB = 'assets/images/icons/questionIconBlack.png';
-String userIconB = 'assets/images/icons/userIconGrey.png';
+String userIconB = 'assets/images/icons/userIconBlack.png';
 
 //playlistpage
 String playlistName1 = 'Restless to Sleepy';
@@ -166,3 +210,7 @@ String playlistName2 = 'Down to Lighthearted';
 String playlistName3 = 'Tired to Upbeat';
 String playlistName4 = 'Human to SuperHero';
 String playlistName5 = 'Stress to Relaxation';
+
+//comingSoon
+String comingSoonBackground = 'assets/images/backgrounds/comingSoonBackground.png';
+String cautionIcon = 'assets/images/other/cautionIcon.png';

@@ -5,25 +5,25 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 
-void main() => runApp(MusicTherapyScreen());
+void main() => runApp(HelplinesScreen());
 
-class MusicTherapyScreen extends StatelessWidget {
-  static const String id = 'musicTherapy';
+class HelplinesScreen extends StatelessWidget {
+  static const String id = 'helplines';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MusicTherapyPage(),
+      home: HelplinesPage(),
     );
   }
 }
 
-class MusicTherapyPage extends StatefulWidget {
+class HelplinesPage extends StatefulWidget {
   @override
-  MusicTherapyPageSetup createState() => MusicTherapyPageSetup();
+  HelplinesPageSetup createState() => HelplinesPageSetup();
 }
 
-class MusicTherapyPageSetup extends State<MusicTherapyPage> {
+class HelplinesPageSetup extends State<HelplinesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,14 +105,14 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Music Therapy',
+                                  'Emergency',
                                   style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
                                 Text(
-                                  'Resources',
+                                  'Helplines',
                                   style: TextStyle(
                                       fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
@@ -174,7 +174,7 @@ class QuestionList extends State<FAQDisplay> {
         itemCount: questions.length,
         itemBuilder: (BuildContext ctxt, int index) {
           return Container(
-            padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
+            padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0, right: 20),
             decoration: BoxDecoration(
               color: (questionNum == index) ? Color(0xFFE4F2FC) : Colors.white,
               border: Border(
@@ -206,7 +206,7 @@ class QuestionList extends State<FAQDisplay> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 9,
+                        flex: 15,
                         child: Padding(
                           padding: const EdgeInsets.only(
                               top: 5.0, bottom: 5.0),
@@ -214,20 +214,11 @@ class QuestionList extends State<FAQDisplay> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                musicTherapyResourcesAbbreviations[index],
+                                helplinesResources[index],
                                 style: TextStyle(
-                                  color: Color(0xFF6AABEF),
+                                  color: Colors.black,
                                   fontFamily: 'OpenSans',
-                                  fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                musicTherapyResources[index],
-                                style: TextStyle(
-                                  color: Color(0xFF6AABEF),
-                                  fontFamily: 'OpenSans',
-                                  fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                                  fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER * 1.15,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -235,51 +226,67 @@ class QuestionList extends State<FAQDisplay> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                            MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                        child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(upArrow)),
+                      Expanded(
+                        flex: 2,
+                        child: InkWell(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                                MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
+                            child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(bluePlusIcon, scale: 3)),
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 18.0),
-                  child: Text(
-                    musicTherapyResourcesDetails[index],
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'OpenSans',
-                      fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 13.0),
+                  padding: const EdgeInsets.all(9.5),
                   child: InkWell(
-                    child: Row(
-                      children: [
-                        Expanded(flex: 1, child: Image.asset(bluePaperclipIcon, scale: 4)),
-                        Expanded(
-                          flex: 13,
-                          child: Text(
-                            musicTherapyResourcesLinks[index],
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Color(0xFF6AABEF),
-                              fontFamily: 'OpenSans',
-                              fontSize:
-                              MediaQuery.of(context).size.height *
-                                  SMALL_TXT_SCALER,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFFE1E4EB),
+                          borderRadius: new BorderRadius.circular(MED_BORDER_RADIUS),
                           ),
+                      child: InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15, top: 4, bottom: 4),
+                          child: Row(children: [
+                            Expanded(flex: 3, child: SizedBox()),
+                            Expanded(flex: 5, child: Image.asset(bluePhoneIcon, scale: 1.6)),
+                            Expanded(
+                              flex: 5,
+                              child: Text(
+                                'CALL',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF6AABEF),
+                                  fontFamily: 'OpenSans',
+                                  fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER * 1.4,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 10,
+                              child: Text(
+                                helplinesResourcesNumbers[index],
+
+                                style: TextStyle(
+                                  color: Color(0xFF6AABEF),
+                                  fontFamily: 'OpenSans',
+                                  fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER * 1.4,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Expanded(flex: 3, child: SizedBox()),
+                          ],),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 )
+
 
 
 
@@ -292,42 +299,18 @@ class QuestionList extends State<FAQDisplay> {
                   questionNum = index;
                 });
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding:
-                    const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          musicTherapyResourcesAbbreviations[index],
-                          style: TextStyle(
-                            color: Color(0xFF6AABEF),
-                            fontFamily: 'OpenSans',
-                            fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          musicTherapyResources[index],
-                          style: TextStyle(
-                            color: Color(0xFF6AABEF),
-                            fontFamily: 'OpenSans',
-                            fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                child: Text(
+                  helplinesResources[index],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'OpenSans',
+                    fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER * 1.15,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                        MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                    child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(downArrow)),
-                  ),
-                ],
+                ),
               ),
             ),
           );

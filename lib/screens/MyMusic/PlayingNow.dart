@@ -80,7 +80,7 @@ class PlayingNow extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context, rootNavigator: true).pop(context);
               },
               child: Icon(Icons.arrow_back_ios),
             ),
