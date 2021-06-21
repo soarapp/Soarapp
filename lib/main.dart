@@ -43,7 +43,7 @@ class MainScreen extends StatelessWidget {
       //locale: DevicePreview.locale(context),
       //builder: DevicePreview.appBuilder,
       // the route that the app directs to when the app first launches
-      initialRoute: HomePageScreen.id,
+      initialRoute: SplashScreen.id,
       // the other routes for the application
       routes: {
         LoggedOutScreen.id: (context) => LoggedOutScreen(),

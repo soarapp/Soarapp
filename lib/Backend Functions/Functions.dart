@@ -142,14 +142,14 @@ void signIn(String _email, String _password, BuildContext context) async {
         ),
       );
       ;
-    } else {
-      _showDialog(context);
-    }
+    } else {}
   });
 }
 
 // sample popup
 void _showDialog(BuildContext context) {
+  String _email;
+  String _password;
   // flutter defined function
   showDialog(
     context: context,
@@ -163,6 +163,7 @@ void _showDialog(BuildContext context) {
           new FlatButton(
             child: new Text("Close"),
             onPressed: () {
+              confirmEmail(_email, _password);
               Navigator.of(context).pop();
             },
           ),

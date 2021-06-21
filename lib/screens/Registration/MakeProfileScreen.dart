@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:soar_initial_screens/Backend%20Functions/Functions.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
 import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
@@ -12,7 +15,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
+bool status = true;
+String path;
 double ogHeight = 0;
+// global variables for user preferences
+String _name;
+String _socialMedia;
+String _favSong;
+String _bio;
+// Get from gallery
+_getFromGallery() async {
+  PickedFile pickedFile = await ImagePicker().getImage(
+    source: ImageSource.gallery,
+    maxWidth: 1800,
+    maxHeight: 1800,
+  );
+  if (pickedFile != null) {
+    path = pickedFile.path;
+    uploadFile(pickedFile.path, profilePicture);
+  }
+}
 
 double getHeight() {
   return ogHeight;
@@ -52,7 +74,8 @@ class _MakeProfileScreenState extends State<MakeProfileScreen>
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         alignment: Alignment(-.2, 0),
-                        image: AssetImage('assets/images/backgrounds/Group1.png'),
+                        image:
+                            AssetImage('assets/images/backgrounds/Group1.png'),
                         fit: BoxFit.fill),
                   ),
                   alignment: Alignment.bottomCenter,
@@ -61,9 +84,9 @@ class _MakeProfileScreenState extends State<MakeProfileScreen>
                       // the top part of the screen where you can see the background
                       // the top part of the screen with the 'Create Your Profile' text
                       SizedBox(
-                        height: MediaQuery.of(context).size.height *
-                            HUNDRETH_SCALER * 3
-                      ),
+                          height: MediaQuery.of(context).size.height *
+                              HUNDRETH_SCALER *
+                              3),
                       Expanded(
                         flex: 1,
                         child: Row(
@@ -121,7 +144,7 @@ class CreateProfileCard extends StatefulWidget {
 }
 
 class CreateProfileCardState extends State<CreateProfileCard>
-    with SingleTickerProviderStateMixin{
+    with SingleTickerProviderStateMixin {
   double _height = getHeight() * 1.7 - (getHeight() * 1.7 / 10);
 
   @override
@@ -168,21 +191,17 @@ class CreateProfileCardState extends State<CreateProfileCard>
               flex: 1,
               child: Column(
                 children: [
-                  Expanded(
-                    flex: 1,
-                    child: Image.asset(
-                      'assets/images/other/defaultCamPhoto.png',
-                      width: MediaQuery.of(context).size.height *
-                          HUNDRETH_SCALER *
-                          20,
-                      height: MediaQuery.of(context).size.height *
-                          HUNDRETH_SCALER *
-                          20,
-                    ),
-                  ),
+                  CircleAvatar(
+                      radius: 38.0,
+                      backgroundImage: (status)
+                          ? AssetImage(
+                              'assets/images/other/defaultCamPhoto.png')
+                          : FileImage((File(path)))
+                      // backgroundColor: Colors.transparent,
+                      ),
                   SizedBox(
                     height:
-                    MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                   ),
                   // The 'Add Photo' text
                   AddPhotoText(),
@@ -230,7 +249,9 @@ class CreateProfileCardState extends State<CreateProfileCard>
                       Expanded(
                         flex: 12,
                         // the text field where users can enter their name
-                        child: NameTextField(),
+                        child: TextField(onChanged: (value) {
+                          _name = value.trim();
+                        }),
                       ),
                       Expanded(
                         flex: 1,
@@ -248,19 +269,22 @@ class CreateProfileCardState extends State<CreateProfileCard>
                 children: [
                   UserInfoCard(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+                    height: MediaQuery.of(context).size.height *
+                        HUNDRETH_SCALER *
+                        5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ReusableButton(
-                        buttonHeight:
-                        MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
+                        buttonHeight: MediaQuery.of(context).size.height *
+                            LG_BUTTON_SCALER,
                         buttonText: "CREATE ACCOUNT",
-                        textSize:
-                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                        textSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
                         textColor: Colors.white,
                         onPressed: () {
+                          addData(_name, _bio, _favSong, _socialMedia);
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
@@ -273,11 +297,15 @@ class CreateProfileCardState extends State<CreateProfileCard>
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+                    height: MediaQuery.of(context).size.height *
+                        HUNDRETH_SCALER *
+                        2,
                   ),
                   SkipStepText(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+                    height: MediaQuery.of(context).size.height *
+                        HUNDRETH_SCALER *
+                        5,
                   ),
                   CircularProgressBar(numPages: 3, currPage: 3),
                 ],
@@ -285,8 +313,7 @@ class CreateProfileCardState extends State<CreateProfileCard>
             ),
             Expanded(
               flex: 2,
-              child: SizedBox(
-              ),
+              child: SizedBox(),
             ),
           ],
         ),
@@ -329,41 +356,38 @@ class NameTextField extends StatelessWidget {
   }
 }
 
-class AddPhotoText extends StatelessWidget {
+class AddPhotoText extends StatefulWidget {
   const AddPhotoText({
     Key key,
   }) : super(key: key);
 
   @override
+  _AddPhotoTextState createState() => _AddPhotoTextState();
+}
+
+class _AddPhotoTextState extends State<AddPhotoText> {
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: RichText(
-        text: TextSpan(
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-              color: Colors.black,
-              fontFamily: 'OpenSans'),
-          children: <TextSpan>[
-            TextSpan(
-                text: 'Add Photo',
-                style: TextStyle(
-                    color: Color(0xFF6AABEF),
-                    fontSize:
-                        MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans'),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return SignInScreen();
-                        },
-                      ),
-                    );
-                  }),
-          ],
-        ),
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(
+            fontSize: 12.sp, color: Colors.black, fontFamily: 'OpenSans'),
+        children: <TextSpan>[
+          TextSpan(
+              text: 'Add Photo',
+              style: TextStyle(
+                  color: Color(0xFF6AABEF),
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans'),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  _getFromGallery();
+                  setState(() {
+                    status = false;
+                  });
+                }),
+        ],
       ),
     );
   }

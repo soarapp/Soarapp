@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +9,8 @@ import '../../CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/screens/Registration/RegisterScreen.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:soar_initial_screens/Backend Functions/Functions.dart';
 
 // This is the create accounts screen where users can enter their email,
 // password, and password verification
@@ -18,6 +18,31 @@ import 'package:soar_initial_screens/CommonWidgets.dart';
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
 double ogHeight = 0;
+String _email;
+String _pass;
+bool status;
+final _cpassKey = GlobalKey<FormState>();
+final _emailKey = GlobalKey<FormState>();
+final _passKey = GlobalKey<FormState>();
+
+// check if the user inputs are valid or not
+void _checkForm(BuildContext context) async {
+  final isCpassValid = _cpassKey.currentState.validate();
+  final isEmailValid = _emailKey.currentState.validate();
+  final isPassValid = _passKey.currentState.validate();
+
+  if (isEmailValid && isPassValid && isCpassValid) {
+    createAcc(_email, _pass);
+    confirmEmail(_email, _pass);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return LinkSpotifyScreen();
+        },
+      ),
+    );
+  }
+}
 
 double getHeight() {
   return ogHeight;
@@ -184,7 +209,7 @@ class CreateAcctCardState extends State<CreateAcctCard>
                           HUNDRETH_SCALER *
                           2,
                     ),
-                    CreateAcctTxtBox(),
+                    CreateEmailTxtBox(),
                   ],
                 ),
               ),
@@ -199,7 +224,7 @@ class CreateAcctCardState extends State<CreateAcctCard>
                       height:
                           MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                     ),
-                    CreateAcctTxtBox(),
+                    CreatePassTxtBox(),
                   ],
                 ),
               ),
@@ -213,13 +238,13 @@ class CreateAcctCardState extends State<CreateAcctCard>
                       height:
                           MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                     ),
-                    CreateAcctTxtBox(),
+                    CreateConfirmPassTxtBox(),
                   ],
                 ),
               ),
               SizedBox(
                 height:
-                MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2,
               ),
               // this is the expanded container that has the 'NEXT STEP' button
               Expanded(
@@ -235,22 +260,15 @@ class CreateAcctCardState extends State<CreateAcctCard>
                         Expanded(
                           flex: 5,
                           child: ReusableButton(
-                            buttonText: "NEXT STEP",
-                            textColor: Colors.white,
-                            buttonHeight: MediaQuery.of(context).size.height *
-                                BUTTON_SCALER,
-                            textSize: MediaQuery.of(context).size.height *
-                                SMALL_TXT_SCALER,
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return LinkSpotifyScreen();
-                                  },
-                                ),
-                              );
-                            },
-                          ),
+                              buttonText: "NEXT STEP",
+                              textColor: Colors.white,
+                              buttonHeight: MediaQuery.of(context).size.height *
+                                  BUTTON_SCALER,
+                              textSize: MediaQuery.of(context).size.height *
+                                  SMALL_TXT_SCALER,
+                              onPressed: () {
+                                _checkForm(context);
+                              }),
                         ),
                         Expanded(
                           child: SizedBox(),
@@ -267,7 +285,7 @@ class CreateAcctCardState extends State<CreateAcctCard>
               ),
               SizedBox(
                 height:
-                MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
+                    MediaQuery.of(context).size.height * HUNDRETH_SCALER * 5,
               ),
               // the three dot progress indicator at the bottom of the screen
               CircularProgressBar(
@@ -339,8 +357,82 @@ class ConfirmPsswdText extends StatelessWidget {
   }
 }
 
-class CreateAcctTxtBox extends StatelessWidget {
-  const CreateAcctTxtBox({
+class CreateEmailTxtBox extends StatelessWidget {
+  const CreateEmailTxtBox({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: SizedBox(),
+        ),
+
+        Expanded(
+          flex: 5,
+          child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFe4f2fc),
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
+              height: 50,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                child: Form(
+                  key: _emailKey,
+                  // Email TextField
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    validator: (value) {
+                      if (value.trim().isEmpty) {
+                        return 'Please enter your email address';
+                      }
+                      // Check if the entered email has the right format
+                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                        return 'Please enter a valid email address';
+                      }
+                      // Return null if email is valid
+                      return null;
+                    },
+                    onChanged: (value) {
+                      _email = value.trim();
+                    },
+                  ),
+                ),
+              )),
+        ),
+
+        // Expanded(
+        //   flex: 5,
+        //   // the text field for the password
+        //   // child: UsrInputTxtBox(
+        //   //   fieldColor: Color(0xFFe4f2fc),
+        //   //   paddingLeft: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+        //   //   paddingBottom: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+        //   //   fieldHeight: MediaQuery.of(context).size.height * FIELD_SIZE_SCALER,
+        //   //   borderRadius: BORDER_RADIUS,
+        //   //   hintTextColor: Colors.black,
+
+        //   // ),
+
+        Expanded(
+          flex: 1,
+          child: SizedBox(),
+        ),
+      ],
+    );
+  }
+}
+
+class CreatePassTxtBox extends StatelessWidget {
+  const CreatePassTxtBox({
     Key key,
   }) : super(key: key);
 
@@ -355,13 +447,103 @@ class CreateAcctTxtBox extends StatelessWidget {
         Expanded(
           flex: 5,
           // the text field for the password
-          child: UsrInputTxtBox(
-            fieldColor: Color(0xFFe4f2fc),
-            paddingLeft: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-            paddingBottom: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-            fieldHeight: MediaQuery.of(context).size.height * FIELD_SIZE_SCALER,
-            borderRadius: BORDER_RADIUS,
-            hintTextColor: Colors.black,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFe4f2fc),
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            height: 50,
+            child: Padding(
+                padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+                child: Form(
+                  key: _passKey,
+                  // Password textfield
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 34),
+                    ),
+                    validator: (value) {
+                      if (value.trim().isEmpty) {
+                        return 'This field is required';
+                      }
+                      if (value.trim().length < 8) {
+                        return 'Password must be at least 8 characters in length';
+                      }
+                      // Return null if the entered password is valid
+                      return null;
+                    },
+                    onChanged: (value) {
+                      _pass = value.trim();
+                    },
+                  ),
+                )),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: SizedBox(),
+        ),
+      ],
+    );
+  }
+}
+
+class CreateConfirmPassTxtBox extends StatelessWidget {
+  const CreateConfirmPassTxtBox({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: SizedBox(),
+        ),
+        Expanded(
+          flex: 5,
+          // the text field for the confirm password
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFe4f2fc),
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            height: 50,
+            child: Padding(
+                padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+                // validate everything in the child form
+                child: Form(
+                  key: _cpassKey,
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 34),
+                    ),
+                    validator: (value) {
+                      // check if value is empty
+                      if (value.trim().isEmpty) {
+                        return 'This field is required';
+                      }
+                      // check if the passwords are not equal
+
+                      if (value.trim() != _pass) {
+                        return 'Passwords do not match';
+                      }
+
+                      return null;
+                    },
+                  ),
+                )),
           ),
         ),
         Expanded(

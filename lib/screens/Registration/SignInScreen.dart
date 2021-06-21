@@ -9,12 +9,15 @@ import 'package:soar_initial_screens/screens/Registration/RegisterScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
+import 'package:soar_initial_screens/Backend Functions/Functions.dart';
 
 // This is the Sign In Screen that users will navigate to
 // after clicking Login
 
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
+String _email;
+String _password;
 double ogHeight = 0;
 
 double getHeight() {
@@ -197,17 +200,24 @@ class SignInCardState extends State<SignInCard>
                         // Blue text field portion for the email user input
                         Expanded(
                           flex: 5,
-                          // text field from common widgets class
-                          child: UsrInputTxtBox(
-                            fieldColor: Color(0xFFe4f2fc),
-                            paddingLeft: MediaQuery.of(context).size.height *
-                                HUNDRETH_SCALER,
-                            fieldHeight: MediaQuery.of(context).size.height *
-                                FIELD_SIZE_SCALER,
-                            paddingBottom: MediaQuery.of(context).size.height *
-                                FIELD_SIZE_SCALER /
-                                1.5,
-                            borderRadius: BORDER_RADIUS,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFe4f2fc),
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
+                            height: 50,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintStyle: TextStyle(color: Colors.black),
+                                ),
+                                onChanged: (value) {
+                                  _email = value.trim();
+                                },
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
@@ -262,17 +272,28 @@ class SignInCardState extends State<SignInCard>
                         // password
                         Expanded(
                           flex: 5,
-                          // text field from common widgets class
-                          child: UsrInputTxtBox(
-                            fieldColor: Color(0xFFe4f2fc),
-                            paddingLeft: MediaQuery.of(context).size.height *
-                                HUNDRETH_SCALER,
-                            paddingBottom: 0,
-                            fieldHeight: MediaQuery.of(context).size.height *
-                                FIELD_SIZE_SCALER,
-                            borderRadius: 8.0,
-                            hintTextColor: Colors.black,
-                            hintText: '••••••••••••',
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFe4f2fc),
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
+                            height: 50,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(8, 14, 0, 0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: '••••••••••••',
+                                  hintStyle: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 34),
+                                ),
+                                onChanged: (value) {
+                                  _password = value.trim();
+                                },
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
@@ -416,13 +437,7 @@ class SignInButton extends StatelessWidget {
       height: MediaQuery.of(context).size.height * BUTTON_SCALER,
       child: ElevatedButton(
         onPressed: () {
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (context) {
-          //       return ConnectHRScreen();
-          //     },
-          //   ),
-          // );
+          signIn(_email, _password, context);
         },
         child: Text("SIGN IN",
             textAlign: TextAlign.center,

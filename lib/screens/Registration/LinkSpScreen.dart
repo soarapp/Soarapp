@@ -6,7 +6,7 @@ import 'package:soar_initial_screens/screens/Registration/ForgotPassScreen.dart'
 import 'package:soar_initial_screens/screens/Registration/MakeProfileScreen.dart';
 import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
-import 'package:soar_initial_screens/themeData/ColorUtils.dart';
+import 'package:soar_initial_screens/ThemeData/ColorUtils.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 
 // This is the Link Spotify screen where users can link their Spotify accounts

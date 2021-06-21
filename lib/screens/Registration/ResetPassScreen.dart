@@ -7,7 +7,7 @@ import 'package:soar_initial_screens/screens/Registration/ForgotPassScreen.dart'
 import 'package:soar_initial_screens/screens/Registration/LinkSpScreen.dart';
 import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
-import 'package:soar_initial_screens/themeData/ColorUtils.dart';
+import 'package:soar_initial_screens/ThemeData/ColorUtils.dart';
 import '../../CommonWidgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -200,12 +200,15 @@ class CreateAcctCardState extends State<CreateAcctCard>
                           child: Text(
                             "Confirm New Password",
                             style: TextStyle(
-                                fontSize:  MediaQuery.of(context).size.height * SMALL_TXT_SCALER, fontWeight: FontWeight.bold),
+                                fontSize: MediaQuery.of(context).size.height *
+                                    SMALL_TXT_SCALER,
+                                fontWeight: FontWeight.bold),
                           )),
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    height:
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                   ),
                   Row(
                     children: [
@@ -218,7 +221,8 @@ class CreateAcctCardState extends State<CreateAcctCard>
                         // the text field for the password
                         child: UsrInputTxtBox(
                           fieldColor: Color(0xFFe4f2fc),
-                          paddingLeft: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                          paddingLeft: MediaQuery.of(context).size.height *
+                              HUNDRETH_SCALER,
                           paddingBottom: MediaQuery.of(context).size.width / 50,
                           fieldHeight: MediaQuery.of(context).size.width / 10,
                           borderRadius: 10.0,
@@ -279,7 +283,8 @@ class CreateAcctCardState extends State<CreateAcctCard>
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                    height:
+                        MediaQuery.of(context).size.height * HUNDRETH_SCALER,
                   ),
                   Row(
                     children: [
@@ -354,7 +359,10 @@ class EmailText extends StatelessWidget {
             flex: 5,
             child: Text(
               "New Password",
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize:
+                      MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                  fontWeight: FontWeight.bold),
             )),
         Expanded(
           flex: 5,
