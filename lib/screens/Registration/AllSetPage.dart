@@ -23,38 +23,19 @@ class _AllSetScreenState extends State<AllSetScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          // overarching widget which encompasses all other components on the screen
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment(-.2, 0),
-                  image: AssetImage(
-                      'assets/images/backgrounds/splashReplicaNoLogo.png'),
-                  fit: BoxFit.cover),
-            ),
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              children: [
-                // expanded with SizedBox in a col helps create a gap between
-                // the top of the screen and the curved white card
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                // Container acts as curved white card which contains elements
-                RegisterCard(),
-              ],
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
+      Column(
+        children: [
+          // expanded with SizedBox in a col helps create a gap between
+          // the top of the screen and the curved white card
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
           ),
-        ),
+          // Container acts as curved white card which contains elements
+          RegisterCard(),
+        ],
       ),
     );
   }

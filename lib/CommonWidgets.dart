@@ -4,6 +4,61 @@ import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // this file will contain all of the common, reusable widgets for our application
 
+class BackgroundWithPopup extends StatelessWidget {
+  BackgroundWithPopup(this.backgroundImage, this.childWidget);
+
+  final AssetImage backgroundImage;
+  final Widget childWidget;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                alignment: Alignment(0, 0),
+                image: backgroundImage,
+                fit: BoxFit.cover),
+          ),
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(40.0),
+                        topLeft: Radius.circular(40.0),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: childWidget,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class Background extends StatelessWidget {
   Background(this.backgroundImage, this.childWidget);
 
@@ -25,27 +80,12 @@ class Background extends StatelessWidget {
                 fit: BoxFit.cover),
           ),
           alignment: Alignment.bottomCenter,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0),
-                    ),
-                    color: Colors.white,
-                  ),
-                  child: childWidget,
-                ),
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+            child: Padding(
+              padding: const EdgeInsets.all(30),
+              child: childWidget,
+            ),
           ),
         ),
       ),

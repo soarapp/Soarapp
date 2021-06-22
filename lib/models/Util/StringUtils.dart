@@ -1,9 +1,41 @@
 import 'dart:core';
 
-import 'dart:core';
-
 ////////////////////////////////////
 //****GLOBALLYUSEDVARIABLES****//
+
+// Navigation routes
+String splashScreenRoute = "/splash";
+
+// Registration Screens
+String loggedOutScreenRoute = "/loggedout";
+String registerOneScreenRoute = "/registerone";
+String logInScreenRoute = "/login";
+String spotifyLogInScreenRoute = "/spotifylogin";
+String appMusicLogInScreenRoute = "/appmusiclogin";
+String otherSignUpScreenRoute = "/othersignup";
+String registerScreenRoute = "/register";
+String signInScreenRoute = "/signin";
+String forgotPassScreenRoute = "/forgotpassword";
+String createAccScreenRoute = "/createaccount";
+String linkSpotifyScreenRoute = "/linkspotify";
+String makeProfileScreenRoute = "/makeprofile";
+String signInErrorScreenRoute = "/signinerror";
+String checkEmailScreenRoute = "/checkemail";
+String allSetScreenRoute = "/allset";
+String resetPassScreenRoute = "/resetpassword";
+
+// Music Screens
+String homePageScreenRoute = "/homepage";
+String playingNowScreenRoute = "/playingnow";
+String playlistsScreenRoute = "/playlists";
+String playlistScreenRoute = "/playlist";
+
+// Mood Quiz Screens
+
+// Profile Screens
+
+// Resources Screens
+
 ///////////////////////////////////
 
 //Thesevariablestellthecurrentstateofwhetherasongisplayingornotandwhichone
@@ -144,12 +176,7 @@ List<String> cancerResourcesDetails = [
 ];
 List<String> cancerResourcesNumbers = ['800-843-8114', '', ''];
 List<String> cancerResourcesLinks = ['https://www.aicr.org/', '', ''];
-List<String> musicTherapyResourcesAbbreviations = [
-  'AMTA',
-  'WFMT',
-  '',
-  ''
-];
+List<String> musicTherapyResourcesAbbreviations = ['AMTA', 'WFMT', '', ''];
 List<String> musicTherapyResources = [
   'American Music Therapy Association',
   'World Federation of Music Therapy',
@@ -162,12 +189,7 @@ List<String> musicTherapyResourcesDetails = [
   '',
   ''
 ];
-List<String> musicTherapyResourcesLinks = [
-  '',
-  'https://wfmt.info/',
-  '',
-  ''
-];
+List<String> musicTherapyResourcesLinks = ['', 'https://wfmt.info/', '', ''];
 List<String> helplinesResources = [
   'National Center for Learning Disabilities',
   'National Eating Disorder Association',
@@ -176,14 +198,7 @@ List<String> helplinesResources = [
   'Substance and Mental Health Services Administration',
   'Suicide Prevention Lifeline'
 ];
-List<String> helplinesResourcesNumbers = [
-  '',
-  '',
-  '800-799-7233',
-  '',
-  '',
-  ''
-];
+List<String> helplinesResourcesNumbers = ['', '', '800-799-7233', '', '', ''];
 String questionQuoteIcon = 'assets/images/icons/questionQuoteIcon.png';
 String callIcon = 'assets/images/icons/callIcon.png';
 String bluePlusIcon = 'assets/images/icons/bluePlusIcon.png';
@@ -212,5 +227,6 @@ String playlistName4 = 'Human to SuperHero';
 String playlistName5 = 'Stress to Relaxation';
 
 //comingSoon
-String comingSoonBackground = 'assets/images/backgrounds/comingSoonBackground.png';
+String comingSoonBackground =
+    'assets/images/backgrounds/comingSoonBackground.png';
 String cautionIcon = 'assets/images/other/cautionIcon.png';

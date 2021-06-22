@@ -28,47 +28,19 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
   @override
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => Scaffold(
-        // overarching container for the entire screen
-        body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height,
-            ),
-            // sizes the container child to the intrinsic height of the screen
-            child: IntrinsicHeight(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      alignment: Alignment(-.2, 0),
-                      // background image
-                      image: AssetImage(
-                          'assets/images/backgrounds/splashReplicaNoLogo.png'),
-                      fit: BoxFit.cover),
-                ),
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    // part of the screen that allows the background image to display
-                    // on the top of the screen
-                    Expanded(
-                      flex: 2,
-                      child: SizedBox(),
-                    ),
-                    // bottom two thirds portion of the screen with the information on the card
-                    ForgotPassCard(),
-                  ],
-                ),
-              ),
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
+      Column(
+        children: [
+          // part of the screen that allows the background image to display
+          // on the top of the screen
+          Expanded(
+            flex: 2,
+            child: SizedBox(),
           ),
-        ),
+          // bottom two thirds portion of the screen with the information on the card
+          ForgotPassCard(),
+        ],
       ),
     );
   }
@@ -124,8 +96,7 @@ class ForgotPassCardState extends State<ForgotPassCard>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height:
-                MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
               ),
               // the back button and the Forgot Password text
               Expanded(

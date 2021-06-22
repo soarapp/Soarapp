@@ -108,7 +108,7 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
                     //entire box with the mood options that you can click
                     Expanded(
                       flex: 350,
-                      child: MoodBox(),
+                      child: MoodBoxPage2(),
                     ),
                     //button for 'none of these describe my mood'
                     Expanded(
@@ -209,12 +209,12 @@ class MoodQuizPage2Setup extends State<MoodQuizPage2> {
 }
 
 //this is the entire section with all the mood buttons
-class MoodBox extends StatefulWidget {
+class MoodBoxPage2 extends StatefulWidget {
   @override
-  _MoodBox createState() => _MoodBox();
+  _MoodBoxPage2 createState() => _MoodBoxPage2();
 }
 
-class _MoodBox extends State<MoodBox> {
+class _MoodBoxPage2 extends State<MoodBoxPage2> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -240,7 +240,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[0] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 0, word: moodSoonButton0),
+                    child: WordBoxPage2(buttonNum: 0, word: moodSoonButton0),
                   ),
                 ),
                 Expanded(
@@ -264,7 +264,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[1] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 1, word: moodSoonButton1),
+                    child: WordBoxPage2(buttonNum: 1, word: moodSoonButton1),
                   ),
                 ),
                 Expanded(
@@ -288,7 +288,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[2] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 2, word: moodSoonButton2),
+                    child: WordBoxPage2(buttonNum: 2, word: moodSoonButton2),
                   ),
                 ),
                 Expanded(
@@ -313,7 +313,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[3] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 3, word: moodSoonButton3),
+                    child: WordBoxPage2(buttonNum: 3, word: moodSoonButton3),
                   ),
                 ),
                 Expanded(
@@ -346,7 +346,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[4] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 4, word: moodSoonButton4),
+                    child: WordBoxPage2(buttonNum: 4, word: moodSoonButton4),
                   ),
                 ),
                 Expanded(
@@ -370,7 +370,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[5] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 5, word: moodSoonButton5),
+                    child: WordBoxPage2(buttonNum: 5, word: moodSoonButton5),
                   ),
                 ),
                 Expanded(
@@ -394,7 +394,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[6] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 6, word: moodSoonButton6),
+                    child: WordBoxPage2(buttonNum: 6, word: moodSoonButton6),
                   ),
                 ),
                 Expanded(
@@ -418,7 +418,7 @@ class _MoodBox extends State<MoodBox> {
                         moodDesiredButtonArray[7] = 1;
                       })
                     },
-                    child: WordBox(buttonNum: 7, word: moodSoonButton7),
+                    child: WordBoxPage2(buttonNum: 7, word: moodSoonButton7),
                   ),
                 ),
                 Expanded(
@@ -441,8 +441,8 @@ class _MoodBox extends State<MoodBox> {
 // Word Box widget used extensively in the Mood Quiz:
 
 // ignore: must_be_immutable
-class WordBox extends StatelessWidget {
-  WordBox({
+class WordBoxPage2 extends StatelessWidget {
+  WordBoxPage2({
     Key key,
     this.buttonNum,
     this.word,

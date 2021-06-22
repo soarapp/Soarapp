@@ -52,85 +52,51 @@ class _MakeProfileScreenState extends State<MakeProfileScreen>
   @override
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // SingleChildScrollView widget allows the user to scroll through the screen
-        home: Scaffold(
-          body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.height * 1.7,
-              ),
-              // the overarching container that contains the entirety of the components
-              // on the screen
-              child: IntrinsicHeight(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        alignment: Alignment(-.2, 0),
-                        image:
-                            AssetImage('assets/images/backgrounds/Group1.png'),
-                        fit: BoxFit.fill),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
+    return Background(
+      AssetImage('assets/images/backgrounds/Group1.png'),
+      Column(
+        children: [
+          // the top part of the screen where you can see the background
+          // the top part of the screen with the 'Create Your Profile' text
+          SizedBox(
+              height: MediaQuery.of(context).size.height * HUNDRETH_SCALER * 3),
+          Expanded(
+            flex: 1,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 9,
+                  child: Row(
                     children: [
-                      // the top part of the screen where you can see the background
-                      // the top part of the screen with the 'Create Your Profile' text
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height *
-                              HUNDRETH_SCALER *
-                              3),
-                      Expanded(
-                        flex: 1,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(),
-                            ),
-                            Expanded(
-                              flex: 9,
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Create Your \nProfile",
-                                    style: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.height *
-                                                MED_TXT_SCALER,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'OpenSans'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: SizedBox(),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // the bottom portion of the screen with the white card and all
-                      // of the components within the white card
-                      Expanded(
-                        flex: 8,
-                        child: CreateProfileCard(),
+                      Text(
+                        "Create Your \nProfile",
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.height *
+                                MED_TXT_SCALER,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'OpenSans'),
                       ),
                     ],
                   ),
                 ),
-              ),
+                Expanded(
+                  flex: 2,
+                  child: SizedBox(),
+                ),
+              ],
             ),
           ),
-        ),
+          // the bottom portion of the screen with the white card and all
+          // of the components within the white card
+          Expanded(
+            flex: 8,
+            child: CreateProfileCard(),
+          ),
+        ],
       ),
     );
   }

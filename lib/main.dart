@@ -23,7 +23,10 @@ import 'package:soar_initial_screens/screens/Registration/AllSetPage.dart';
 import 'package:soar_initial_screens/screens/Registration/ResetPassScreen.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
 import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
+import 'package:soar_initial_screens/screens/MyMusic/Playlists.dart';
+import 'package:soar_initial_screens/screens/MyMusic/Playlist.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,29 +46,30 @@ class MainScreen extends StatelessWidget {
       //locale: DevicePreview.locale(context),
       //builder: DevicePreview.appBuilder,
       // the route that the app directs to when the app first launches
-      initialRoute: SplashScreen.id,
+      initialRoute: PlayingNowScreen.id,
       // the other routes for the application
       routes: {
-        LoggedOutScreen.id: (context) => LoggedOutScreen(),
-        RegisterOneScreen.id: (context) => RegisterOneScreen(),
-        LogInScreen.id: (context) => LogInScreen(),
-        SpotifyLogInScreen.id: (context) => SpotifyLogInScreen(),
-        AppMusicLogInScreen.id: (context) => AppMusicLogInScreen(),
-        OtherSignUpScreen.id: (context) => OtherSignUpScreen(),
-        ConnectHRScreen.id: (context) => ConnectHRScreen(),
-        RegisterScreen.id: (context) => RegisterScreen(),
-        SignInScreen.id: (context) => SignInScreen(),
-        SplashScreen.id: (context) => SplashScreen(),
-        ForgotPassScreen.id: (context) => ForgotPassScreen(),
-        CreateAccScreen.id: (context) => CreateAccScreen(),
-        LinkSpotifyScreen.id: (context) => LinkSpotifyScreen(),
-        MakeProfileScreen.id: (context) => MakeProfileScreen(),
-        SignInErrorScreen.id: (context) => SignInErrorScreen(),
-        CheckEmailScreen.id: (context) => CheckEmailScreen(),
-        AllSetScreen.id: (context) => AllSetScreen(),
-        ResetPassScreen.id: (context) => ResetPassScreen(),
-        HomePageScreen.id: (context) => HomePageScreen(),
-        PlayingNowScreen.id: (context) => PlayingNowScreen(),
+        loggedOutScreenRoute: (context) => LoggedOutScreen(),
+        registerOneScreenRoute: (context) => RegisterOneScreen(),
+        logInScreenRoute: (context) => LogInScreen(),
+        spotifyLogInScreenRoute: (context) => SpotifyLogInScreen(),
+        appMusicLogInScreenRoute: (context) => AppMusicLogInScreen(),
+        otherSignUpScreenRoute: (context) => OtherSignUpScreen(),
+        registerScreenRoute: (context) => RegisterScreen(),
+        signInScreenRoute: (context) => SignInScreen(),
+        splashScreenRoute: (context) => SplashScreen(),
+        forgotPassScreenRoute: (context) => ForgotPassScreen(),
+        createAccScreenRoute: (context) => CreateAccScreen(),
+        linkSpotifyScreenRoute: (context) => LinkSpotifyScreen(),
+        makeProfileScreenRoute: (context) => MakeProfileScreen(),
+        signInErrorScreenRoute: (context) => SignInErrorScreen(),
+        checkEmailScreenRoute: (context) => CheckEmailScreen(),
+        allSetScreenRoute: (context) => AllSetScreen(),
+        resetPassScreenRoute: (context) => ResetPassScreen(),
+        homePageScreenRoute: (context) => HomePageScreen(),
+        playingNowScreenRoute: (context) => PlayingNowScreen(),
+        playlistsScreenRoute: (context) => PlaylistsScreen(),
+        playlistScreenRoute: (context) => PlaylistScreen(),
       },
     );
   }

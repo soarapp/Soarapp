@@ -16,7 +16,7 @@ class PlaylistScreen extends StatefulWidget {
 class _PlaylistScreenState extends State<PlaylistScreen> {
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return BackgroundWithPopup(
       AssetImage('assets/images/backgrounds/playlistsBackground.png'),
       Column(
         children: [

@@ -9,7 +9,6 @@ import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 
 // the initial register screen where users can login or create an account
 
-
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
 double ogHeight = 0;
@@ -17,7 +16,6 @@ double ogHeight = 0;
 double getHeight() {
   return ogHeight;
 }
-
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register';
@@ -34,36 +32,19 @@ class _RegisterScreenState extends State<RegisterScreen>
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     // getter method for screenHeight
-    return ScreenUtilInit(
-      designSize: Size(screenWidth, screenHeight),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          // overarching widget which encompasses all other components on the screen
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/backgrounds/splash.png'),
-                  fit: BoxFit.cover),
-            ),
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              children: [
-                // expanded with SizedBox in a col helps create a gap between
-                // the top of the screen and the curved white card
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                // Container acts as curved white card which contains elements
-                RegisterCard(),
-              ],
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/splash.png'),
+      Column(
+        children: [
+          // expanded with SizedBox in a col helps create a gap between
+          // the top of the screen and the curved white card
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
           ),
-        ),
+          // Container acts as curved white card which contains elements
+          RegisterCard(),
+        ],
       ),
     );
   }
@@ -76,7 +57,6 @@ class RegisterCard extends StatefulWidget {
   RegisterCardState createState() => RegisterCardState();
 }
 
-
 class RegisterCardState extends State<RegisterCard>
     with SingleTickerProviderStateMixin {
   double _height = getHeight() - (getHeight() / 10);
@@ -84,8 +64,8 @@ class RegisterCardState extends State<RegisterCard>
   void initState() {
     //Start the animation
     Future.delayed(Duration(milliseconds: 100)).then((value) => setState(() {
-      _height = getHeight();
-    }));
+          _height = getHeight();
+        }));
     super.initState();
   }
 
@@ -154,8 +134,13 @@ class RegisterCardState extends State<RegisterCard>
                     ),
                     Expanded(
                       flex: 3,
-                      child: ReusableButton(buttonText: "LOG IN", buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-                        textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, textColor: Colors.white,
+                      child: ReusableButton(
+                        buttonText: "LOG IN",
+                        buttonHeight: MediaQuery.of(context).size.height *
+                            LG_BUTTON_SCALER,
+                        textSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
+                        textColor: Colors.white,
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -164,7 +149,8 @@ class RegisterCardState extends State<RegisterCard>
                               },
                             ),
                           );
-                        },),
+                        },
+                      ),
                     ),
                     Expanded(
                       flex: 2,
@@ -190,17 +176,24 @@ class RegisterCardState extends State<RegisterCard>
                     ),
                     Expanded(
                       flex: 3,
-                      child: ReusableButton(buttonText: "NEW ACCOUNT", buttonHeight: MediaQuery.of(context).size.height * LG_BUTTON_SCALER,
-                        textSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER, textColor: Colors.white,
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return CreateAccScreen();
-                            },
-                          ),
-                        );
-                      }, buttonColor: Color(0xFFA2BBD5),),
+                      child: ReusableButton(
+                        buttonText: "NEW ACCOUNT",
+                        buttonHeight: MediaQuery.of(context).size.height *
+                            LG_BUTTON_SCALER,
+                        textSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return CreateAccScreen();
+                              },
+                            ),
+                          );
+                        },
+                        buttonColor: Color(0xFFA2BBD5),
+                      ),
                     ),
                     Expanded(
                       flex: 2,
@@ -232,6 +225,4 @@ class RegisterCardState extends State<RegisterCard>
       ),
     );
   }
-
-
 }

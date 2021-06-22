@@ -5,8 +5,6 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 
-void main() => runApp(MentalHealthScreen('mental health'));
-
 class MentalHealthScreen extends StatelessWidget {
   static const String id = 'MentalHealth';
   String pageType;
@@ -106,13 +104,13 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                              (pageType == 'mental health')
-                              ? 'Mental Health    Resources'
-                            : 'Cancer Resources',
-
+                                  (pageType == 'mental health')
+                                      ? 'Mental Health    Resources'
+                                      : 'Cancer Resources',
                                   style: TextStyle(
                                       fontSize:
-                                      MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
+                                          MediaQuery.of(context).size.height *
+                                              SEM_MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -129,7 +127,7 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                     //entire box with the mood options that you can click
                     Expanded(
                       flex: 17,
-                      child: FAQDisplay(45, pageType),
+                      child: FAQDisplayMentalHealth(45, pageType),
                     ),
                     //button for 'none of these describe my mood'
                     Expanded(
@@ -159,23 +157,23 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
 }
 
 // ignore: must_be_immutable
-class FAQDisplay extends StatefulWidget {
+class FAQDisplayMentalHealth extends StatefulWidget {
   int resourceNum;
   String pageType;
 
-  FAQDisplay(int resourceNum, String pageType) {
+  FAQDisplayMentalHealth(int resourceNum, String pageType) {
     this.resourceNum = resourceNum;
     this.pageType = pageType;
   }
 
   @override
-  State createState() => new QuestionList(resourceNum, pageType);
+  State createState() => new QuestionListMentalHealth(resourceNum, pageType);
 }
 
-class QuestionList extends State<FAQDisplay> {
+class QuestionListMentalHealth extends State<FAQDisplayMentalHealth> {
   int resourceNum;
   String pageType;
-  QuestionList(int resourceNum, String pageType) {
+  QuestionListMentalHealth(int resourceNum, String pageType) {
     this.resourceNum = resourceNum;
     this.pageType = pageType;
   }
@@ -184,15 +182,16 @@ class QuestionList extends State<FAQDisplay> {
   Widget build(BuildContext ctxt) {
     return new ListView.builder(
         itemCount: (pageType == 'mental health')
-        ? mentalHealthResources.length
-        : cancerResources.length,
+            ? mentalHealthResources.length
+            : cancerResources.length,
         itemBuilder: (BuildContext ctxt, int index) {
           return Column(
             children: [
               Container(
                 padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
                 decoration: BoxDecoration(
-                  color: (resourceNum == index) ? Color(0xFFE4F2FC) : Colors.white,
+                  color:
+                      (resourceNum == index) ? Color(0xFFE4F2FC) : Colors.white,
                   border: Border(
                     bottom: BorderSide(
                       //                   <--- left side
@@ -228,8 +227,8 @@ class QuestionList extends State<FAQDisplay> {
                                         top: 5.0, bottom: 5.0),
                                     child: Text(
                                       (pageType == 'mental health')
-                                      ? mentalHealthResources[index]
-                                      : cancerResources[index],
+                                          ? mentalHealthResources[index]
+                                          : cancerResources[index],
                                       style: TextStyle(
                                         color: Color(0xFF6AABEF),
                                         fontFamily: 'OpenSans',
@@ -242,9 +241,21 @@ class QuestionList extends State<FAQDisplay> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                                      MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                                  child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(upArrow)),
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.height *
+                                          HUNDRETH_SCALER,
+                                      MediaQuery.of(context).size.height *
+                                          HUNDRETH_SCALER,
+                                      MediaQuery.of(context).size.height *
+                                          HUNDRETH_SCALER *
+                                          2,
+                                      MediaQuery.of(context).size.height *
+                                          HUNDRETH_SCALER),
+                                  child: Container(
+                                      width:
+                                          MediaQuery.of(context).size.height *
+                                              SMALL_TXT_SCALER,
+                                      child: Image.asset(upArrow)),
                                 ),
                               ],
                             ),
@@ -253,8 +264,8 @@ class QuestionList extends State<FAQDisplay> {
                             padding: const EdgeInsets.only(right: 14.0),
                             child: Text(
                               (pageType == 'mental health')
-                              ? mentalHealthResourcesDetails[index]
-                              : cancerResourcesDetails[index],
+                                  ? mentalHealthResourcesDetails[index]
+                                  : cancerResourcesDetails[index],
                               style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'OpenSans',
@@ -278,108 +289,122 @@ class QuestionList extends State<FAQDisplay> {
                             Expanded(
                               flex: 9,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                                padding: const EdgeInsets.only(
+                                    top: 5.0, bottom: 5.0),
                                 child: Text(
                                   (pageType == 'mental health')
-                                  ? mentalHealthResources[index]
-                                  : cancerResources[index],
+                                      ? mentalHealthResources[index]
+                                      : cancerResources[index],
                                   style: TextStyle(
                                     color: Color(0xFF6AABEF),
                                     fontFamily: 'OpenSans',
-                                    fontSize: MediaQuery.of(context).size.height *
-                                        SMALL_TXT_SCALER,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                                  MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                              child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(downArrow)),
+                              padding: EdgeInsets.fromLTRB(
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER *
+                                      2,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER),
+                              child: Container(
+                                  width: MediaQuery.of(context).size.height *
+                                      SMALL_TXT_SCALER,
+                                  child: Image.asset(downArrow)),
                             ),
                           ],
                         ),
                       ),
               ),
               Container(
-              decoration: BoxDecoration(
-              color: Color(0xFFE1E4EB),
-              ),
-              child: (resourceNum == index)
-              ? Column(
-                children: [InkWell(
-                  child: Row(
-                    children: [
-                      Expanded(flex: 1, child: Image.asset(bluePlusIcon, scale: 4)),
-                      Expanded(
-                        flex: 13,
-                        child: Text(
-                          'Add to Contacts',
-                          style: TextStyle(
-                            color: Color(0xFF6AABEF),
-                            fontFamily: 'OpenSans',
-                            fontSize:
-                            MediaQuery.of(context).size.height *
-                                SMALL_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ]
-                  ),
+                decoration: BoxDecoration(
+                  color: Color(0xFFE1E4EB),
                 ),
-                  InkWell(
-                    child: Row(
+                child: (resourceNum == index)
+                    ? Column(
                         children: [
-                          Expanded(flex: 1, child: Image.asset(bluePhoneIcon, scale: 4)),
-                          Expanded(
-                            flex: 13,
-                            child: Text(
-                              (pageType == 'mental health')
-                              ? mentalHealthResourcesNumbers[index]
-                              : cancerResourcesNumbers[index],
-                              style: TextStyle(
-                                color: Color(0xFF6AABEF),
-                                fontFamily: 'OpenSans',
-                                fontSize:
-                                MediaQuery.of(context).size.height *
-                                    SMALL_TXT_SCALER,
-                                fontWeight: FontWeight.bold,
+                          InkWell(
+                            child: Row(children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: Image.asset(bluePlusIcon, scale: 4)),
+                              Expanded(
+                                flex: 13,
+                                child: Text(
+                                  'Add to Contacts',
+                                  style: TextStyle(
+                                    color: Color(0xFF6AABEF),
+                                    fontFamily: 'OpenSans',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ]),
                           ),
-                        ]
-                    ),
-                  ),
-                  InkWell(
-                    child: Row(
-                        children: [
-                          Expanded(flex: 1, child: Image.asset(bluePaperclipIcon, scale: 4)),
-                          Expanded(
-                            flex: 13,
-                            child: Text(
-                              (pageType == 'mental health')
-                                  ? mentalHealthResourcesLinks[index]
-                                  : cancerResourcesLinks[index],
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Color(0xFF6AABEF),
-                                fontFamily: 'OpenSans',
-                                fontSize:
-                                MediaQuery.of(context).size.height *
-                                    SMALL_TXT_SCALER,
-                                fontWeight: FontWeight.bold,
+                          InkWell(
+                            child: Row(children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: Image.asset(bluePhoneIcon, scale: 4)),
+                              Expanded(
+                                flex: 13,
+                                child: Text(
+                                  (pageType == 'mental health')
+                                      ? mentalHealthResourcesNumbers[index]
+                                      : cancerResourcesNumbers[index],
+                                  style: TextStyle(
+                                    color: Color(0xFF6AABEF),
+                                    fontFamily: 'OpenSans',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ]),
                           ),
-                        ]
-                    ),
-                  )
-          ],
-              )
-                  : SizedBox(),
+                          InkWell(
+                            child: Row(children: [
+                              Expanded(
+                                  flex: 1,
+                                  child:
+                                      Image.asset(bluePaperclipIcon, scale: 4)),
+                              Expanded(
+                                flex: 13,
+                                child: Text(
+                                  (pageType == 'mental health')
+                                      ? mentalHealthResourcesLinks[index]
+                                      : cancerResourcesLinks[index],
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF6AABEF),
+                                    fontFamily: 'OpenSans',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          )
+                        ],
+                      )
+                    : SizedBox(),
               ),
             ],
           );

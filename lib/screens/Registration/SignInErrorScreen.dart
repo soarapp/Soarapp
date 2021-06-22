@@ -6,6 +6,7 @@ import 'package:soar_initial_screens/screens/Registration/CreateAccScreen.dart';
 import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 
 // a screen which will let the user know that there has ben an error in signing into
 // their account
@@ -21,37 +22,19 @@ class _SignInErrorScreenState extends State<SignInErrorScreen>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          // overarching widget which encompasses all other components on the screen
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment(-.2, 0),
-                  image: AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
-                  fit: BoxFit.cover),
-            ),
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              children: [
-                // expanded with SizedBox in a col helps create a gap between
-                // the top of the screen and the curved white card
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                // Container acts as curved white card which contains elements
-                RegisterCard(),
-              ],
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/splashReplicaNoLogo.png'),
+      Column(
+        children: [
+          // expanded with SizedBox in a col helps create a gap between
+          // the top of the screen and the curved white card
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
           ),
-        ),
+          // Container acts as curved white card which contains elements
+          RegisterCard(),
+        ],
       ),
     );
   }
@@ -98,7 +81,8 @@ class RegisterCard extends StatelessWidget {
                 child: Text(
                   "Sign In Error",
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                      fontSize:
+                          MediaQuery.of(context).size.height * MED_TXT_SCALER,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'OpenSans'),
                 ),
@@ -113,7 +97,10 @@ class RegisterCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.5,
                     child: Text(
                       "A link has been sent to your email address. Please confirm your email before signing in!",
-                      style: TextStyle(fontFamily: 'OpenSans', fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER),
+                      style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: MediaQuery.of(context).size.height *
+                              SMALL_TXT_SCALER),
                       textAlign: TextAlign.center,
                     )),
               ),
@@ -128,7 +115,8 @@ class RegisterCard extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                        fontSize: MediaQuery.of(context).size.height *
+                            SMALL_TXT_SCALER,
                         color: Colors.black,
                         fontFamily: 'OpenSans'),
                     children: <TextSpan>[
@@ -136,7 +124,8 @@ class RegisterCard extends StatelessWidget {
                           text: 'Didn\'t get the email?',
                           style: TextStyle(
                               color: Color(0xFF6AABEF),
-                              fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                              fontSize: MediaQuery.of(context).size.height *
+                                  SMALL_TXT_SCALER,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans'),
                           // Sign In text that is clickable

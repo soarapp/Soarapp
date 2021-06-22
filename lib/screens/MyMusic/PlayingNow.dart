@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soar_initial_screens/models/Util/SongUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 
 class PlayingNowScreen extends StatefulWidget {
   PlayingNowScreen({Key key}) : super(key: key);
@@ -29,41 +30,9 @@ class PlayingNowScreen extends StatefulWidget {
 class _PlayingNowScreenState extends State<PlayingNowScreen>
     with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.height,
-              ),
-              child: IntrinsicHeight(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        alignment: Alignment(-.2, 0),
-                        image: AssetImage(
-                            'assets/images/backgrounds/playingNowBackground.png'),
-                        fit: BoxFit.cover),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: PlayingNow(widget.currentSong),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+    return Background(
+        AssetImage('assets/images/backgrounds/playingNowBackground.png'),
+        PlayingNow(widget.currentSong));
   }
 }
 

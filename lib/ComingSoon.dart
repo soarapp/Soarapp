@@ -6,7 +6,7 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuiz.dart';
 import 'package:marquee/marquee.dart';
-import 'package:soar_initial_screens/screens/MyMusic/playlists.dart';
+import 'package:soar_initial_screens/screens/MyMusic/Playlists.dart';
 
 //this is the comingSoon for the app: it contains the playlists which
 // the user can play as well as profile settings

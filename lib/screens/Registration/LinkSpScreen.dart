@@ -30,43 +30,18 @@ class _LinkSpotifyScreenState extends State<LinkSpotifyScreen> {
   @override
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => Scaffold(
-        // container which holds all components on the screen
-        body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height,
-            ),
-            child: IntrinsicHeight(
-              child: Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      alignment: Alignment(-.2, 0),
-                      image: AssetImage(
-                          'assets/images/backgrounds/linkSpBackground.png'),
-                      fit: BoxFit.fill),
-                ),
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    // the open first half of the screen with the background image
-                    Expanded(
-                      flex: 2,
-                      child: SizedBox(),
-                    ),
-                    // the rounded white card bottom half of the screen
-                    LinkSpCard(),
-                  ],
-                ),
-              ),
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/linkSpBackground.png'),
+      Column(
+        children: [
+          // the open first half of the screen with the background image
+          Expanded(
+            flex: 2,
+            child: SizedBox(),
           ),
-        ),
+          // the rounded white card bottom half of the screen
+          LinkSpCard(),
+        ],
       ),
     );
   }

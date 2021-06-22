@@ -62,47 +62,9 @@ class _CreateAccScreenState extends State<CreateAccScreen>
   @override
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => Scaffold(
-        body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height,
-            ),
-            child: IntrinsicHeight(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      alignment: Alignment(-.2, 0),
-                      // the background image for the  sp
-                      // screen
-                      image: AssetImage(
-                          'assets/images/backgrounds/createAccBackground.png'),
-                      fit: BoxFit.fill),
-                ),
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    // the part of the screen that allows the background image to show
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(),
-                    ),
-                    // the bottom three fourths of the screen with the white card
-                    CreateAcctCard(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+    return Background(
+        AssetImage('assets/images/backgrounds/createAccBackground.png'),
+        CreateAcctCard());
   }
 }
 

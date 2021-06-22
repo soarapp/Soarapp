@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:soar_initial_screens/screens/MyMusic/playlist.dart';
+import 'package:soar_initial_screens/screens/MyMusic/Playlist.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 
 class PlaylistsScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class PlaylistsScreen extends StatefulWidget {
 class _PlaylistsScreenState extends State<PlaylistsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return BackgroundWithPopup(
       AssetImage('assets/images/backgrounds/playlistsBackground.png'),
       Column(
         children: [

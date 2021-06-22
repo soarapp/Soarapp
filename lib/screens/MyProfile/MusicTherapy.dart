@@ -5,8 +5,6 @@ import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 
-void main() => runApp(MusicTherapyScreen());
-
 class MusicTherapyScreen extends StatelessWidget {
   static const String id = 'musicTherapy';
 
@@ -48,13 +46,14 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
               child: Container(
                 //width: double.infinity,
                 decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset:
-                    Offset(1, 0), // changes position of shadow
-                  ),],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 3,
+                      offset: Offset(1, 0), // changes position of shadow
+                    ),
+                  ],
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(40.0),
                       topLeft: Radius.circular(40.0)),
@@ -107,14 +106,18 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
                                 Text(
                                   'Music Therapy',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
                                 Text(
                                   'Resources',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                              MED_TXT_SCALER,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'OpenSans'),
                                 ),
@@ -131,7 +134,7 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
                     //entire box with the mood options that you can click
                     Expanded(
                       flex: 479,
-                      child: FAQDisplay(45),
+                      child: FAQDisplayMusicTherapy(45),
                     ),
                     //button for 'none of these describe my mood'
                     Expanded(
@@ -150,21 +153,21 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
 }
 
 // ignore: must_be_immutable
-class FAQDisplay extends StatefulWidget {
+class FAQDisplayMusicTherapy extends StatefulWidget {
   int questionNum;
 
-  FAQDisplay(int questionNum) {
+  FAQDisplayMusicTherapy(int questionNum) {
     this.questionNum = questionNum;
   }
 
   @override
-  State createState() => new QuestionList(questionNum);
+  State createState() => new QuestionListMusicTherapy(questionNum);
 }
 
-class QuestionList extends State<FAQDisplay> {
+class QuestionListMusicTherapy extends State<FAQDisplayMusicTherapy> {
   int questionNum;
 
-  QuestionList(int questionNum) {
+  QuestionListMusicTherapy(int questionNum) {
     this.questionNum = questionNum;
   }
 
@@ -193,23 +196,125 @@ class QuestionList extends State<FAQDisplay> {
             alignment: Alignment.center,
             child: (questionNum == index)
                 ? Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      (questionNum == index)
-                          ? questionNum = 45
-                          : questionNum = index;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        flex: 9,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 5.0, bottom: 5.0),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            (questionNum == index)
+                                ? questionNum = 45
+                                : questionNum = index;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 9,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 5.0, bottom: 5.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      musicTherapyResourcesAbbreviations[index],
+                                      style: TextStyle(
+                                        color: Color(0xFF6AABEF),
+                                        fontFamily: 'OpenSans',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                SEM_MED_TXT_SCALER,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      musicTherapyResources[index],
+                                      style: TextStyle(
+                                        color: Color(0xFF6AABEF),
+                                        fontFamily: 'OpenSans',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                SMALL_TXT_SCALER,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER *
+                                      2,
+                                  MediaQuery.of(context).size.height *
+                                      HUNDRETH_SCALER),
+                              child: Container(
+                                  width: MediaQuery.of(context).size.height *
+                                      SMALL_TXT_SCALER,
+                                  child: Image.asset(upArrow)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 18.0),
+                        child: Text(
+                          musicTherapyResourcesDetails[index],
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'OpenSans',
+                            fontSize: MediaQuery.of(context).size.height *
+                                SMALL_TXT_SCALER,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 13.0),
+                        child: InkWell(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child:
+                                      Image.asset(bluePaperclipIcon, scale: 4)),
+                              Expanded(
+                                flex: 13,
+                                child: Text(
+                                  musicTherapyResourcesLinks[index],
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xFF6AABEF),
+                                    fontFamily: 'OpenSans',
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            SMALL_TXT_SCALER,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                : InkWell(
+                    onTap: () {
+                      setState(() {
+                        questionNum = index;
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -218,7 +323,8 @@ class QuestionList extends State<FAQDisplay> {
                                 style: TextStyle(
                                   color: Color(0xFF6AABEF),
                                   fontFamily: 'OpenSans',
-                                  fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      SEM_MED_TXT_SCALER,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -227,109 +333,33 @@ class QuestionList extends State<FAQDisplay> {
                                 style: TextStyle(
                                   color: Color(0xFF6AABEF),
                                   fontFamily: 'OpenSans',
-                                  fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      SMALL_TXT_SCALER,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                            MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                        child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(upArrow)),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 18.0),
-                  child: Text(
-                    musicTherapyResourcesDetails[index],
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'OpenSans',
-                      fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 13.0),
-                  child: InkWell(
-                    child: Row(
-                      children: [
-                        Expanded(flex: 1, child: Image.asset(bluePaperclipIcon, scale: 4)),
-                        Expanded(
-                          flex: 13,
-                          child: Text(
-                            musicTherapyResourcesLinks[index],
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Color(0xFF6AABEF),
-                              fontFamily: 'OpenSans',
-                              fontSize:
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
                               MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER,
+                              MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER,
+                              MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER *
+                                  2,
+                              MediaQuery.of(context).size.height *
+                                  HUNDRETH_SCALER),
+                          child: Container(
+                              width: MediaQuery.of(context).size.height *
                                   SMALL_TXT_SCALER,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                              child: Image.asset(downArrow)),
                         ),
                       ],
                     ),
                   ),
-                )
-
-
-
-
-              ],
-            )
-                : InkWell(
-              onTap: () {
-                setState(() {
-                  questionNum = index;
-                });
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding:
-                    const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          musicTherapyResourcesAbbreviations[index],
-                          style: TextStyle(
-                            color: Color(0xFF6AABEF),
-                            fontFamily: 'OpenSans',
-                            fontSize: MediaQuery.of(context).size.height * SEM_MED_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          musicTherapyResources[index],
-                          style: TextStyle(
-                            color: Color(0xFF6AABEF),
-                            fontFamily: 'OpenSans',
-                            fontSize: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * HUNDRETH_SCALER, MediaQuery.of(context).size.height * HUNDRETH_SCALER,
-                        MediaQuery.of(context).size.height * HUNDRETH_SCALER * 2, MediaQuery.of(context).size.height * HUNDRETH_SCALER),
-                    child: Container(width: MediaQuery.of(context).size.height * SMALL_TXT_SCALER,child: Image.asset(downArrow)),
-                  ),
-                ],
-              ),
-            ),
           );
         });
   }

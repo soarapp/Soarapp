@@ -35,47 +35,19 @@ class _SignInScreenState extends State<SignInScreen>
     with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     ogHeight = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.height,
-              ),
-              child: IntrinsicHeight(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        alignment: Alignment(-.2, 0),
-                        image: AssetImage(
-                            'assets/images/backgrounds/signInBackground.png'),
-                        fit: BoxFit.cover),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    children: [
-                      // Expanded with a SizedBox that allows the background image to render
-                      // and pushes the rest of the card content below
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      // Start of the curved card content portion of the screen
-                      SignInCard(),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+    return Background(
+      AssetImage('assets/images/backgrounds/signInBackground.png'),
+      Column(
+        children: [
+          // Expanded with a SizedBox that allows the background image to render
+          // and pushes the rest of the card content below
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
           ),
-        ),
+          // Start of the curved card content portion of the screen
+          SignInCard(),
+        ],
       ),
     );
   }

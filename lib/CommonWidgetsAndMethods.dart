@@ -8,7 +8,7 @@ import 'package:soar_initial_screens/screens/MyProfile/FAQPage.dart';
 import 'package:soar_initial_screens/screens/MyProfile/ProfileScreen.dart';
 import 'package:soar_initial_screens/screens/MyProfile/ResourcesPage.dart';
 import 'package:soar_initial_screens/screens/MyMusic/PlayingNow.dart';
-import 'package:soar_initial_screens/screens/MyMusic/playlist.dart';
+import 'package:soar_initial_screens/screens/MyMusic/Playlist.dart';
 import 'package:soar_initial_screens/HomePgLanding.dart';
 import 'package:soar_initial_screens/ComingSoon.dart';
 
@@ -58,6 +58,7 @@ class PlaylistOrSongList extends State<PlaylistOrSongDisplay> {
                   },
                 ),
               );
+              Navigator.pushNamed(context, playlistScreenRoute)
             },
             child: Container(
               padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),

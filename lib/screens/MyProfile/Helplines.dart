@@ -4,9 +4,6 @@ import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
-
-void main() => runApp(HelplinesScreen());
-
 class HelplinesScreen extends StatelessWidget {
   static const String id = 'helplines';
 
@@ -131,7 +128,7 @@ class HelplinesPageSetup extends State<HelplinesPage> {
                     //entire box with the mood options that you can click
                     Expanded(
                       flex: 479,
-                      child: FAQDisplay(45),
+                      child: FAQDisplayHelplines(45),
                     ),
                     //button for 'none of these describe my mood'
                     Expanded(
@@ -150,21 +147,21 @@ class HelplinesPageSetup extends State<HelplinesPage> {
 }
 
 // ignore: must_be_immutable
-class FAQDisplay extends StatefulWidget {
+class FAQDisplayHelplines extends StatefulWidget {
   int questionNum;
 
-  FAQDisplay(int questionNum) {
+  FAQDisplayHelplines(int questionNum) {
     this.questionNum = questionNum;
   }
 
   @override
-  State createState() => new QuestionList(questionNum);
+  State createState() => new QuestionListHelplines(questionNum);
 }
 
-class QuestionList extends State<FAQDisplay> {
+class QuestionListHelplines extends State<FAQDisplayHelplines> {
   int questionNum;
 
-  QuestionList(int questionNum) {
+  QuestionListHelplines(int questionNum) {
     this.questionNum = questionNum;
   }
 

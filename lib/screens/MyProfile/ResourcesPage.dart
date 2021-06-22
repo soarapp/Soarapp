@@ -9,8 +9,6 @@ import 'package:soar_initial_screens/screens/MyProfile/MentalHealthPage.dart';
 import 'package:soar_initial_screens/screens/MyProfile/MusicTherapy.dart';
 import 'package:soar_initial_screens/screens/MyProfile/Helplines.dart';
 
-void main() => runApp(ResourcesScreen());
-
 class ResourcesScreen extends StatelessWidget {
   static const String id = 'resources';
 

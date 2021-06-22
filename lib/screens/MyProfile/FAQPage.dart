@@ -4,9 +4,6 @@ import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
-
-void main() => runApp(FAQScreen());
-
 class FAQScreen extends StatelessWidget {
   static const String id = 'FAQ';
 
