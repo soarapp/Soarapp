@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soar_initial_screens/Backend%20Functions/Functions.dart';
 import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/main.dart';
+import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 
 // This is the forgot password screen where users can enter their email
 // address
@@ -12,7 +14,7 @@ import 'package:soar_initial_screens/main.dart';
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
 double ogHeight = 0;
-
+String _email;
 double getHeight() {
   return ogHeight;
 }
@@ -124,8 +126,7 @@ class ForgotPassCardState extends State<ForgotPassCard>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height:
-                MediaQuery.of(context).size.height * HUNDRETH_SCALER,
+                height: MediaQuery.of(context).size.height * HUNDRETH_SCALER,
               ),
               // the back button and the Forgot Password text
               Expanded(
@@ -183,7 +184,16 @@ class ForgotPassCardState extends State<ForgotPassCard>
                             buttonText: "ENTER",
                             textSize: MediaQuery.of(context).size.height *
                                 SMALL_TXT_SCALER,
-                            onPressed: () {}),
+                            onPressed: () {
+                              resetPassword(_email);
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return SignInScreen();
+                                  },
+                                ),
+                              );
+                            }),
                       ),
                       Expanded(
                         child: SizedBox(),
@@ -274,6 +284,9 @@ class EmailTextBox extends StatelessWidget {
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: Colors.black),
                 ),
+                onChanged: (value) {
+                  _email = value.trim();
+                },
               ),
             ),
           ),
