@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:soar_initial_screens/models/Util/ProfileUtils.dart';
 import 'package:soar_initial_screens/models/Util/SongUtils.dart';
-import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
+import 'package:soar_initial_screens/CommonWidgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -37,117 +37,70 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                alignment: Alignment(0, 0),
-                image: AssetImage(
-                    'assets/images/backgrounds/profileBackground.png'),
-                fit: BoxFit.cover),
-          ),
-          alignment: Alignment.bottomCenter,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(),
-              ),
-              Expanded(
-                flex: 4,
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0),
-                    ),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      // top edit and more icons
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 10),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 30.0),
-                              child: Icon(
-                                Icons.edit_outlined,
-                                size: 30.0,
-                                semanticLabel: 'Back',
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 30.0),
-                              child: Icon(
-                                Icons.more_horiz,
-                                size: 30.0,
-                                semanticLabel: 'Add Playlist',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // profile picture
-                      Expanded(
-                        flex: 3,
-                        child: CircleAvatar(
-                          radius: 100,
-                          backgroundImage: widget.profile.avatar.image,
-                        ),
-                      ),
-                      // name
-
-                      Text(
-                        widget.profile.name,
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      // description and contact info
-                      Expanded(
-                        flex: 5,
-                        child: ProfileDescription(
-                          favoriteSong: widget.profile.favoriteSong,
-                          description: widget.profile.description,
-                          instagram: widget.profile.instagram,
-                          facebook: widget.profile.facebook,
-                          phoneNumber: widget.profile.phoneNumber,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      //bottom icon bar
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: bottomIconBar(context, 5),
-                        ),
-                      ),
-                    ],
+    return BackgroundWithPopup(
+      AssetImage('assets/images/backgrounds/profileBackground.png'),
+      Column(
+        children: [
+          // top edit and more icons
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 10),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30.0),
+                  child: Icon(
+                    Icons.edit_outlined,
+                    size: 30.0,
+                    semanticLabel: 'Back',
                   ),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: Icon(
+                    Icons.more_horiz,
+                    size: 30.0,
+                    semanticLabel: 'Add Playlist',
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+          // profile picture
+          Expanded(
+            flex: 5,
+            child: CircleAvatar(
+              radius: 100,
+              backgroundImage: widget.profile.avatar.image,
+            ),
+          ),
+          // name
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              widget.profile.name,
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox(),
+          ),
+          // description and contact info
+          Expanded(
+            flex: 7,
+            child: ProfileDescription(
+              favoriteSong: widget.profile.favoriteSong,
+              description: widget.profile.description,
+              instagram: widget.profile.instagram,
+              facebook: widget.profile.facebook,
+              phoneNumber: widget.profile.phoneNumber,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -237,17 +190,19 @@ class ProfileDescription extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        flex: 3,
+                        flex: 1,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 12),
+                          padding: const EdgeInsets.only(top: 10, left: 10),
                           child: Text(description),
                         ),
                       ),
                       // Spacer
-                      Padding(padding: EdgeInsets.all(15), child: SizedBox()),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: SizedBox()),
                       // contact information
                       Expanded(
-                        flex: 3,
+                        flex: 1,
                         child: Column(
                           children: [
                             Row(

@@ -137,8 +137,8 @@ class ComingSoonSetup extends State<ComingSoonScreen> {
                     color: Colors.white,
                   ),
                   child: (chatOrCal == 1)
-    ? bottomIconBar(context, 1)
-                  : bottomIconBar(context, 2),
+    ? bottomTabNavigator(context, 1)
+                  : bottomTabNavigator(context, 2),
                 ),
               ),
             ],

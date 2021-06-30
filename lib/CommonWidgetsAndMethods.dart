@@ -58,7 +58,7 @@ class PlaylistOrSongList extends State<PlaylistOrSongDisplay> {
                   },
                 ),
               );
-              Navigator.pushNamed(context, playlistScreenRoute)
+              Navigator.pushNamed(context, playlistScreenRoute);
             },
             child: Container(
               padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10.0),
@@ -140,7 +140,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                       aSongCurrentlyPlaying =
                           (aSongCurrentlyPlaying == false) ? true : false;
                       favSongCurrentlyPlaying =
-                      (favSongCurrentlyPlaying == true) ? false : false;
+                          (favSongCurrentlyPlaying == true) ? false : false;
                     });
                   })),
           Expanded(
@@ -166,12 +166,14 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                         color: Colors.white,
                         fontFamily: 'OpenSans',
                         fontSize: MediaQuery.of(context).size.height *
-                            SMALL_TXT_SCALER * 1.3,
+                            SMALL_TXT_SCALER *
+                            1.3,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
-                  Expanded(flex: 1,
+                  Expanded(
+                    flex: 1,
                     child: SizedBox(),
                   ),
                   Expanded(
@@ -209,7 +211,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
 
 //this is the icon bar at the bottom of many pages with all the buttons for visiting the profile or the chat etc.
 //input blackIcon is that icon that should be in black and not greyed out -> 1 is the first icon 5 is last icon
-Widget bottomIconBar(BuildContext context, int blackIcon) {
+Widget bottomTabNavigator(BuildContext context, int blackIcon) {
   return Container(
     decoration: BoxDecoration(color: Colors.white, boxShadow: [
       BoxShadow(

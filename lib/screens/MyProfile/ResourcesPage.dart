@@ -14,9 +14,7 @@ class ResourcesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ResourcesPage(),
-    );
+    return ResourcesPage();
   }
 }
 
@@ -121,7 +119,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                   ],
                 ),
               ),
-              Expanded(flex: 69, child: bottomIconBar(context, 4)),
+              Expanded(flex: 69, child: bottomTabNavigator(context, 4)),
             ],
           )
         ],

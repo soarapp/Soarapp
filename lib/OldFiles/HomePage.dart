@@ -282,7 +282,7 @@ class HomePageSetup extends State<HomePageScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
-                  child: bottomIconBar(context, 3),
+                  child: bottomTabNavigator(context, 3),
                 ),
               ),
             ],

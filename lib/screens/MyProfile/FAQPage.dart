@@ -4,14 +4,13 @@ import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
 import 'package:soar_initial_screens/screens/MyMusic/MoodQuizPage3.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
+
 class FAQScreen extends StatelessWidget {
   static const String id = 'FAQ';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FAQPage(),
-    );
+    return FAQPage();
   }
 }
 
@@ -129,7 +128,7 @@ class FAQPageSetup extends State<FAQPage> {
                     //button for 'none of these describe my mood'
                     Expanded(
                       flex: 69,
-                      child: bottomIconBar(context, 4),
+                      child: bottomTabNavigator(context, 4),
                     ),
                   ],
                 ),

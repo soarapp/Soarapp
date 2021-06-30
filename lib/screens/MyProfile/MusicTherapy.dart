@@ -10,9 +10,7 @@ class MusicTherapyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MusicTherapyPage(),
-    );
+    return MusicTherapyPage();
   }
 }
 
@@ -139,7 +137,7 @@ class MusicTherapyPageSetup extends State<MusicTherapyPage> {
                     //button for 'none of these describe my mood'
                     Expanded(
                       flex: 69,
-                      child: bottomIconBar(context, 4),
+                      child: bottomTabNavigator(context, 4),
                     ),
                   ],
                 ),

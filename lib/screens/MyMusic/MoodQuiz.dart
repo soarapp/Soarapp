@@ -9,24 +9,12 @@ import 'package:soar_initial_screens/CommonWidgets.dart';
 // import 'package:soar/models/Util/ColorUtils.dart';
 // import 'package:soar/screens/MyMusic/MoodQuizPage2.dart';
 
-
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
 double ogHeight = 0;
 
 double getHeight() {
   return ogHeight;
-}
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MoodQuiz(),
-    );
-  }
 }
 
 class MoodQuiz extends StatefulWidget {

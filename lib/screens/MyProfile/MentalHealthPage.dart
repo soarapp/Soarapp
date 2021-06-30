@@ -14,9 +14,7 @@ class MentalHealthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MentalHealthPage('mental health'),
-    );
+    return MentalHealthPage('mental health');
   }
 }
 
@@ -143,7 +141,7 @@ class MentalHealthPageSetup extends State<MentalHealthPage> {
                                   Offset(3, 0), // changes position of shadow
                             ),
                           ]),
-                          child: bottomIconBar(context, 4)),
+                          child: bottomTabNavigator(context, 4)),
                     ),
                   ],
                 ),
