@@ -4,7 +4,7 @@ import 'package:soar_initial_screens/models/Util/SongUtils.dart';
 class Profile {
   Profile(
     String name,
-    Image avatar,
+    String avatar,
     Song favoriteSong,
     String description,
     String instagram,
@@ -21,7 +21,7 @@ class Profile {
   }
 
   String name;
-  Image avatar;
+  String avatar;
   Song favoriteSong;
   String description;
   String instagram;

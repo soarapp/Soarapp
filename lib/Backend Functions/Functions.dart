@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:soar_initial_screens/screens/MyProfile/ProfileScreen.dart';
 import 'package:soar_initial_screens/screens/Registration/LinkSpScreen.dart';
 import 'package:soar_initial_screens/screens/Registration/SignInScreen.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -137,7 +138,7 @@ void signIn(String _email, String _password, BuildContext context) async {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return LinkSpotifyScreen();
+            return ProfileScreen();
           },
         ),
       );
@@ -192,7 +193,7 @@ Future<void> uploadFile(String filePath, String imageName) async {
 
 // get the URL of image from cloud
 
-downloadURL(String imageName) async {
+Future<String> downloadURL(String imageName) async {
   final String uid = FirebaseAuth.instance.currentUser.uid;
   String downloadURL = await firebase_storage.FirebaseStorage.instance
       .ref(uid + '/' + imageName + '.png')
@@ -214,4 +215,12 @@ Future<void> listExample() async {
   result.prefixes.forEach((firebase_storage.Reference ref) {
     print('Found directory: $ref');
   });
+}
+
+getData() {
+  var firebaseUser = FirebaseAuth.instance.currentUser;
+  return FirebaseFirestore.instance
+      .collection("users")
+      .doc(firebaseUser.uid)
+      .get();
 }

@@ -1,26 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:soar_initial_screens/Backend%20Functions/Functions.dart';
 import 'package:soar_initial_screens/models/Util/ProfileUtils.dart';
 import 'package:soar_initial_screens/models/Util/SongUtils.dart';
 import 'package:soar_initial_screens/CommonWidgetsAndMethods.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+String url = "";
+String name = "";
+String favSong = "";
+String favArtist = "";
+String description = "";
+
 class ProfileScreen extends StatefulWidget {
   static const String id = 'playlists';
-  static const String description =
-      'I’m from Milwaukee, WI, and I love art and design. I am also a freshman at Washington University in St. Louis.';
 
   final Profile profile = new Profile(
-    'Audrey Engman',
-    Image.asset(
-      'assets/images/other/profileAvatar.png',
-      height: 10,
-      width: 10,
-      fit: BoxFit.fitWidth,
-    ),
+    name,
+    url,
     new Song(
-      'For the Team',
-      'Prelowe',
+      favSong,
+      favArtist,
       Image.asset('assets/images/songs/favSong.jpg'),
       0,
     ),
@@ -35,7 +37,19 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  @override
+  _ProfileScreenState() {
+    downloadURL(profilePicture).then((val) => setState(() {
+          url = val;
+        }));
+
+    getData().then((value) => setState(() {
+          name = value["Name"];
+          favSong = value["Favorite Song"];
+          favArtist = value["Favorite Artist"];
+          description = value["Bio"];
+        }));
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -103,12 +117,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         flex: 3,
                         child: CircleAvatar(
                           radius: 100,
-                          backgroundImage: widget.profile.avatar.image,
+                          backgroundImage: (url == null)
+                              ? AssetImage(
+                                  'assets/images/other/defaultCamPhoto.png')
+                              : NetworkImage(widget.profile.avatar),
                         ),
                       ),
                       // name
 
                       Text(
+                        // data["Name"] == null ? " " :
                         widget.profile.name,
                         style: TextStyle(fontSize: 30),
                       ),
