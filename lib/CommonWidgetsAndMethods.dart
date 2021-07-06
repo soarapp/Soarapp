@@ -158,7 +158,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                 children: [
                   Expanded(flex: 1, child: SizedBox()),
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Text(
                       currSong,
                       style: TextStyle(
@@ -174,7 +174,7 @@ class _SongPlayingBar extends State<SongPlayingBar> {
                     child: SizedBox(),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Text(
                       currSongArtist,
                       style: TextStyle(

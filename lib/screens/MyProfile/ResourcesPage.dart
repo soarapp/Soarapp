@@ -49,8 +49,9 @@ class ResourcesPageSetup extends State<ResourcesPage> {
           //everything on top of background
           Column(
             children: [
+              Expanded(flex: 135, child: SizedBox()),
               Expanded(
-                flex: 826,
+                flex: 559,
                 child: Row(
                   children: [
                     Expanded(
@@ -61,57 +62,18 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                       flex: 345,
                       child: Column(
                         children: [
-                          Expanded(flex: 30, child: SizedBox()),
-                          Expanded(
-                            flex: 90,
-                            child: Row(children: [
-                              Expanded(
-                                flex: 13,
-                                child: Text(
-                                  'Resources',
-                                  style: TextStyle(
-                                    color: black,
-                                    fontFamily: 'OpenSans',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            MED_TXT_SCALER,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: SizedBox(),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Icon(
-                                  Icons.more_horiz,
-                                  color: Color(0xFF2B2B2B),
-                                  size: MediaQuery.of(context).size.height *
-                                      MED_TXT_SCALER,
-                                ),
-                              ),
-                            ]),
-                          ),
-                          Expanded(
-                            flex: 67,
-                            child: SizedBox(),
-                          ),
                           //this is the information column
                           Expanded(
-                            flex: 277,
+                            flex: 240,
+                            child: musicTherapyFAQBox(context),
+                          ),
+                          Expanded(
+                            flex: 47,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 271,
                             child: informationBox(context),
-                          ),
-                          Expanded(
-                            flex: 94,
-                            child: SizedBox(),
-                          ),
-                          Expanded(
-                              flex: 148, child: musicTherapyFAQBox(context)),
-                          Expanded(
-                            flex: 158,
-                            child: SizedBox(),
                           ),
                         ],
                       ),
@@ -123,6 +85,7 @@ class ResourcesPageSetup extends State<ResourcesPage> {
                   ],
                 ),
               ),
+              Expanded(flex: 135, child: SizedBox()),
               Expanded(flex: 69, child: bottomIconBar(context, 4)),
             ],
           )
@@ -285,6 +248,40 @@ Widget musicTherapyFAQBox(BuildContext context) {
           ),
         ]),
     child: Column(children: [
+      Expanded(
+        flex: 1,
+        child: Container(
+          alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  //                   <--- left side
+                  color: Color(0xFF000000).withOpacity(.1),
+                  width: .5,
+                ),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SizedBox()
+                ),
+                Expanded(
+                  flex: 12,
+                  child: Text(
+                    "Resources",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'OpenSans',
+                      fontSize: MediaQuery.of(context).size.height * MED_TXT_SCALER,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            )),
+      ),
       Expanded(
           flex: 1,
           child: Container(

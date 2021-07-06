@@ -2,6 +2,8 @@ import 'dart:core';
 
 import 'dart:core';
 
+import 'package:device_preview/device_preview.dart';
+
 ////////////////////////////////////
 //****GLOBALLYUSEDVARIABLES****//
 ///////////////////////////////////
@@ -55,6 +57,7 @@ String currSongArtist = 'Fallen Roses';
 String playIcon = 'assets/images/icons/playIcon.png';
 String pauseIcon = 'assets/images/icons/pauseIcon.png';
 String skipIcon = 'assets/images/icons/skipIcon.png';
+String settingsIcon = 'assets/images/icons/settingsIcon.png';
 String favSongImg = 'assets/images/songs/favSong.jpg';
 String jpg = '.jpg';
 String forwardSlash = '/';
@@ -214,3 +217,35 @@ String playlistName5 = 'Stress to Relaxation';
 //comingSoon
 String comingSoonBackground = 'assets/images/backgrounds/comingSoonBackground.png';
 String cautionIcon = 'assets/images/other/cautionIcon.png';
+
+//settings
+List<String> settingsResources = [
+  'Account Services',
+  'Terms of Service',
+  'I Need Help'
+];
+List<String> settingsResources1 = [
+  'Change Password',
+  '',
+  ''
+];
+List<String> settingsResources2 = [
+  'Sign Out',
+  '',
+  ''
+];
+List<String> settingsResources3 = [
+  'Delete Account',
+  '',
+  ''
+];
+List<String> settingsPopUp = [
+  'reset your password',
+  'sign out',
+  'delete your account'
+];
+List<String> settingsPopUpButtons = [
+  'Reset',
+  'Sign Out',
+  'Delete'
+];

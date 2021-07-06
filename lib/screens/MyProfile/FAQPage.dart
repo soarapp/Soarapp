@@ -189,87 +189,87 @@ class QuestionList extends State<FAQDisplay> {
             alignment: Alignment.center,
             child: (questionNum == index)
                 ? Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      (questionNum == index)
+                          ? questionNum = 45
+                          : questionNum = index;
+                    });
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            (questionNum == index)
-                                ? questionNum = 45
-                                : questionNum = index;
-                          });
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              flex: 9,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5.0, bottom: 5.0),
-                                child: Text(
-                                  questions[index],
-                                  style: TextStyle(
-                                    color: Color(0xFF6AABEF),
-                                    fontFamily: 'OpenSans',
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            SMALL_TXT_SCALER,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                                flex: 2,
-                                child: Image.asset(downArrow, scale: 4)),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        answers[index],
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'OpenSans',
-                          fontSize: MediaQuery.of(context).size.height *
-                              SMALL_TXT_SCALER,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      )
-                    ],
-                  )
-                : InkWell(
-                    onTap: () {
-                      setState(() {
-                        questionNum = index;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 9,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                            child: Text(
-                              questions[index],
-                              style: TextStyle(
-                                color: Color(0xFF6AABEF),
-                                fontFamily: 'OpenSans',
-                                fontSize: MediaQuery.of(context).size.height *
-                                    SMALL_TXT_SCALER,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      Expanded(
+                        flex: 9,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 5.0, bottom: 5.0),
+                          child: Text(
+                            questions[index],
+                            style: TextStyle(
+                              color: Color(0xFF6AABEF),
+                              fontFamily: 'OpenSans',
+                              fontSize:
+                              MediaQuery.of(context).size.height *
+                                  SMALL_TXT_SCALER,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Expanded(
+                      ),
+                      Expanded(
                           flex: 2,
-                          child: Image.asset(upArrow, scale: 4),
+                          child: Image.asset(upArrow, scale: 4)),
+                    ],
+                  ),
+                ),
+                Text(
+                  answers[index],
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'OpenSans',
+                    fontSize: MediaQuery.of(context).size.height *
+                        SMALL_TXT_SCALER,
+                    fontWeight: FontWeight.normal,
+                  ),
+                )
+              ],
+            )
+                : InkWell(
+              onTap: () {
+                setState(() {
+                  questionNum = index;
+                });
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 9,
+                    child: Padding(
+                      padding:
+                      const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                      child: Text(
+                        questions[index],
+                        style: TextStyle(
+                          color: Color(0xFF6AABEF),
+                          fontFamily: 'OpenSans',
+                          fontSize: MediaQuery.of(context).size.height *
+                              SMALL_TXT_SCALER,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
+                      ),
                     ),
                   ),
+                  Expanded(
+                    flex: 2,
+                    child: Image.asset(downArrow, scale: 4),
+                  ),
+                ],
+              ),
+            ),
           );
         });
   }

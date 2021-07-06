@@ -4,6 +4,7 @@ import 'package:soar_initial_screens/HomePgLanding.dart';
 import 'package:soar_initial_screens/ThemeData/SizingUtils.dart';
 import 'package:soar_initial_screens/models/Util/StringUtils.dart';
 import 'package:soar_initial_screens/models/Util/ColorUtils.dart';
+import 'package:soar_initial_screens/screens/MyMusic/playlist.dart';
 
 import '../../CommonWidgets.dart';
 
@@ -735,7 +736,7 @@ class MoodQuizPage3Setup extends State<MoodQuizPage3> {
                                               Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                   builder: (context) {
-                                                    return HomePageScreen();
+                                                    return PlaylistScreen();
                                                   },
                                                 ),
                                               ),
