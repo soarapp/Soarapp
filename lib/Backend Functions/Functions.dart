@@ -224,3 +224,15 @@ getData() {
       .doc(firebaseUser.uid)
       .get();
 }
+
+Future<void> signOut(BuildContext context) async {
+  await FirebaseAuth.instance
+      .signOut()
+      .then((value) => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return SignInScreen();
+              },
+            ),
+          ));
+}

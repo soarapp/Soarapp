@@ -16,8 +16,8 @@ import 'package:soar_initial_screens/Backend Functions/Functions.dart';
 
 // method that serves as a getter for the height of this screen
 // for the bouncing animation
-String _email;
-String _password;
+String _email = "";
+String _password = "";
 double ogHeight = 0;
 
 double getHeight() {
@@ -438,6 +438,8 @@ class SignInButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           signIn(_email, _password, context);
+          _email = "";
+          _password = "";
         },
         child: Text("SIGN IN",
             textAlign: TextAlign.center,
