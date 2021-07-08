@@ -838,6 +838,12 @@ class SettingsPageSetup extends State<SettingsPage> {
                                   child: TextButton(
                                     onPressed: () {
                                       //do whatever should be done lol @sukjit
+                                      //if popUpNum == 0 -> reset
+                                      //if popUpNum == 1 -> sign out
+                                      //if popUpNum == 2 -> delete
+
+
+
 
 
 
